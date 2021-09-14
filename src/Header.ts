@@ -8,7 +8,7 @@ export class AppHeader extends LitElement {
       align-items: center;
       font-family: 'Oswald', sans-serif;
       color: #111;
-      padding: 100px 80px;
+      padding: 100px 80px 80px 80px;
     }
     h4 {
       font: 900 24px 'Overpass', sans-serif;

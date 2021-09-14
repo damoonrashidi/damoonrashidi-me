@@ -39,7 +39,7 @@ export class ArtList extends LitElement {
       overflow-x: auto;
       display: flex;
       flex-wrap: nowrap;
-      padding: 0 120px 0 80px;
+      padding: 0 120px 120px 80px;
     }
     .art-list-wrapper > art-list-item {
       margin-right: 64px;
@@ -77,8 +77,11 @@ export class ArtList extends LitElement {
   ];
 
   updated() {
-    const list = this.shadowRoot?.querySelector('.art-list-wrapper')!;
-    list.scrollLeft = 530;
+    const wrapper = this.shadowRoot?.querySelector('.art-list-wrapper')!;
+    console.log(wrapper);
+    setTimeout(() => {
+      wrapper.scrollLeft = 530;
+    });
   }
 
   render() {

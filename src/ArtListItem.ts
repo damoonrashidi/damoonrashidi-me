@@ -28,6 +28,9 @@ export class ArtListItem extends LitElement {
     img {
       border: 6px solid #262626;
       margin: 0 0 42px;
+      width: 365px;
+      height: 520px;
+      background: #eee;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         10px 76px 80px rgba(0, 0, 0, 0.16),
         0px 34.2165px 37.8605px rgba(0, 0, 0, 0.156182),
