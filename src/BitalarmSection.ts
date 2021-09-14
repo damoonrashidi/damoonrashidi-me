@@ -25,6 +25,10 @@ export class BitalarmSection extends LitElement {
       color: #fff;
       text-decoration: none;
     }
+    img {
+      mix-blend-mode: difference;
+      transform: translateY(188px);
+    }
   `;
 
   render() {

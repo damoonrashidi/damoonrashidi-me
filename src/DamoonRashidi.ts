@@ -9,13 +9,11 @@ export class DamoonRashidi extends LitElement {
 
   render() {
     return html`
-      <section-wrapper color="#fafafa" .height=${30}>
-        <app-header></app-header>
-      </section-wrapper>
+      <app-header></app-header>
       <section-wrapper color="#1a1a1a" .height=${50}>
         <art-list></art-list>
       </section-wrapper>
-      <section-wrapper color="#fafafa">
+      <section-wrapper color="#111">
         <bitalarm-section></bitalarm-section>
       </section-wrapper>
     `;

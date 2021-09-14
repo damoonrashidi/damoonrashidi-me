@@ -15,21 +15,25 @@ export class ArtListItem extends LitElement {
     :host {
       display: block;
       width: 365px;
+      margin: 0 176px;
     }
 
     h4 {
-      font-family: 'Kaisei HarunoUmi', sans-serif;
-      font-size: 32px;
-      font-weight: 200;
-      margin: 16px 0;
+      font: 700 36px 'Playfair Display', sans-serif;
+      margin: 0;
     }
     p {
-      font-family: 'Kaisei HarunoUmi', sans-serif;
-      font-size: 16px;
-      line-height: 2em;
-      max-width: 800px;
-      font-weight: 200;
-      padding-right: 24px;
+      font: 400 24px/1.5em 'Playfair Display', sans-serif;
+    }
+    img {
+      border: 6px solid #262626;
+      margin: 0 0 42px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        10px 76px 80px rgba(0, 0, 0, 0.16),
+        0px 34.2165px 37.8605px rgba(0, 0, 0, 0.156182),
+        0px 19.7788px 22.4204px rgba(0, 0, 0, 0.147078),
+        0px 12.0142px 13.7505px rgba(0, 0, 0, 0.127239),
+        0px 6.94312px 7.98618px rgba(0, 0, 0, 0.0753422);
     }
   `;
 

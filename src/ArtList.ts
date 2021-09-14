@@ -24,15 +24,15 @@ export class ArtList extends LitElement {
       padding: 80px;
     }
     h2 {
-      font-family: 'Kaisei HarunoUmi', sans-serif;
-      font-size: 50px;
+      font-family: 'Playfair Display', sans-serif;
+      font-size: 64px;
       font-weight: 200;
     }
     p {
-      font-family: 'Kaisei HarunoUmi', sans-serif;
-      font-size: 20px;
-      line-height: 2em;
-      max-width: 800px;
+      font-family: 'Playfair Display', sans-serif;
+      font-size: 36px;
+      line-height: 1.5em;
+      max-width: 1000px;
       font-weight: 200;
     }
     .art-list-wrapper {
@@ -43,16 +43,6 @@ export class ArtList extends LitElement {
     }
     .art-list-wrapper > art-list-item {
       margin-right: 64px;
-    }
-    .art-list-wrapper::after {
-      content: '';
-      position: absolute;
-      z-index: 2;
-      right: 0;
-      width: 240px;
-      height: 750px;
-      transform: scaleY(100%);
-      background: linear-gradient(90deg, transparent, #fafafa);
     }
   `;
 
@@ -86,14 +76,19 @@ export class ArtList extends LitElement {
     },
   ];
 
+  updated() {
+    const list = this.shadowRoot?.querySelector('.art-list-wrapper')!;
+    list.scrollLeft = 530;
+  }
+
   render() {
     return html`
       <div class="text-wrapper">
         <h2>Generative Art.</h2>
         <p>
-          My generative art experiments. Each piece was created either entirely
-          by an algorithm or started with a seed picture or photograph and then
-          finished by the machine.
+          My generative art experiments. Each piece was created either entierly
+          algorithmically or a base image was created by hand and then fed to
+          the machine to finish the product.
         </p>
       </div>
       <div class="art-list-wrapper">

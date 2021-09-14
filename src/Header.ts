@@ -2,42 +2,62 @@ import { LitElement, html, css } from 'lit';
 
 export class AppHeader extends LitElement {
   static styles = css`
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     :host {
-      background-color: #1c1c1c;
-      height: 400px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .info-text {
+      justify-content: space-between;
+      align-items: center;
       font-family: 'Oswald', sans-serif;
-      color: #fafafa;
-      margin: 0 32px;
-      text-transform: uppercase;
+      color: #111;
+      padding: 100px 80px;
     }
-    h1 {
-      font-size: 70px;
+    h4 {
+      font: 900 24px 'Overpass', sans-serif;
+      max-width: 100px;
     }
-    h3 {
-      font-weight: 200;
-      font-size: 40px;
+    .socials {
+      width: 150px;
+    }
+    .socials {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .socials li {
+      list-style-type: none;
+    }
+    a > img {
+      text-decoration: none;
+      outline: none;
     }
   `;
 
   render() {
     return html`
-      <div class="info-text">
-        <h1>Damoon Rashidi</h1>
-        <h3>Code, art & Projects.</h3>
-      </div>
+      <h4>DAMOON RASHIDI.</h4>
+      <ul class="socials">
+        <li>
+          <a href="https://twitter.com/damoon_rashidi" target="_blank"
+            ><img
+              src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Ftwitter.png?alt=media"
+              alt="Twitter Icon"
+          /></a>
+        </li>
+        <li>
+          <a href="https://instagram.com/damoon__rashidi" target="_blank"
+            ><img
+              src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Finstagram.png?alt=media"
+              alt="Instagram Icon"
+          /></a>
+        </li>
+        <li>
+          <a href="https://opensea.io/damoonrashidi" target="_blank"
+            ><img
+              src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Fopensea.png?alt=media"
+              alt="OpenSea Icon"
+          /></a>
+        </li>
+      </ul>
     `;
   }
 }
