@@ -50,35 +50,38 @@ export class ArtList extends LitElement {
     {
       title: 'Forces',
       description: 'An exploration in flow fields with different behaviors.',
-      thumbnail: './assets/forces-base.webp',
+      thumbnail:
+        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fforces-16-day-at-the-beach.webp?alt=media',
       art: [],
     },
     {
       title: 'Disrupted Arrival',
       description:
         'A series exploring ink like textures, flows and disruptions',
-      thumbnail: './assets/arrival-base.webp',
+      thumbnail:
+        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Farrival-2.webp?alt=media',
       art: [],
     },
     {
       title: 'Seasons',
       description:
         'Four variations of the same rules. Each variation represents a season.',
-      thumbnail: './assets/seasons-base.webp',
+      thumbnail:
+        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fseasons-spring.webp?alt=media',
       art: [],
     },
     {
       title: 'Grid',
       description:
         'A series of images exploring random noise structured and grouped into columns. Two contrast variations',
-      thumbnail: './assets/grid-base.webp',
+      thumbnail:
+        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid-6.webp?alt=media',
       art: [],
     },
   ];
 
   updated() {
     const wrapper = this.shadowRoot?.querySelector('.art-list-wrapper')!;
-    console.log(wrapper);
     setTimeout(() => {
       wrapper.scrollLeft = 530;
     });

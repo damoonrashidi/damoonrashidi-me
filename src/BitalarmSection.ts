@@ -52,7 +52,10 @@ export class BitalarmSection extends LitElement {
         </p>
       </div>
       <div class="preview-image">
-        <img src="assets/bitalarm.svg" alt="Bitalarm Preview" />
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Fbitalarm.svg?alt=media"
+          alt="Bitalarm Preview"
+        />
       </div>
     `;
   }
