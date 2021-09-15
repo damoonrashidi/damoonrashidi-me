@@ -16,7 +16,7 @@ export class BitalarmSection extends LitElement {
       font: 700 6rem 'Oswald', sans-serif;
     }
     p {
-      color: #c5c5c5;
+      color: #fefefe;
       font: 300 1.5rem 'Oswald', sans-serif;
       max-width: 500px;
       line-height: 2.5rem;
