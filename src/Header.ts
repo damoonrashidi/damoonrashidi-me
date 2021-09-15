@@ -41,7 +41,6 @@ export class AppHeader extends LitElement {
             href="https://twitter.com/damoon_rashidi"
             target="_blank"
             rel="noopener noreferrer"
-          >
             ><img
               src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Ftwitter.png?alt=media"
               alt="Twitter Icon"
