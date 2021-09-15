@@ -28,7 +28,6 @@ export class BitalarmSection extends LitElement {
     }
     a {
       color: #fff;
-      text-decoration: none;
     }
     img {
       mix-blend-mode: difference;
@@ -51,7 +50,10 @@ export class BitalarmSection extends LitElement {
           are no analytics included in the application.
         </p>
         <p>
-          <a target="_blank" href="https://github.com/damoonrashidi/bitalarm"
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/damoonrashidi/bitalarm"
             >View on github</a
           >
         </p>

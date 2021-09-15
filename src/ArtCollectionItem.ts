@@ -41,7 +41,7 @@ export class ArtCollectionItem extends LitElement {
     .description {
       height: 200px;
     }
-    h4 {
+    h3 {
       font: 300 36px 'Playfair Display', sans-serif;
       margin: 0;
       display: flex;
@@ -56,7 +56,7 @@ export class ArtCollectionItem extends LitElement {
       color: #666;
     }
     .sold-out {
-      color: #e74c3c;
+      color: #c63d2e;
       font-weight: bold;
     }
     .image-holder {
@@ -101,14 +101,14 @@ export class ArtCollectionItem extends LitElement {
         <img src="${this.image}" alt="${this.title}" loading="lazy" />
       </div>
       <div class="description">
-        <h4>
+        <h3>
           ${this.title}
           <span class="sold ${this.soldOut ? 'sold-out' : ''}">
             ${this.soldOut
               ? 'Sold Out'
               : `${this.soldPieces} / ${this.createdPieces} sold`}
           </span>
-        </h4>
+        </h3>
         <p>${this.description}</p>
       </div>
     `;

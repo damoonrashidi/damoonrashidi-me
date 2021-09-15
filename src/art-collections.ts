@@ -32,9 +32,9 @@ export const artCollections: ArtCollection[] = [
   {
     title: 'Grid',
     description:
-      'A series of images exploring random noise structured and grouped into columns. Two contrast variations',
+      'This series plays with how structred noise can form different macro patterns.',
     thumbnail:
-      'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-6.webp?alt=media',
+      'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-5.webp?alt=media',
     art: [],
     isOngoing: true,
     createdPieces: 7,
@@ -43,7 +43,8 @@ export const artCollections: ArtCollection[] = [
   },
   {
     title: 'Disrupted Arrival',
-    description: 'A series exploring ink like textures, flows and disruptions',
+    description:
+      'This series started as a study in ink like textures, flows and disruptions.',
     thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fdisrupted-arrival%2FARRIVAL-4.webp?alt=media',
     art: [],
@@ -54,7 +55,8 @@ export const artCollections: ArtCollection[] = [
   },
   {
     title: 'Forces',
-    description: 'An exploration in flow fields with different behaviors.',
+    description:
+      'My most versatile algorithm, allowing for different brush types, color methods, collisions, densities and macro shapes.',
     thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fforces%2Fforces-13.webp?alt=media',
     art: [],

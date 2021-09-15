@@ -12,7 +12,7 @@ export class WdpSection extends LitElement {
       flex-flow: row-reverse wrap;
     }
     h2 {
-      color: #bcb18f;
+      color: #938869;
       font: 700 3rem 'Overpass', sans-serif;
     }
     p {
@@ -45,10 +45,10 @@ export class WdpSection extends LitElement {
     }
     a {
       color: #333;
-      text-decoration: none;
+      text-decoration: underline;
     }
     .highlight {
-      color: #e79b9b;
+      color: #70853e;
       font-family: monospace;
       font-weight: 700;
     }
@@ -68,12 +68,18 @@ export class WdpSection extends LitElement {
           <span class="highlight">wdp</span> in your terminal
         </p>
         <p>
-          <a target="_blank" href="https://github.com/damoonrashidi/bitalarm"
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/damoonrashidi/bitalarm"
             >View on github</a
           >
-
-          <a target="_blank" href="https://www.npmjs.com/package/wdp"
-            >View on NPM</a
+          or
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.npmjs.com/package/wdp"
+            >NPM</a
           >
         </p>
       </div>
