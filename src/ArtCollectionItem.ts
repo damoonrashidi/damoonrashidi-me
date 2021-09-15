@@ -59,6 +59,12 @@ export class ArtCollectionItem extends LitElement {
       color: #e74c3c;
       font-weight: bold;
     }
+    .image-holder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 620px;
+    }
     img {
       border: 6px solid #262626;
       margin: 0 0 42px;
@@ -91,7 +97,9 @@ export class ArtCollectionItem extends LitElement {
 
   render() {
     return html`
-      <img src="${this.image}" alt="${this.title}" loading="lazy" />
+      <div class="image-holder">
+        <img src="${this.image}" alt="${this.title}" loading="lazy" />
+      </div>
       <div class="description">
         <h4>
           ${this.title}
