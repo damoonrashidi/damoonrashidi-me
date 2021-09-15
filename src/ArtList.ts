@@ -1,17 +1,5 @@
 import { css, html, LitElement } from 'lit';
-
-export interface Art {
-  title: string;
-  description: string;
-  image: string;
-}
-
-export interface Collection {
-  title: string;
-  description: string;
-  art: Art[];
-  thumbnail: string;
-}
+import { artCollections } from './art-collections';
 
 export class ArtList extends LitElement {
   static styles = css`
@@ -25,16 +13,25 @@ export class ArtList extends LitElement {
     }
     h2 {
       font-family: 'Playfair Display', sans-serif;
-      font-size: 64px;
+      font-size: 36px;
       font-weight: 200;
     }
     p {
       font-family: 'Playfair Display', sans-serif;
-      font-size: 36px;
+      font-size: 24px;
       line-height: 1.5em;
       max-width: 1000px;
       font-weight: 200;
     }
+    @media (min-width: 768px) {
+      h2 {
+        font-size: 64px;
+      }
+      p {
+        font-size: 36px;
+      }
+    }
+
     .art-list-wrapper {
       overflow-x: auto;
       display: flex;
@@ -46,39 +43,7 @@ export class ArtList extends LitElement {
     }
   `;
 
-  collection: Collection[] = [
-    {
-      title: 'Forces',
-      description: 'An exploration in flow fields with different behaviors.',
-      thumbnail:
-        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fforces-16-day-at-the-beach.webp?alt=media',
-      art: [],
-    },
-    {
-      title: 'Disrupted Arrival',
-      description:
-        'A series exploring ink like textures, flows and disruptions',
-      thumbnail:
-        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Farrival-2.webp?alt=media',
-      art: [],
-    },
-    {
-      title: 'Seasons',
-      description:
-        'Four variations of the same rules. Each variation represents a season.',
-      thumbnail:
-        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fseasons-spring.webp?alt=media',
-      art: [],
-    },
-    {
-      title: 'Grid',
-      description:
-        'A series of images exploring random noise structured and grouped into columns. Two contrast variations',
-      thumbnail:
-        'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid-6.webp?alt=media',
-      art: [],
-    },
-  ];
+  collection = artCollections;
 
   updated() {
     const wrapper = this.shadowRoot?.querySelector('.art-list-wrapper')!;
@@ -99,12 +64,14 @@ export class ArtList extends LitElement {
       </div>
       <div class="art-list-wrapper">
         ${this.collection.map(
-          art =>
-            html`<art-list-item
-              .title=${art.title}
-              .image=${art.thumbnail}
-              .description=${art.description}
-            ></art-list-item>`
+          collection =>
+            html`<art-collection-item
+              .title=${collection.title}
+              .image=${collection.thumbnail}
+              .description=${collection.description}
+              .created=${collection.createdPieces}
+              .sold=${collection.soldPieces}
+            ></art-collection-item>`
         )}
       </div>
     `;

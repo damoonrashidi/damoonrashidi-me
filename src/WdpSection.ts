@@ -9,18 +9,30 @@ export class WdpSection extends LitElement {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      flex-wrap: wrap;
-      flex-flow: row-reverse;
+      flex-flow: row-reverse wrap;
     }
     h2 {
       color: #bcb18f;
-      font: 700 6rem 'Overpass', sans-serif;
+      font: 700 3rem 'Overpass', sans-serif;
     }
     p {
       color: #484848;
       font: 300 1.5rem 'Overpass', sans-serif;
       max-width: 500px;
       line-height: 2.5rem;
+    }
+    .preview-image img {
+      filter: drop-shadow(0px 100px 80px rgba(0, 0, 0, 0.07))
+        drop-shadow(0px 78.1063px 58.8531px rgba(0, 0, 0, 0.0645911))
+        drop-shadow(0px 49.0857px 34.4711px rgba(0, 0, 0, 0.0576747))
+        drop-shadow(0px 25.039px 18.2181px rgba(0, 0, 0, 0.049293))
+        drop-shadow(0px 10.4907px 8.5438px rgba(0, 0, 0, 0.0390069))
+        drop-shadow(0px 2.94178px 2.93998px rgba(0, 0, 0, 0.0254634));
+    }
+    @media (min-width: 768px) {
+      h2 {
+        font-size: 6rem;
+      }
     }
     a {
       color: #333;
@@ -60,6 +72,7 @@ export class WdpSection extends LitElement {
         <img
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Fwdp.png?alt=media"
           alt="WDP Preview"
+          loading="lazy"
         />
       </div>
     `;

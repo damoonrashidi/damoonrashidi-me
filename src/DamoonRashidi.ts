@@ -19,6 +19,7 @@ export class DamoonRashidi extends LitElement {
       <section-wrapper color="#F5F4EF">
         <wdp-section></wdp-section>
       </section-wrapper>
+      <app-footer></app-footer>
     `;
   }
 }

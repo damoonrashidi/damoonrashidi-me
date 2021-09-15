@@ -13,13 +13,18 @@ export class BitalarmSection extends LitElement {
     }
     h2 {
       color: #fff;
-      font: 700 6rem 'Oswald', sans-serif;
+      font: 700 3rem 'Oswald', 'Overpass', sans-serif;
     }
     p {
       color: #fefefe;
-      font: 300 1.5rem 'Oswald', sans-serif;
+      font: 300 1.5rem 'Overpass', sans-serif;
       max-width: 500px;
       line-height: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      h2 {
+        font-size: 6rem;
+      }
     }
     a {
       color: #fff;
@@ -55,6 +60,7 @@ export class BitalarmSection extends LitElement {
         <img
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fimages%2Fbitalarm.svg?alt=media"
           alt="Bitalarm Preview"
+          loading="lazy"
         />
       </div>
     `;

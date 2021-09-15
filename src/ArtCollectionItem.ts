@@ -1,7 +1,7 @@
 import { css, html, LitElement } from 'lit';
 import { property } from 'lit-element';
 
-export class ArtListItem extends LitElement {
+export class ArtCollectionItem extends LitElement {
   @property({ type: String })
   title: string;
 
@@ -19,7 +19,7 @@ export class ArtListItem extends LitElement {
     }
 
     h4 {
-      font: 700 36px 'Playfair Display', sans-serif;
+      font: 300 36px 'Playfair Display', sans-serif;
       margin: 0;
     }
     p {
