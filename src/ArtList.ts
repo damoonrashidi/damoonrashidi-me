@@ -73,6 +73,7 @@ export class ArtList extends LitElement {
               .createdPieces=${collection.createdPieces}
               .soldPieces=${collection.soldPieces}
               .isOngoing=${collection.isOngoing}
+              .url=${collection.url}
             ></art-collection-item>`
         )}
       </div>

@@ -25,7 +25,10 @@ export class ArtCollectionItem extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
       width: 365px;
       margin: 0 40px;
     }
@@ -35,6 +38,9 @@ export class ArtCollectionItem extends LitElement {
       }
     }
 
+    .description {
+      height: 200px;
+    }
     h4 {
       font: 300 36px 'Playfair Display', sans-serif;
       margin: 0;
@@ -56,9 +62,8 @@ export class ArtCollectionItem extends LitElement {
     img {
       border: 6px solid #262626;
       margin: 0 0 42px;
-      width: 365px;
-      height: 520px;
       background: #eee;
+      width: 365px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
         10px 76px 80px rgba(0, 0, 0, 0.16),
         0px 34.2165px 37.8605px rgba(0, 0, 0, 0.156182),
@@ -87,15 +92,17 @@ export class ArtCollectionItem extends LitElement {
   render() {
     return html`
       <img src="${this.image}" alt="${this.title}" loading="lazy" />
-      <h4>
-        ${this.title}
-        <span class="sold ${this.soldOut ? 'sold-out' : ''}">
-          ${this.soldOut
-            ? 'Sold Out'
-            : `${this.soldPieces} / ${this.createdPieces} sold`}
-        </span>
-      </h4>
-      <p>${this.description}</p>
+      <div class="description">
+        <h4>
+          ${this.title}
+          <span class="sold ${this.soldOut ? 'sold-out' : ''}">
+            ${this.soldOut
+              ? 'Sold Out'
+              : `${this.soldPieces} / ${this.createdPieces} sold`}
+          </span>
+        </h4>
+        <p>${this.description}</p>
+      </div>
     `;
   }
 }
