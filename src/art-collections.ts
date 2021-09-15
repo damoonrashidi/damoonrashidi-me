@@ -73,7 +73,7 @@ export const artCollections: ArtCollection[] = [
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgenesis%2Fgenesis-6.png?alt=media',
     art: [],
     isOngoing: true,
-    createdPieces: 10,
+    createdPieces: 2,
     soldPieces: 0,
     url: 'https://opensea.io/collection/genesis-1',
   },
