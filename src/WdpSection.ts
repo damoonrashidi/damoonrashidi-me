@@ -22,6 +22,8 @@ export class WdpSection extends LitElement {
       line-height: 2.5rem;
     }
     .preview-image img {
+      max-width: 300px;
+      margin: 80px 0 0 0;
       filter: drop-shadow(0px 100px 80px rgba(0, 0, 0, 0.07))
         drop-shadow(0px 78.1063px 58.8531px rgba(0, 0, 0, 0.0645911))
         drop-shadow(0px 49.0857px 34.4711px rgba(0, 0, 0, 0.0576747))
@@ -32,6 +34,13 @@ export class WdpSection extends LitElement {
     @media (min-width: 768px) {
       h2 {
         font-size: 6rem;
+      }
+      .preview-image {
+        margin-right: 80px;
+      }
+      .preview-image img {
+        max-width: 500px;
+        margin: 0;
       }
     }
     a {
