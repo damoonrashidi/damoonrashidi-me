@@ -15,7 +15,12 @@ export class ArtCollectionItem extends LitElement {
     :host {
       display: block;
       width: 365px;
-      margin: 0 176px;
+      margin: 0 40px;
+    }
+    @media (min-width: 768px) {
+      :host {
+        margin: 0 126px;
+      }
     }
 
     h4 {
