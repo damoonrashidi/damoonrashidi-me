@@ -7,12 +7,15 @@ export class AppHeader extends LitElement {
       justify-content: space-between;
       align-items: center;
       font-family: 'Oswald', sans-serif;
-      color: #111;
       padding: 100px 80px 80px 80px;
     }
     h4 {
       font: 900 24px 'Overpass', sans-serif;
       max-width: 100px;
+    }
+    a {
+      color: #111;
+      text-decoration: none;
     }
     .socials {
       width: 150px;
@@ -34,7 +37,7 @@ export class AppHeader extends LitElement {
 
   render() {
     return html`
-      <h4>DAMOON RASHIDI.</h4>
+      <h4><a href="/">DAMOON RASHIDI.</a></h4>
       <ul class="socials">
         <li>
           <a
