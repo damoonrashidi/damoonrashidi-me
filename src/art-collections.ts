@@ -23,8 +23,8 @@ export const artCollections: ArtCollection[] = [
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fforces-16-day-at-the-beach.webp?alt=media',
     art: [],
     isOngoing: true,
-    createdPieces: 0,
-    soldPieces: 0,
+    createdPieces: 21,
+    soldPieces: 15,
   },
   {
     title: 'Disrupted Arrival',
@@ -33,7 +33,7 @@ export const artCollections: ArtCollection[] = [
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Farrival-2.webp?alt=media',
     art: [],
     isOngoing: true,
-    createdPieces: 0,
+    createdPieces: 4,
     soldPieces: 0,
   },
   {
@@ -44,8 +44,8 @@ export const artCollections: ArtCollection[] = [
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fseasons-spring.webp?alt=media',
     art: [],
     isOngoing: true,
-    createdPieces: 0,
-    soldPieces: 0,
+    createdPieces: 4,
+    soldPieces: 4,
   },
   {
     title: 'Grid',
@@ -55,7 +55,7 @@ export const artCollections: ArtCollection[] = [
       'https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid-6.webp?alt=media',
     art: [],
     isOngoing: true,
-    createdPieces: 0,
-    soldPieces: 0,
+    createdPieces: 7,
+    soldPieces: 7,
   },
 ];

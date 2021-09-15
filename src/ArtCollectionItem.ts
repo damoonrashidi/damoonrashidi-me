@@ -11,6 +11,18 @@ export class ArtCollectionItem extends LitElement {
   @property({ type: String })
   image: string;
 
+  @property({ type: Number })
+  createdPieces: number;
+
+  @property({ type: Number })
+  soldPieces: number;
+
+  @property({ type: Boolean })
+  isOngoing: boolean;
+
+  @property({ type: Boolean })
+  soldOut: boolean = false;
+
   static styles = css`
     :host {
       display: block;
@@ -26,9 +38,20 @@ export class ArtCollectionItem extends LitElement {
     h4 {
       font: 300 36px 'Playfair Display', sans-serif;
       margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     p {
       font: 400 24px/1.5em 'Playfair Display', sans-serif;
+    }
+    .sold {
+      font: 400 18px/1.5em sans-serif;
+      color: #666;
+    }
+    .sold-out {
+      color: #e74c3c;
+      font-weight: bold;
     }
     img {
       border: 6px solid #262626;
@@ -50,12 +73,28 @@ export class ArtCollectionItem extends LitElement {
     this.description = '';
     this.image = '';
     this.title = '';
+    this.createdPieces = 0;
+    this.soldPieces = 0;
+    this.isOngoing = false;
+
+    this.soldOut = false;
+  }
+
+  updated() {
+    this.soldOut = this.soldPieces === this.createdPieces;
   }
 
   render() {
     return html`
       <img src="${this.image}" alt="${this.title}" loading="lazy" />
-      <h4>${this.title}</h4>
+      <h4>
+        ${this.title}
+        <span class="sold ${this.soldOut ? 'sold-out' : ''}">
+          ${this.soldOut
+            ? 'Sold Out'
+            : `${this.soldPieces} / ${this.createdPieces} sold`}
+        </span>
+      </h4>
       <p>${this.description}</p>
     `;
   }

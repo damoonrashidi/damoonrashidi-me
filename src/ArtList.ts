@@ -70,8 +70,9 @@ export class ArtList extends LitElement {
               .title=${collection.title}
               .image=${collection.thumbnail}
               .description=${collection.description}
-              .created=${collection.createdPieces}
-              .sold=${collection.soldPieces}
+              .createdPieces=${collection.createdPieces}
+              .soldPieces=${collection.soldPieces}
+              .isOngoing=${collection.isOngoing}
             ></art-collection-item>`
         )}
       </div>
