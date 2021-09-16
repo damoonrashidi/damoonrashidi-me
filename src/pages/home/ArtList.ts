@@ -1,7 +1,16 @@
 import { css, html, LitElement } from 'lit';
-import { artCollections } from './art-collections';
+import { navigator } from 'lit-element-router';
+import { ArtCollection, artCollections } from '../../art-collections.js';
 
-export class ArtList extends LitElement {
+export class ArtList extends navigator(LitElement) {
+  href: string = '';
+
+  static get properties() {
+    return {
+      href: { type: String },
+    };
+  }
+
   static styles = css`
     :host {
       display: block;
@@ -53,6 +62,10 @@ export class ArtList extends LitElement {
     });
   }
 
+  navigateToCollection(collection: ArtCollection) {
+    this.navigate(`/art/${collection.id}`);
+  }
+
   render() {
     return html`
       <div class="text-wrapper">
@@ -73,7 +86,10 @@ export class ArtList extends LitElement {
               .createdPieces=${collection.createdPieces}
               .soldPieces=${collection.soldPieces}
               .isOngoing=${collection.isOngoing}
-              .url=${collection.url}
+              .url=${collection.openSeaUrl}
+              @click=${() => {
+                this.navigateToCollection(collection);
+              }}
             ></art-collection-item>`
         )}
       </div>

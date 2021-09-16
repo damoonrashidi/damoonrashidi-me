@@ -1,23 +1,43 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 
+import { AppRoot } from './Root.js';
 import { AppHeader } from './Header.js';
+import { AppMain } from './Main.js';
 import { AppFooter } from './Footer.js';
-import { ArtList } from './ArtList.js';
-import { ArtCollectionItem } from './ArtCollectionItem.js';
-import { BitalarmSection } from './BitalarmSection.js';
-import { WdpSection } from './WdpSection.js';
-import { DamoonRashidi } from './DamoonRashidi.js';
 import { SectionWrapper } from './SectionWrapper.js';
 
-customElements.define('damoon-rashidi', DamoonRashidi);
+import { AppHome } from './pages/home/Home.js';
+import { ArtList } from './pages/home/ArtList.js';
+import { ArtCollectionItem } from './pages/home/ArtCollectionItem.js';
+import { BitalarmSection } from './pages/home/BitalarmSection.js';
+import { WdpSection } from './WdpSection.js';
+
+import { ArtPage } from './pages/art/ArtPage.js';
+
+customElements.define('app-root', AppRoot);
+
+/**
+ * General components
+ */
 customElements.define('app-header', AppHeader);
 customElements.define('app-footer', AppFooter);
+customElements.define('app-main', AppMain);
+customElements.define('section-wrapper', SectionWrapper);
+
+/**
+ * Home page
+ */
+customElements.define('app-home', AppHome);
 customElements.define('bitalarm-section', BitalarmSection);
 customElements.define('wdp-section', WdpSection);
 customElements.define('art-list', ArtList);
 customElements.define('art-collection-item', ArtCollectionItem);
-customElements.define('section-wrapper', SectionWrapper);
+
+/**
+ * Art page
+ */
+customElements.define('app-art', ArtPage);
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBYlO_L8zRFaytWdn2OaequwCZaWVxeWN4',
