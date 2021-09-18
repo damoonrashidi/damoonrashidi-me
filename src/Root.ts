@@ -27,6 +27,18 @@ export class AppRoot extends LitElement {
         pattern: 'art/grid',
       },
       {
+        name: 'art-seasons',
+        pattern: 'art/seasons',
+      },
+      {
+        name: 'art-arrival',
+        pattern: 'art/disrupted-arrival',
+      },
+      {
+        name: 'art-forces',
+        pattern: 'art/forces',
+      },
+      {
         name: 'not-found',
         pattern: '*',
       },
@@ -51,6 +63,9 @@ export class AppRoot extends LitElement {
       <app-main active-route=${this.route}>
         <app-home route="home"></app-home>
         <app-art-grid route="art-grid"></app-art-grid>
+        <app-art-seasons route="art-seasons"></app-art-seasons>
+        <app-art-arrival route="art-arrival"></app-art-arrival>
+        <app-art-forces route="art-forces"></app-art-forces>
       </app-main>
     `;
   }

@@ -38,6 +38,7 @@ export class ArtGridEssay extends LitElement {
     .image-grid app-art-preview,
     .image-grid img {
       margin: 16px;
+      border: 6px solid #000;
       filter: drop-shadow(0px 100px 80px rgba(0, 0, 0, 0.07))
         drop-shadow(0px 41.451px 30.3476px rgba(0, 0, 0, 0.0696589))
         drop-shadow(0px 20.5919px 10.9585px rgba(0, 0, 0, 0.0665554))

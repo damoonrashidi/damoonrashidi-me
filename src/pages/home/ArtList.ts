@@ -39,6 +39,9 @@ export class ArtList extends navigator(LitElement) {
       flex-wrap: nowrap;
       padding: 0 120px 120px 80px;
     }
+    .art-list-wrapper art-collection-item {
+      cursor: pointer;
+    }
   `;
 
   collection = artCollections;

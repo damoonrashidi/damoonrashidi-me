@@ -20,7 +20,7 @@ export interface ArtCollection {
 export const artCollections: ArtCollection[] = [
   {
     title: 'Seasons',
-    id: 'season',
+    id: 'seasons',
     description:
       'Four variations of the same rules. Each variation represents a season.',
     thumbnail:

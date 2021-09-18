@@ -13,8 +13,11 @@ import { ArtCollectionItem } from './pages/home/ArtCollectionItem.js';
 import { BitalarmSection } from './pages/home/BitalarmSection.js';
 import { WdpSection } from './WdpSection.js';
 
-import { ArtGridEssay } from './pages/art/ArtGridEssay.js';
 import { ArtPreview } from './pages/art/ArtPreview.js';
+import { ArtGridEssay } from './pages/art/ArtGridEssay.js';
+import { ArtSeasonsEssay } from './pages/art/ArtSeasonsEssay.js';
+import { ArtArrivalEssay } from './pages/art/ArtArrivalEssay.js';
+import { ArtForcesEssay } from './pages/art/ArtForcesEssay.js';
 
 customElements.define('app-root', AppRoot);
 
@@ -38,8 +41,11 @@ customElements.define('art-collection-item', ArtCollectionItem);
 /**
  * Art page
  */
-customElements.define('app-art-grid', ArtGridEssay);
 customElements.define('app-art-preview', ArtPreview);
+customElements.define('app-art-grid', ArtGridEssay);
+customElements.define('app-art-seasons', ArtSeasonsEssay);
+customElements.define('app-art-arrival', ArtArrivalEssay);
+customElements.define('app-art-forces', ArtForcesEssay);
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBYlO_L8zRFaytWdn2OaequwCZaWVxeWN4',
