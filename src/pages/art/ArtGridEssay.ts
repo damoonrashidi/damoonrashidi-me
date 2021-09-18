@@ -29,13 +29,15 @@ export class ArtGridEssay extends LitElement {
       margin: 64px 0;
     }
     .image-grid {
-      width: 800px;
       margin: 64px auto;
       display: flex;
-      height: 400px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
-    .image-grid app-art-preview {
-      margin: 0 16px;
+    .image-grid app-art-preview,
+    .image-grid img {
+      margin: 16px;
       filter: drop-shadow(0px 100px 80px rgba(0, 0, 0, 0.07))
         drop-shadow(0px 41.451px 30.3476px rgba(0, 0, 0, 0.0696589))
         drop-shadow(0px 20.5919px 10.9585px rgba(0, 0, 0, 0.0665554))
@@ -59,7 +61,7 @@ export class ArtGridEssay extends LitElement {
         <app-art-preview
           image="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fdisplay%2Fgrid%2Fgrid-2.png?alt=media"
           xOffset="0"
-          yOffset="-900px"
+          yOffset="-400px"
         ></app-art-preview>
       </div>
 
@@ -70,17 +72,8 @@ export class ArtGridEssay extends LitElement {
       </p>
 
       <div class="image-grid">
-        <app-art-preview
-          image="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fdisplay%2Fgrid%2Fgrid-1.png?alt=media"
-          xOffset="90%"
-          yOffset="90%"
-          type="fit"
-        ></app-art-preview>
-        <app-art-preview
-          image="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fdisplay%2Fgrid%2Fgrid-4.png?alt=media"
-          type="contain"
-          xOffset="50%"
-        ></app-art-preview>
+      <img src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-1.webp?alt=media" alt="Grid 1">
+      <img src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-4.webp?alt=media" alt="Grid 4">
       </div>
 
       <p>
@@ -96,18 +89,9 @@ export class ArtGridEssay extends LitElement {
       </p>
 
       <div class="image-grid">
-        <app-art-preview
-          image="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-2.webp?alt=media"
-          type="contain"
-        ></app-art-preview>
-        <app-art-preview
-          image="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-5.webp?alt=media"
-          type="contain"
-        ></app-art-preview>
-        <app-art-preview
-          image="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-8.webp?alt=media"
-          type="contain"
-        ></app-art-preview>
+        <img src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-2.webp?alt=media" alt="Grid 2">
+        <img src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-5.webp?alt=media" alt="Grid 5">
+        <img src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Fart%2Fthumb%2Fgrid%2Fgrid-8.webp?alt=media" alt="Grid 8">
       </div>
     `;
   }
