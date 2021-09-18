@@ -1,8 +1,7 @@
 import { LitElement, html } from 'lit-element';
 import { outlet } from 'lit-element-router';
 
-@outlet
-export class AppMain extends LitElement {
+export class AppMain extends outlet(LitElement) {
   render() {
     return html` <slot></slot> `;
   }

@@ -3,14 +3,6 @@ import { navigator } from 'lit-element-router';
 import { ArtCollection, artCollections } from '../../art-collections.js';
 
 export class ArtList extends navigator(LitElement) {
-  href: string = '';
-
-  static get properties() {
-    return {
-      href: { type: String },
-    };
-  }
-
   static styles = css`
     :host {
       display: block;
@@ -23,7 +15,7 @@ export class ArtList extends navigator(LitElement) {
     h2 {
       font-family: 'Playfair Display', sans-serif;
       font-size: 36px;
-      font-weight: 200;
+      font-weight: 700;
     }
     p {
       font-family: 'Playfair Display', sans-serif;

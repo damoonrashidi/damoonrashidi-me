@@ -1,21 +1,20 @@
 import { LitElement, html, css } from 'lit';
+import { property } from 'lit-element';
 import { router } from 'lit-element-router';
 
 @router
 export class AppRoot extends LitElement {
+  @property({ type: String })
   route: string = '';
+
+  @property({ type: Object })
+  params: Record<string, string> = {};
 
   static styles = css`
     :host {
       min-height: 100vh;
     }
   `;
-
-  static get properties() {
-    return {
-      route: { type: String },
-    };
-  }
 
   static get routes() {
     return [
@@ -24,8 +23,8 @@ export class AppRoot extends LitElement {
         pattern: '',
       },
       {
-        name: 'art',
-        pattern: 'art/:collection',
+        name: 'art-grid',
+        pattern: 'art/grid',
       },
       {
         name: 'not-found',
@@ -34,16 +33,24 @@ export class AppRoot extends LitElement {
     ];
   }
 
-  router(route: string) {
+  router(route: string, params: Record<string, string>) {
     this.route = route;
+    this.params = params;
+  }
+
+  constructor() {
+    super();
+    this.route = '';
+    this.params = {};
   }
 
   render() {
     return html`
       <app-header></app-header>
+
       <app-main active-route=${this.route}>
         <app-home route="home"></app-home>
-        <app-art route="art">Art</app-art>
+        <app-art-grid route="art-grid"></app-art-grid>
       </app-main>
     `;
   }

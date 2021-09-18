@@ -44,6 +44,7 @@ export class AppHeader extends LitElement {
             href="https://twitter.com/damoon_rashidi"
             target="_blank"
             rel="noopener noreferrer"
+            title="Twitter"
           >
             <svg
               width="32"
@@ -64,6 +65,7 @@ export class AppHeader extends LitElement {
             href="https://instagram.com/damoon__rashidi"
             target="_blank"
             rel="noopener noreferrer"
+            title="Instagram"
           >
             <svg
               width="32"
@@ -92,6 +94,7 @@ export class AppHeader extends LitElement {
             href="https://opensea.io/damoonrashidi"
             target="_blank"
             rel="noopener noreferrer"
+            title="OpenSea"
           >
             <svg
               width="32"
