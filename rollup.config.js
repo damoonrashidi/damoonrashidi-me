@@ -3,6 +3,7 @@ import babel from '@rollup/plugin-babel';
 import html from '@web/rollup-plugin-html';
 import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import { terser } from 'rollup-plugin-terser';
+import copy from "rollup-plugin-copy";
 
 export default {
   input: 'index.html',
@@ -16,6 +17,10 @@ export default {
   preserveEntrySignatures: false,
 
   plugins: [
+
+    copy({
+      targets: [{ src: './src/robots.txt', dest: 'dist/' }]
+    }),
     /** Enable using HTML as rollup entrypoint */
     html({
       minify: true,
