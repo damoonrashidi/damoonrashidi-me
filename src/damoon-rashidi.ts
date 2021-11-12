@@ -19,6 +19,8 @@ import { ArtSeasonsEssay } from './pages/art/ArtSeasonsEssay.js';
 import { ArtArrivalEssay } from './pages/art/ArtArrivalEssay.js';
 import { ArtForcesEssay } from './pages/art/ArtForcesEssay.js';
 
+import { ArticleFlowFieldMethods } from './pages/articles/ArticleForce.js';
+
 customElements.define('app-root', AppRoot);
 
 /**
@@ -46,6 +48,12 @@ customElements.define('app-art-grid', ArtGridEssay);
 customElements.define('app-art-seasons', ArtSeasonsEssay);
 customElements.define('app-art-arrival', ArtArrivalEssay);
 customElements.define('app-art-forces', ArtForcesEssay);
+
+/**
+ * Articles
+ */
+
+customElements.define('app-article-flow-fields', ArticleFlowFieldMethods);
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBYlO_L8zRFaytWdn2OaequwCZaWVxeWN4',

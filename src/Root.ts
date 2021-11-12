@@ -39,6 +39,14 @@ export class AppRoot extends LitElement {
         pattern: 'art/forces',
       },
       {
+        name: 'art-forces',
+        pattern: 'art/forces',
+      },
+      {
+        name: 'flow-field-methods',
+        pattern: 'articles/flow-field-methods',
+      },
+      {
         name: 'not-found',
         pattern: '*',
       },
@@ -66,6 +74,9 @@ export class AppRoot extends LitElement {
         <app-art-seasons route="art-seasons"></app-art-seasons>
         <app-art-arrival route="art-arrival"></app-art-arrival>
         <app-art-forces route="art-forces"></app-art-forces>
+        <app-article-flow-fields
+          route="flow-field-methods"
+        ></app-article-flow-fields>
       </app-main>
     `;
   }
