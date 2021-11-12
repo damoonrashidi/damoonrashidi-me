@@ -61,17 +61,10 @@ export class ArtList extends navigator(LitElement) {
     this.navigate(`/art/${collection.id}`);
   }
 
-  navigateToArticle(article: string) {
-    this.navigate(`/articles/${article}`);
-  }
-
   render() {
     return html`
       <div class="text-wrapper">
         <h2>Generative Art.</h2>
-        <button @click=${() => this.navigateToArticle('flow-field-methods')}>
-          Navigate
-        </button>
         <p>
           My generative art experiments. Each piece was created either entierly
           algorithmically or a base image was created by hand and then fed to
