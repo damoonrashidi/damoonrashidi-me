@@ -1,6 +1,7 @@
 import { css, html, LitElement } from 'lit';
+import { navigator } from 'lit-element-router';
 
-export class ArticleFlowFieldMethods extends LitElement {
+export class ArticleFlowFieldMethods extends navigator(LitElement) {
   static styles = css`
     :host {
       display: block;
@@ -27,11 +28,24 @@ export class ArticleFlowFieldMethods extends LitElement {
       color: #eee;
       overflow-x: auto;
       padding: 0 31px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        10px 76px 80px rgba(0, 0, 0, 0.16),
+        0px 34.2165px 37.8605px rgba(0, 0, 0, 0.156182),
+        0px 19.7788px 22.4204px rgba(0, 0, 0, 0.147078),
+        0px 12.0142px 13.7505px rgba(0, 0, 0, 0.127239),
+        0px 6.94312px 7.98618px rgba(0, 0, 0, 0.0753422);
     }
     code,
     .code {
       font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
       font-size: 14px;
+    }
+    .code {
+      background: #eee;
+      color: #111;
+      display: inline-block;
+      padding: 0 8px;
+      border-radius: 4px;
     }
     .image-wrapper {
       display: grid;
@@ -76,12 +90,19 @@ export class ArticleFlowFieldMethods extends LitElement {
 
   render() {
     return html`
-      <h2>What I've learned about flow fields so far</h2>
+      <h3>What I've learned about flow fields so far</h3>
       <p>
         This article will describe the method and concepts I used to create the
-        series of generated art works pictured below. The algorithm, and code
-        examples, that will be provided can however generate a great set of
-        variations of flow field images.
+        series of generated art works pictured below, as I understand them. The
+        algorithm, and code examples, that will be provided can however generate
+        a great set of variations of flow field images. As a note, far more
+        talented people than me have written
+        <a
+          href="https://tylerxhobbs.com/essays/2020/flow-fields"
+          target="_blank"
+          >articles on the subject</a
+        >
+        which I strongly suggest reading.
       </p>
 
       <div class="image-wrapper">
@@ -151,7 +172,7 @@ export class ArticleFlowFieldMethods extends LitElement {
         you start by picking any random point and checking the noise value for
         that point you can then move a step to the direction of the noise value.
         Once at the new point you repeat the process with the noise value of the
-        current position of <span class="code">[x,y]</span>. Doing that with
+        new current position of <span class="code">[x,y]</span>. Doing that with
         1000 random starting points would yield the flowy effect pictured below.
       </p>
 
@@ -188,30 +209,22 @@ export class ArticleFlowFieldMethods extends LitElement {
         I'm a software developer by trade, not a mathematician, so I'm not going
         to go into detail about how to write a good noise function, because I
         don't know how. I do however know how to write a function that takes an
-        x and a y value and returns value between -1 and 1.
+        <span class="code">x</span> and a <span class="code">y</span> value and
+        returns similar values for similar <span class="code">x</span> and
+        <span class="code">y</span> values.
       </p>
 
       <p>
-        Here are a few examples of easy noise functions. The first one goes by
-        the distance from x to the center of the image, and the same for y, and
-        then returns the
-        <span class="code">Math.sqrt(distanceX ** 2 + distanceY ** 2)</span>.
-        The second one is the exact same function, but instead of feeding the
-        <span class="code">x</span> and <span class="code">y</span> values to
-        the noise function straight up I divide them by... let's say 400, (<span
-          class="code"
-          >swirlyNoise(x / 400, y / 400)</span
+        The first one pictured below, <span class="code">swirl</span>, takes the
+        the distance from <span class="code">x</span> to the center of the
+        image, and the same for <span class="code">y</span>, and then returns
+        the hypotenuse for that imagined triangle. The second image is the exact
+        same function but instead of feeding the <span class="code">x</span> and
+        <span class="code">y</span> values to the noise function as they are I
+        divide them by an arbitrary number, (<span class="code"
+          >swirl(x / 400, y / 400)</span
         >), this smooths out the resulting value and gives a pleasing swirling
-        motion.
-      </p>
-      <p>
-        Finally, the third one calculates the angle between the the point
-        <span class="code">[x,y]</span> and
-        <span class="code">[imageCenterX, imageCenterY]</span> and returns that
-        times <span class="code">PI</span>. Again, I'm not good at math, im just
-        taking some values out of thin air and playing around with them. I
-        strongly suggest doing the same and discovering what effects you
-        achieve, what works and what doesn't.
+        motion. Differently sized divisors will yield different results.
       </p>
 
       <div class="image-wrapper">
@@ -225,6 +238,18 @@ export class ArticleFlowFieldMethods extends LitElement {
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-buggy-swirl.png?alt=media"
           alt="swirl modified"
         />
+      </div>
+
+      <p>
+        The second one, <span class="code">toCenter</span> calculates the angle
+        between the the point <span class="code">[x,y]</span> and
+        <span class="code">[imageCenterX, imageCenterY]</span> and returns that
+        times <span class="code">PI</span>. Again, I'm not good at math, I'm
+        just taking some values that I'd imagine would make sense to someone who
+        is good at math and playing around with them.
+      </p>
+
+      <div class="image-wrapper">
         <img
           loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-to-center.png?alt=media"
@@ -273,10 +298,10 @@ function toCenter(
 
       <p>
         The max line length could either be a constant that is the same for all
-        of the lines, yielding a more uniform result, or you can set a list of
+        lines, yielding a more uniform result, or you can set a list of
         <span class="code">maxLineLengths</span> and picking one randomly for
-        each line, or maybe picking the longer ones if the line starts closer to
-        the top, or the further away from the center of the image the line
+        each line. Maybe even picking the longer ones if the line starts closer
+        to the top, or the further away from the center of the image the line
         starts, or so on.
       </p>
 
@@ -285,17 +310,18 @@ function toCenter(
       <p>
         I'd like to preface this by saying that I have done absolutely no
         research on this topic, how to optimize it, or if there are better ways
-        to do it. But I like to convince myself that this is art and the code
-        doesn't need to be good. Having said all that, this is how I did
-        collision detection to have each line avoid hitting all other lines.
+        to do it. I do like to convince myself, however, that this is art and
+        the code doesn't need to be good. Having said all that, this is how I
+        did collision detection to have each line avoid hitting any other lines.
       </p>
 
       <p>
-        Since we're not really drawing lines but rather overlapping points to
-        achieve a line effect we can easily see if our line is about to collide
-        with another line. We just have to see if the circle we are about to
-        draw is going to overlap with any other circle we've previously drawn,
-        except for the ones in the current line.
+        Since we're not really drawing lines but rather overlapping points with
+        radius <span class="code">R</span> to achieve a line effect we can
+        easily see if our line is about to collide with another line. We just
+        have to see if the circle we are about to draw is going to overlap with
+        any other circle we've previously drawn, except for the ones in the
+        current line.
       </p>
 
       <p>
@@ -303,7 +329,7 @@ function toCenter(
         position of the two circles, figuring out the distance between them, and
         then seeing if the distance is less than the sum of the two circles'
         radii. The distance can of course be done with pythagoras theorem so the
-        entire check is no more than
+        entire check is no more than:
       </p>
 
       <pre><code>
@@ -356,7 +382,7 @@ function collidesWithAnyCircle(
           >Quadtrees</a
         >
         are one way of doing this, but I went for an easier method by overlaying
-        a grid over the entire canvas, and then mapping a position to cell in
+        a grid over the entire canvas, and then mapping a position to a cell in
         the grid. The relation of the circle size relative to the size of the
         cells in the grid is important. If a circle is too big to reliably fit
         in inside a cell it might collide with a circle in a close by cell.
@@ -375,23 +401,26 @@ function collidesWithAnyCircle(
         perfection in the output, a few imperfections might even be favorable,
         so experimenting with different values for the cell size is also fun. If
         you'd want to be more precise you could also check against collisions in
-        the surrounding cells, this would increase the search space by a factor
-        of nine though.
+        the surrounding cells, if a circles center is at the very edge of a cell
+        and the circle body spills out into nearby cells. This would increase
+        the search space by a factor of nine though.
       </p>
 
       <p>
         One hacky thing I did was also to check only against every Nth circle in
-        the cell. Since circles are inserted into the cell in order, meaning any
-        circle is probably <strong>very</strong> close to it's neighbors, it
-        means that we don't really need to check if a circle collides with ANY
+        the cell to save some render time. Since circles are inserted into the
+        cell in order, meaning any circle is probably
+        <strong>very</strong> close to it's neighbors, it means that we don't
+        really need to check if a circle collides with <strong>any</strong>
         other circle, just a few of them. The higher the N value the more chance
-        of a collision or small overlap in a few lines, but you gain a lot of
-        render time. Again, the result doesn't always have to be pixel perfect.
-        Something like the code below would be a faster obviously, and in a lot
-        of cases work just as well.
+        of a collision or small overlap at the end of a line, but you gain a lot
+        in terms of render time. Again, the result doesn't always have to be
+        pixel perfect. Something like the code below would be a faster
+        obviously, and in a lot of cases work just as well.
       </p>
 
       <pre><code>
+//Check only every 7th circle in this cell to save time
 for(let i = 0; i &lt; circlesInCell.length; i += 7) {
   const match = circlesInCell[i];
   const radiiSum = circle.radius + match.radius;
@@ -403,20 +432,14 @@ return false;
 
 </code></pre>
 
-      <p>
-        It's now much easier to instead of checking against every circle, just
-        check against the circles in the cell that the current circle belongs
-        to.
-      </p>
-
-      <h2>Colors</h2>
+      <h3>Colors and variations</h3>
 
       <p>
         Keeping with the theme of the rest of the article, there are a lot of
         fun ways of working with colors in flow fields. You can select a
         different color for each line, or color by the starting noise value for
-        the line, or have the line pick the color by a region on the screen (All
-        depticed below)
+        the line, or have the line pick the color by the region of the canvas it
+        spawned (All depticed below).
       </p>
 
       <div class="image-wrapper">
@@ -438,6 +461,75 @@ return false;
           alt="grid"
         />
       </div>
+
+      <h3>Closing notes</h3>
+      <p>
+        I hope that this article has provided at least some insight that other
+        articles on the topic didn't, since there really is a lot of variation
+        that can be achieved when playing with flow fields. For my
+        <a href="/art/forces">Forces series</a> each generated piece used a
+        configuration that followed the interface below, and a lot more
+        parameters can of course be added to create even greater variaty.
+      </p>
+
+      <pre><code>
+export interface ForceConfiguration {
+  
+  // A list of colors
+  colorScheme: lib.Palette;
+
+  // Allow lines to flow into eachother
+  collisionDetection: boolean;
+
+  // DEPTH | REGION | RANDOM_FROM_PALETTE
+  colorMethod: ColorMethod; 
+
+  // DISC | SQUARE | ...
+  shape: ForceShape; 
+
+  // How much of the canvas should be covered in lines
+  density: number; 
+  
+  // Canvas size in pixels
+  dimensions: {
+    width: number;
+    height: number;
+  };
+  
+  // What circle radii are allowed for lines
+  strokeWeights: number[]; 
+
+  // How close to the edge of the canvas are the lines allowed
+  edgePadding: number; 
+
+  // Allow some lines to go beyond the allowed area?
+  allowEdgeOverflow: boolean;
+
+  // for each circle in a line, how much bigger should the next circle be? default 0
+  brushGrowthRate: number;
+
+  // minimum amount of space around each line
+  linePadding: number;
+
+  // step size for dot in a line, to achieve the dotted effect in the first images
+  resolution: number;
+
+  // CIRCLES | SQUARE, ... 
+  brushType: BrushType;
+
+  // Math.cos(x) * noiseWarp
+  noiseWarp: number;
+
+  // Math.cos(x / noiseFactor)
+  noiseFactor: number;
+
+  // Seed for the noise function
+  seed: number;
+
+  // Default is Infinity
+  maxLineLength: number;
+}
+</code></pre>
     `;
   }
 }
