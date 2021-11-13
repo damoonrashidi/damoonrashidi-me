@@ -123,8 +123,8 @@ export class ArticleFlowFieldMethods extends LitElement {
           rel="nofollow noreferrer"
         >
           simplex noise</a
-        >. Without regurgitating the wikipedia article, the simplex (and perlin
-        noise also for that matter) noise function returns a value between -1
+        >. Without regurgitating the wikipedia article, the simplex noise (and
+        perlin noise also for that matter) function returns a value between -1
         and 1 for any given point in a 2D (or 3+D) space such as the value for a
         given point is similar to the value of the surrounding points, only with
         a small variation.
@@ -135,55 +135,51 @@ export class ArticleFlowFieldMethods extends LitElement {
 
       <div class="image-wrapper">
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-numerical.png?alt=media"
           alt="Flow field in digits"
         />
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow.png?alt=media"
           alt="Flow field"
         />
       </div>
 
       <p>
-        Right off the bat you can see how this might be useful for constructing
-        flow fields. If you start by picking any random point and checking the
-        noise value for that point you can then move a step to the direction of
-        the next point and so on. Doing that would yield the following effect if
-        you use something like 1000 lines with random starting positions.
-      </p>
-
-      <p>
-        Moving the dot is achieved by incrementing the dots x-position by
-        <span class="code">Math.cos(noiseValue)</span> and the y-position by
-        <span class="code">Math.sin(noiseValue)</span>, or you can flip the cos
-        and sin functions to and see what happens! Or throw in
-        <span class="code">tan(x), sin(y)</span>, whatever is in your heart, try
-        it out and see what happens.
+        You can see how this might be useful for constructing flow fields. If
+        you start by picking any random point and checking the noise value for
+        that point you can then move a step to the direction of the noise value.
+        Once at the new point you repeat the process with the noise value of the
+        current position of <span class="code">[x,y]</span>. Doing that with
+        1000 random starting points would yield the flowy effect pictured below.
       </p>
 
       <div class="image-wrapper">
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-lines.png?alt=media"
           alt="Flow Field Result"
         />
       </div>
 
       <p>
-        You can also affect the result by manipulating the noise value that is
-        fed to the cosine and sine functions, playing around with using
-        <span class="code">Math.cos(noiseValue / 2.2)</span> will yield
-        something entirely different than just
-        <span class="code">Math.cos(noiseValue)</span>.
+        Moving the dot is achieved by incrementing the dots x-position by
+        <span class="code">Math.cos(noiseValue)</span> and the y-position by
+        <span class="code">Math.sin(noiseValue)</span>, or you can flip the cos
+        and sin functions to and see what happens! Or throw in
+        <span class="code">tan(x), sin(y)</span>, whatever is in your heart!
       </p>
 
       <p>
-        Personally I like to use a simple set of rules to determine when a line
-        ends. I either enable collision detection, meaning that a line ends when
-        it collides with another line or the edge of the canvas. Other ways to
-        end a line could be setting a max traverse length for each line, or
-        picking a line length from a set of predetermined line lengths. Or
-        having the line end when <span class="code">Math.random() > 0.99</span>.
-        It could be whatever you want!
+        You can also increase the travel distance by multiplying the cosine and
+        sine values by some constant.
+        <span class="code">Math.sin(noiseValue) * 2</span>. The smoothness of
+        the noise value could also be affected by manipulating the noise value
+        that is fed to the cosine and sine functions, playing around with using
+        <span class="code">Math.cos(noiseValue / 2.2)</span> will yield
+        something entirely different than just
+        <span class="code">Math.cos(noiseValue)</span>.
       </p>
 
       <h3>Different noise functions</h3>
@@ -199,8 +195,8 @@ export class ArticleFlowFieldMethods extends LitElement {
         Here are a few examples of easy noise functions. The first one goes by
         the distance from x to the center of the image, and the same for y, and
         then returns the
-        <span class="code">Math.sqrt(distanceX ** 2 + distanceY **2)</span>. The
-        second one is the exact same function, but instead of feeding the
+        <span class="code">Math.sqrt(distanceX ** 2 + distanceY ** 2)</span>.
+        The second one is the exact same function, but instead of feeding the
         <span class="code">x</span> and <span class="code">y</span> values to
         the noise function straight up I divide them by... let's say 400, (<span
           class="code"
@@ -220,18 +216,69 @@ export class ArticleFlowFieldMethods extends LitElement {
 
       <div class="image-wrapper">
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-harsh-swirl.png?alt=media"
           alt="swirl"
         />
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-buggy-swirl.png?alt=media"
           alt="swirl modified"
         />
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fflow-to-center.png?alt=media"
           alt="swirl modified"
         />
       </div>
+
+      <pre><code>
+function swirl(
+  x: number,
+  y: number,
+  width: number,
+  height: number
+): number {
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const distanceX = Math.abs(centerX - x);
+  const distanceY = Math.abs(centerY - y);
+  const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+  return distance;
+}
+
+function toCenter(
+  x: number,
+  y: number,
+  width: number,
+  height: number
+): number {
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  const angle = Math.atan2(x - centerX, y - centerY);
+
+  return angle * Math.PI;
+}
+</code></pre>
+
+      <h3>Ending the lines</h3>
+
+      <p>
+        Deciding on when to end the line also greatly affects the final result.
+        Personally I like to use a combination of techniques like collision
+        detection, max line length, and a random chance to end the line.
+      </p>
+
+      <p>
+        The max line length could either be a constant that is the same for all
+        of the lines, yielding a more uniform result, or you can set a list of
+        <span class="code">maxLineLengths</span> and picking one randomly for
+        each line, or maybe picking the longer ones if the line starts closer to
+        the top, or the further away from the center of the image the line
+        starts, or so on.
+      </p>
 
       <h3>A note on collision detection</h3>
 
@@ -312,23 +359,49 @@ function collidesWithAnyCircle(
         a grid over the entire canvas, and then mapping a position to cell in
         the grid. The relation of the circle size relative to the size of the
         cells in the grid is important. If a circle is too big to reliably fit
-        in inside a cell it might collide with a circle in the next cell. This
-        isn't a huge problem for me though, since I'm often not looking for
-        perfection in the output, a few imperfections might even be favorable,
-        so experimenting with different values for the cell size is also fun.
+        in inside a cell it might collide with a circle in a close by cell.
       </p>
 
       <div class="image-wrapper">
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fgrid.png?alt=media"
-          alt="grid"
-        />
-
-        <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fgrid-populated.png?alt=media"
           alt="grid"
         />
       </div>
+
+      <p>
+        This isn't a huge problem for me though, since I'm often not looking for
+        perfection in the output, a few imperfections might even be favorable,
+        so experimenting with different values for the cell size is also fun. If
+        you'd want to be more precise you could also check against collisions in
+        the surrounding cells, this would increase the search space by a factor
+        of nine though.
+      </p>
+
+      <p>
+        One hacky thing I did was also to check only against every Nth circle in
+        the cell. Since circles are inserted into the cell in order, meaning any
+        circle is probably <strong>very</strong> close to it's neighbors, it
+        means that we don't really need to check if a circle collides with ANY
+        other circle, just a few of them. The higher the N value the more chance
+        of a collision or small overlap in a few lines, but you gain a lot of
+        render time. Again, the result doesn't always have to be pixel perfect.
+        Something like the code below would be a faster obviously, and in a lot
+        of cases work just as well.
+      </p>
+
+      <pre><code>
+for(let i = 0; i &lt; circlesInCell.length; i += 7) {
+  const match = circlesInCell[i];
+  const radiiSum = circle.radius + match.radius;
+  if (distance(circle, match) &lt; radiiSum) {
+    return true;
+  }
+}
+return false;
+
+</code></pre>
 
       <p>
         It's now much easier to instead of checking against every circle, just
@@ -348,16 +421,19 @@ function collidesWithAnyCircle(
 
       <div class="image-wrapper">
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fcolor-by-line.png?alt=media"
           alt="grid"
         />
 
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fcolor-by-depth.png?alt=media"
           alt="grid"
         />
 
         <img
+          loading="lazy"
           src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fcolor-by-region.png?alt=media"
           alt="grid"
         />
