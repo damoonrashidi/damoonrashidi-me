@@ -5,7 +5,7 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
   static styles = css`
     :host {
       display: block;
-      padding: 80px;
+      padding: 40px;
     }
     h2,
     h3 {
@@ -65,6 +65,9 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
     }
 
     @media (min-width: 768px) {
+      :host {
+        padding: 80px;
+      }
       h2 {
         font-size: 64px;
       }
@@ -112,6 +115,7 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
         >
           <img
             src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fwildfire.png?alt=media"
+            loading="lazy"
             alt="Wildfire"
           />
         </a>
@@ -123,6 +127,7 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
           <img
             src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fterritories.png?alt=media"
             alt="Regions"
+            loading="lazy"
         /></a>
 
         <a
@@ -131,7 +136,8 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
         >
           <img
             src="https://firebasestorage.googleapis.com/v0/b/website-e57e8.appspot.com/o/assets%2Farticles%2Fflow-field-methods%2Fsands.png?alt=media"
-            alt="Regions"
+            alt="Sands"
+            loading="lazy"
         /></a>
       </div>
 

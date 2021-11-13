@@ -55,18 +55,20 @@ customElements.define('app-art-forces', ArtForcesEssay);
 
 customElements.define('app-article-flow-fields', ArticleFlowFieldMethods);
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyBYlO_L8zRFaytWdn2OaequwCZaWVxeWN4',
-  authDomain: 'website-e57e8.firebaseapp.com',
-  projectId: 'website-e57e8',
-  storageBucket: 'website-e57e8.appspot.com',
-  messagingSenderId: '474195770921',
-  appId: '1:474195770921:web:00a1fd35fcac971b39a638',
-  measurementId: 'G-R0KKFY41H2',
-};
+if (!document.location.hostname.match('localhost')) {
+  const firebaseConfig = {
+    apiKey: 'AIzaSyBYlO_L8zRFaytWdn2OaequwCZaWVxeWN4',
+    authDomain: 'website-e57e8.firebaseapp.com',
+    projectId: 'website-e57e8',
+    storageBucket: 'website-e57e8.appspot.com',
+    messagingSenderId: '474195770921',
+    appId: '1:474195770921:web:00a1fd35fcac971b39a638',
+    measurementId: 'G-R0KKFY41H2',
+  };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 
-analytics.app.automaticDataCollectionEnabled = true;
+  analytics.app.automaticDataCollectionEnabled = true;
+}
