@@ -63,7 +63,7 @@ export class ArticleFlowFieldMethods extends LitElement {
       code,
       .code {
         font-size: 22px;
-        font-weight: 500;x
+        font-weight: 500;
       }
       .image-wrapper {
         grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -125,8 +125,8 @@ export class ArticleFlowFieldMethods extends LitElement {
           simplex noise</a
         >. Without regurgitating the wikipedia article, the simplex noise (and
         perlin noise also for that matter) function returns a value between -1
-        and 1 for any given point in a 2D (or 3+D) space such as the value for a
-        given point is similar to the value of the surrounding points, only with
+        and 1 for any given point in a 2D (or 3+D) space. The value for a given
+        point will be similar to the value of the surrounding points, only with
         a small variation.
         <span class="code">const noiseValue = noise(x, y)</span> for reference.
       </p>
@@ -350,8 +350,8 @@ function collidesWithAnyCircle(
       </p>
 
       <p>
-        A lot of time can be saved by searching only the circles that are close
-        to the circle that is currently being evaluated.
+        A lot of time can be saved by searching for collisions with only the
+        circles that are close to the circle that is currently being evaluated.
         <a href="https://en.wikipedia.org/wiki/Quadtree" target="_blank"
           >Quadtrees</a
         >
