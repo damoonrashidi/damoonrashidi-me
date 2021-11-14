@@ -93,6 +93,10 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
       :host {
         color: #eee;
       }
+      .code {
+        background: #222;
+        color: #eee;
+      }
     }
   `;
 
