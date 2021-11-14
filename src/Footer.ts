@@ -12,6 +12,11 @@ export class AppFooter extends LitElement {
     h2 {
       font: 900 64px 'Playfair Display', sans-serif;
     }
+    @media (prefers-color-scheme: dark) {
+      :host {
+        color: #fff;
+      }
+    }
   `;
 
   render() {

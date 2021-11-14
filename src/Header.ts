@@ -17,6 +17,17 @@ export class AppHeader extends LitElement {
       color: #111;
       text-decoration: none;
     }
+    path {
+      fill: #000;
+    }
+    @media (prefers-color-scheme: dark) {
+      a {
+        color: #eee;
+      }
+      path {
+        fill: #eee;
+      }
+    }
     .socials {
       width: 150px;
     }

@@ -42,6 +42,12 @@ export class ArtList extends navigator(LitElement) {
     .art-list-wrapper art-collection-item {
       cursor: pointer;
     }
+
+    @media (prefers-color-scheme: dark) {
+      :host {
+        color: #eee;
+      }
+    }
   `;
 
   collection = artCollections;

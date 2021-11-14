@@ -50,6 +50,11 @@ export class ArtSeasonsEssay extends LitElement {
       font-family: monospace;
       font-weight: bold;
     }
+    @media (prefers-color-scheme: dark) {
+      :host {
+        color: #eee;
+      }
+    }
   `;
 
   render() {
