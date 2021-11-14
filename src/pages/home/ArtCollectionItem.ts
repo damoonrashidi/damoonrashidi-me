@@ -77,6 +77,12 @@ export class ArtCollectionItem extends LitElement {
         0px 12.0142px 13.7505px rgba(0, 0, 0, 0.127239),
         0px 6.94312px 7.98618px rgba(0, 0, 0, 0.0753422);
     }
+    @media (prefers-color-scheme: dark) {
+      img {
+        border-color: #262626;
+        background: #111;
+      }
+    }
   `;
 
   constructor() {

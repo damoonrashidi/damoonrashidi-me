@@ -22,6 +22,7 @@ export class SectionWrapper extends LitElement {
       background: var(--color);
       transform: translateY(calc(var(--height) * -1));
       clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      z-index: -1;
     }
 
     .withMargin {

@@ -89,6 +89,11 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
         max-width: 400px;
       }
     }
+    @media (prefers-color-scheme: dark) {
+      host {
+        color: #eee;
+      }
+    }
   `;
 
   render() {
