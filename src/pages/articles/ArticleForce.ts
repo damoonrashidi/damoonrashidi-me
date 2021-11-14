@@ -90,7 +90,7 @@ export class ArticleFlowFieldMethods extends navigator(LitElement) {
       }
     }
     @media (prefers-color-scheme: dark) {
-      host {
+      :host {
         color: #eee;
       }
     }
