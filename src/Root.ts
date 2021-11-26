@@ -56,12 +56,39 @@ export class AppRoot extends LitElement {
   router(route: string, params: Record<string, string>) {
     this.route = route;
     this.params = params;
+    AppRoot.setTitle(route);
   }
 
   constructor() {
     super();
     this.route = '';
     this.params = {};
+  }
+
+  static setTitle(route: string) {
+    switch (route) {
+      case 'art-grid':
+        document.title = 'Damoon Rashidi - Grid';
+        break;
+      case 'art-seasons':
+        document.title = 'Damoon Rashidi - Seasons';
+        break;
+      case 'art-arrival':
+        document.title = 'Damoon Rashidi - Arrival';
+        break;
+      case 'art-forces':
+        document.title = 'Damoon Rashidi - Forces';
+        break;
+      case 'art-genesis':
+        document.title = 'Damoon Rashidi - Genesis';
+        break;
+      case 'flow-field-methods':
+        document.title = `What I've learned about flow fields so far`;
+        break;
+      default:
+        document.title = 'Damoon Rashidi - Code and Art';
+        break;
+    }
   }
 
   render() {
