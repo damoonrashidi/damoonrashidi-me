@@ -1,7 +1,7 @@
 export function Wdp() {
   return (
     <section
-      className="p-32 font-code"
+      className="p-24 py-32 font-code"
       title="Wdp"
     >
       <div className="flex flex-col items-center gap-32 m-auto lg:w-3/4 md:flex-row ">

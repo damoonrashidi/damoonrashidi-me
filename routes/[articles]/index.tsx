@@ -18,8 +18,8 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
   return (
     <>
       <Header />
-      <main class="max-w-screen-md px-4 pt-16 mx-auto">
-        <h1 class="text-5xl font-bold">Blog</h1>
+      <main class="max-w-screen-md px-4 pt-16 mx-auto font-display">
+        <h1 class="text-5xl">Blog</h1>
         <div class="mt-8">
           {posts.map((post) => (
             <div key={post.slug}>

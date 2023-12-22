@@ -8,10 +8,11 @@
   --text-link: #6e1adc;
   --background: #fff;
   --background-light: #f9f9f9;
-
+  
   @media (prefers-color-scheme: dark) {
     --text-fg: #fff;
-    --text-highlight: #0f0;
+    --text-highlight: #659528;
+    --text-link: #9497f8;
     --background: #101010;
     --background-light: #111;
   }
@@ -20,4 +21,5 @@
 html, body {
   background: var(--background);
   color: var(--text-fg);
+  font-size: 16px;
 }

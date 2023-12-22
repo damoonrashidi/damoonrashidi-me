@@ -8,15 +8,15 @@ export function BitAlarm() {
       <div className="flex flex-col items-center gap-10 m-auto lg:w-3/4 md:flex-row ">
         <div className="font-textular">
           <h2 className="font-textular text-5xl font-[700]">BITALARM</h2>
-          <p className="pt-8 font-[300] max-w-prose">
+          <p className="pt-8 text-2xl font-[300] max-w-prose">
             bɪtəˈlɑːm is a cross platform mobile application written in Flutter
             to help you keep track of your cryptocurrency investments with a
             focus on privacy.
           </p>
-          <p className="pt-8 font-[300]">
+          <p className="pt-8 text-2xl font-[300]">
             Everything is done on device and there is no telemetry.
           </p>
-          <p className="pt-8 font-[300]">
+          <p className="pt-8 text-2xl font-[300]">
             View on{" "}
             <a
               href="https://github.com/damoonrashidi/bitalarm"
