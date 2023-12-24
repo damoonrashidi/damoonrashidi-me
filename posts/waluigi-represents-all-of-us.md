@@ -55,7 +55,7 @@ customer who expressed this need).
 ## Enter, Waluigi
 
 <blockquote>
-Waluigi is the ultimate example of the individual shaped by the signifier.
+"Waluigi is the ultimate example of the individual shaped by the signifier.
 Waluigi is a man seen only in mirror images; lost in a hall of mirrors he is a
 reflection of a reflection of a reflection. You start with Mario – the
 wholesome all Italian plumbing superman, you reflect him to create Luigi – the
@@ -66,7 +66,7 @@ nowhere man, without the other characters he reflects, inverts and parodies he
 has no reason to exist. Waluigi’s identity only comes from what and who he
 isn’t – without a wider frame of reference he is nothing. He is not his own
 man. In a world where our identities are shaped by our warped relationships to
-brands and commerce we are all Waluigi.
+brands and commerce we are all Waluigi."
 <figcaption>u/[deleted] on <a class="text-link" href="https://www.reddit.com/r/copypasta/comments/5qctnl/waluigi_represents_all_of_us/">reddit</a></figcaption>
 </blockquote>
 
@@ -105,23 +105,33 @@ just waiting for more use-cases, but being _easy enough_ isn't reason enough to
 validate a product or features existance. Good developers are often good at
 [saying no](https://grugbrain.dev/#grug-on-saying-no), but people are rarely
 praised for work they didn't do. The success of one feature cannot easily be
-tied to the _non-development_ of another, especially as an organisation is
+attributed to the _non-development_ of another, especially as an organisation is
 easily likned to a
 [complex dynamic parallel process](https://codahale.com/work-is-work/#corporate-americas-next-top-model).
+Developing a good product is difficult, writing good software that is both easy
+to use and easy to maintain is difficult, and knowing why you succeed even with
+the benefit of retrospection is difficult, as the only vantage point we can take
+is
+[emic](https://laulima.hawaii.edu/access/content/user/millerg/ANTH_200/A200Unit1/EmicEtic.html).
 
-> It's just another couple hundred lines of code
+> "It's just another couple hundred lines of code"
 
-Even if development cost might be close to zero and the feature is in the lower
-left quadrant of the
-[action priority matrix](https://www.productplan.com/glossary/action-priority-matrix/),
-maintenance cost for a poorly vetted feature will always be high when it has to
-be maintained in perpetuity, especially when
+The true cost of development isn't just the number of lines it took to deliver
+the feature. Even if development time might be close to zero and the feature is
+in the lower left quadrant of the
+[action priority matrix](https://www.productplan.com/glossary/action-priority-matrix/).
+The ratio of value to maintenance cost will approach zero for a poorly vetted
+feature when it has to be maintained in perpetuity, especially when
 [3rd party dependencies](https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code)
 [break](https://www.thegingerviking.com/the-right-to-delete-fakerjs-fragile-nature-open-source/)
 while being littered throughout code bases with tight couplings and
 [bad abstractions](https://www.deconstructconf.com/2019/dan-abramov-the-wet-codebase).
 Now, all of a sudden, this bearly used implementation has expanded the surface
 area of things to fix when things change or break.
+
+In summary, I think there is a lot of value of being cognizant of when you are
+writing a feature that stands on its own legs, a Mario, or when it's not
+justified unto itself, a Waluigi.
 
 ## Disclaimers
 
