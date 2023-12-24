@@ -1,8 +1,9 @@
 ---
-title: Test
+title: What I've learned about Flow Fields so far.
 createdAt: 2023-12-21T22:19:00Z
 updatedAt: 2023-12-21T22:19:00Z
-snippet: Test post
+status: draft
+snippet: In this article I'll try my best to describe and visualize some of the concepts behind flow fields. The examples provided will be written in Typescript but the conecepts will be described in general terms and can be applied to multiple languages. 
 ---
 
 This article will describe the method and concepts I used to create the series
@@ -175,7 +176,8 @@ colorMethod: ColorMethod;
 // DISC | SQUARE | ...
 shape:ForceShape;
 
-// How much of the canvas should be covered in lines
+// How much of the canvas should be covered
+// in lines
 density: number;
 
 // Canvas size in pixels
@@ -184,19 +186,22 @@ dimensions: { width: number; height: number; };
 // What circle radii are allowed for lines 
 strokeWeights: number[];
 
-// How close to the edge of the canvas are the lines allowed 
+// How close to the edge of the canvas
+// are the lines allowed 
 edgePadding: number;
 
-// Allow some lines to go beyond the allowed area? 
+// Allow some lines to go beyond the
+// allowed area? 
 allowEdgeOverflow: boolean;
 
-// for each circle in a line, how much bigger should the next circle be? default 0
+// for each circle in a line
+// how much bigger should the next circle be?
 brushGrowthRate: number;
 
 // minimum amount of space around each line
 linePadding: number;
 
-// step size for dot in a line, to achieve the dotted effect in the first images
+// step size for dot in a line
 resolution: number;
 
 // CIRCLES | SQUARE, ... 

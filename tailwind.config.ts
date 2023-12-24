@@ -26,12 +26,12 @@ export default {
           letterSpacing: "-0.01em",
           fontWeight: "400",
         }],
-        lg: ["1.5rem.", {
+        lg: ["1.5rem", {
           lineHeight: "2rem",
           letterSpacing: "-0.01em",
           fontWeight: "500",
         }],
-        huge: ["3rem.", {
+        huge: ["3rem", {
           lineHeight: "3rem",
           letterSpacing: "-0.01em",
           fontWeight: "500",

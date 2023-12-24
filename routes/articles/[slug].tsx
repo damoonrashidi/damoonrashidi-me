@@ -1,8 +1,9 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { CSS, render } from "$gfm";
+import { render } from "$gfm";
 import { getPost } from "@/blog/getPost.ts";
 import { Post } from "@/blog/post.ts";
+import { Header } from "@/components/header.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
@@ -17,12 +18,18 @@ export default function PostPage(props: PageProps<Post>) {
   return (
     <>
       <Head>
-        <style dangerouslySetInnerHTML={{ __html: CSS }} />
+        <title>Fresh App</title>
+        <title>{post.title}</title>
+        <meta
+          name="description"
+          content={post.snippet}
+        />
       </Head>
-      <article>
+      <Header />
+      <article className="max-w-prose m-auto font-display p-8 sm:p-0">
         <div>
-          <h1>{post.title}</h1>
-          <p>
+          <h1 className="text-4xl">{post.title}</h1>
+          <p className="pt-4">
             {Intl.DateTimeFormat("en-us", {
               year: "numeric",
               month: "long",

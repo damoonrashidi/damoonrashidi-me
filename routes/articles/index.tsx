@@ -1,14 +1,12 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts } from "@/blog/getPost.ts";
 import { Post } from "@/blog/post.ts";
+import { ArticleSummary } from "@/components/articles/summary.tsx";
 import { Header } from "@/components/header.tsx";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
     const posts = await getPosts();
-    if (posts.length === 0) {
-      return ctx.renderNotFound();
-    }
     return ctx.render(posts);
   },
 };
@@ -18,15 +16,11 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
   return (
     <>
       <Header />
-      <main class="max-w-screen-md px-4 pt-16 mx-auto font-display">
-        <h1 class="text-5xl">Blog</h1>
-        <div class="mt-8">
-          {posts.map((post) => (
-            <div key={post.slug}>
-              {post.title}
-              <a href={`/blog/${post.slug}`}>Read</a>
-            </div>
-          ))}
+      <main class="px-8 pt-16 mx-auto font-display max-w-prose">
+        <h1 class="text-5xl pb-8">My thoughts on things.</h1>
+        {posts.length === 0 ? <h2>No thoughts yet.</h2> : <></>}
+        <div class="mt-8 w-max-prose">
+          {posts.map((post) => <ArticleSummary post={post} />)}
         </div>
       </main>
     </>

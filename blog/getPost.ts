@@ -1,5 +1,5 @@
 import { join } from "$std/path/mod.ts";
-import { Post } from "@/blog/post.ts";
+import { Post, PostStatus } from "@/blog/post.ts";
 import { extract } from "front_matter";
 
 export async function getPosts(): Promise<Post[]> {
@@ -11,7 +11,9 @@ export async function getPosts(): Promise<Post[]> {
   }
   const posts = await Promise.all(promises) as Post[];
   posts.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
-  return posts;
+  return posts.filter(
+    ({ status }) => status === PostStatus.Published,
+  );
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
@@ -22,6 +24,7 @@ export async function getPost(slug: string): Promise<Post | null> {
     title: attrs.title,
     createdAt: new Date(attrs.createdAt),
     updatedAt: new Date(attrs.updatedAt),
+    status: attrs.status === "draft" ? PostStatus.Draft : PostStatus.Published,
     body,
     snippet: attrs.snippet,
   };

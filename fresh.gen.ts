@@ -2,20 +2,20 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $_articles_slug_ from "./routes/[articles]/[slug].tsx";
-import * as $_articles_index from "./routes/[articles]/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $articles_slug_ from "./routes/articles/[slug].tsx";
+import * as $articles_index from "./routes/articles/index.tsx";
 import * as $index from "./routes/index.tsx";
 
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/[articles]/[slug].tsx": $_articles_slug_,
-    "./routes/[articles]/index.tsx": $_articles_index,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/articles/[slug].tsx": $articles_slug_,
+    "./routes/articles/index.tsx": $articles_index,
     "./routes/index.tsx": $index,
   },
   islands: {},
