@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "preact/hooks";
 
 export const ArtSpinner = ({ images }: { images: string[] }) => {
-  console.log("hello");
-
   const spinnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
