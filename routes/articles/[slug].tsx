@@ -8,7 +8,9 @@ import { Header } from "@/components/header.tsx";
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
     const post = await getPost(ctx.params.slug);
-    if (post === null) return ctx.renderNotFound();
+    if (post === null) {
+      return ctx.renderNotFound();
+    }
     return ctx.render(post);
   },
 };
@@ -18,7 +20,6 @@ export default function PostPage(props: PageProps<Post>) {
   return (
     <>
       <Head>
-        <title>Fresh App</title>
         <title>{post.title}</title>
         <meta
           name="description"

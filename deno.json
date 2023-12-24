@@ -24,6 +24,7 @@
     "@/": "./",
     "$fresh/": "https://deno.land/x/fresh@1.6.1/",
     "preact": "https://esm.sh/preact@10.19.2",
+    "$highlight": "https://deno.land/x/speed_highlight_js@v1.2.4/dist/terminal.js",
     "front_matter": "https://deno.land/std@0.157.0/encoding/front_matter.ts",
     "preact/": "https://esm.sh/preact@10.19.2/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.1",
