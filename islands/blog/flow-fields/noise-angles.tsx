@@ -47,6 +47,9 @@ export function NoiseAngleIllustration(
     ctx.fillStyle = getComputedStyle(canvas.current).getPropertyValue(
       "--text-fg",
     );
+    ctx.strokeStyle = getComputedStyle(canvas.current).getPropertyValue(
+      "--text-fg",
+    );
     setCtx(ctx);
     draw();
   }, [canvas, maxHeight, maxWidth]);

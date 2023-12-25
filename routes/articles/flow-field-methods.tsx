@@ -20,11 +20,14 @@ export default function PostPage({ data: post }: PageProps<Post>) {
     <>
       <Head>
         <title>{post.title}</title>
-        <style type="text/css">
-          @media (prefers-color-scheme: dark) {}
-        </style>
         <link
           rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/ros-pine-dawn.min.css"
+        />
+
+        <link
+          rel="stylesheet"
+          media="(prefers-color-scheme: dark)"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/ros-pine.min.css"
         />
 
