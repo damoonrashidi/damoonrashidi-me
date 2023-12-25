@@ -9,6 +9,8 @@ import * as $articles_slug_ from "./routes/articles/[slug].tsx";
 import * as $articles_index from "./routes/articles/index.tsx";
 import * as $articles_what_ive_learned_about_flow_fields from "./routes/articles/what-ive-learned-about-flow-fields.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $blog_code from "./islands/blog/code.tsx";
+import * as $blog_flow_fields_noise_angles from "./islands/blog/flow-fields/noise-angles.tsx";
 import * as $blog_flow_fields_noise from "./islands/blog/flow-fields/noise.tsx";
 import * as $home_art_spinner from "./islands/home/art-spinner.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -25,6 +27,9 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/blog/code.tsx": $blog_code,
+    "./islands/blog/flow-fields/noise-angles.tsx":
+      $blog_flow_fields_noise_angles,
     "./islands/blog/flow-fields/noise.tsx": $blog_flow_fields_noise,
     "./islands/home/art-spinner.tsx": $home_art_spinner,
   },

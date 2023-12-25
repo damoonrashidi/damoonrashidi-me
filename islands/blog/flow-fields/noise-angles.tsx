@@ -3,11 +3,14 @@ import { Illustration } from "@/components/articles/illustration.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { useEffect, useRef, useState } from "preact/hooks";
 
-export function NoiseIllustration() {
+export function NoiseAngleIllustration(
+  { showSmoothening }: { showSmoothening?: boolean },
+) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const [maxHeight, setMaxHeight] = useState(0);
   const [maxWidth, setMaxWidth] = useState(0);
+  const [c, setC] = useState(1);
 
   useEffect(() => {
     const observer = new ResizeObserver(() => {
@@ -44,12 +47,13 @@ export function NoiseIllustration() {
     ctx.fillStyle = getComputedStyle(canvas.current).getPropertyValue(
       "--text-fg",
     );
-    ctx.strokeStyle = getComputedStyle(canvas.current).getPropertyValue(
-      "--text-fg",
-    );
     setCtx(ctx);
     draw();
   }, [canvas, maxHeight, maxWidth]);
+
+  useEffect(() => {
+    draw();
+  }, [c]);
 
   const draw = () => {
     if (!ctx) {
@@ -60,23 +64,47 @@ export function NoiseIllustration() {
 
     ctx.clearRect(0, 0, maxWidth, maxHeight);
 
-    for (let y = 0; y < maxHeight; y += 6) {
-      for (let x = 0; x < maxWidth; x += 6) {
-        const n = Math.round(noise(x / 100, y / 100) * 5) / 5;
-        ctx.fillText(`${n}`, x * 5, y * 5);
+    for (let y = 0; y < maxHeight; y += 20) {
+      for (let x = 0; x < maxWidth; x += 20) {
+        const n = noise(x / c, y / c);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(
+          x + Math.cos(n) * 10,
+          y + Math.sin(n) * 10,
+        );
+        ctx.closePath();
+        ctx.stroke();
       }
     }
   };
 
   return (
     <Illustration>
-      <Button
-        onClick={() => {
-          draw();
-        }}
-      >
-        Re-generate
-      </Button>
+      <div className="flex gap-10">
+        <Button
+          onClick={() => {
+            draw();
+          }}
+        >
+          Re-generate
+        </Button>
+        {showSmoothening
+          ? (
+            <div className="flex items-center gap-1">
+              <span>c =</span>
+              <input
+                type="range"
+                min={1}
+                max={100}
+                value={c}
+                onChange={(e) => setC(parseInt(e.currentTarget.value, 10))}
+              />
+              <span>{c}</span>
+            </div>
+          )
+          : <></>}
+      </div>
       <canvas className="h-[500px] w-full" ref={canvas} />
     </Illustration>
   );
