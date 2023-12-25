@@ -105,14 +105,22 @@ TAM grown. Investors fed.
 
 Next up for our Diagramming app some stakeholders thought it would be a good
 idea to add the ability to do free hand drawings as well, bringing the app more
-into the real of online whiteboarding. We add some fields to our diagram
-abstraction such as `type: Diagram | Drawing;` everything just works, easy. It's
-now Luigi o'clock.
+into the realm of online whiteboarding. We add some fields to our diagram model
+such as `type: Diagram | Drawing;` everything just works, easy. It's now Luigi
+o'clock.
 
-Now the logical next step would be to add a new dashboard (or worse yet, add
+Now, the logical next step would be to add a new dashboard (or worse yet, add
 more tangentially related data to the original dashboard, fragmenting its
-purpose), one for drawings instead of diagrams, since we already have all the
+purpose), one for drawings instead of diagrams, since we already had all the
 data for this new mutation available. It's now Waluigi o'clock.
+
+Imagine what will happen when we add filters to the original dashboard, being
+able to filter by for instance by "chart complexity". Now, the Image Dashboard
+<sup>TM</sup> needs to be updated as well, only to be kept in parity with the
+original feature that spawned it, otherwise people won't use it. But the Diagram
+Filters aren't applicable to Images, so new Image Filters need to be derived,
+only for a feature that wasn't really needed. We've kept going, so we need to
+keep going.
 
 I'd go as far as saying that features should even be their own
 [eigenvalue](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors), so
@@ -149,7 +157,7 @@ the feature. Even if development time might be close to zero and the feature is
 in the lower left quadrant of the
 [action priority matrix](https://www.productplan.com/glossary/action-priority-matrix/).
 The ratio of value to maintenance cost will approach zero for a poorly vetted
-feature when it has to be maintained in perpetuity, especially when
+feature when it has to be maintained in perpetuity.
 
 Now, all of a sudden, this bearly used implementation has expanded the surface
 area of things to fix when other things change or break.
