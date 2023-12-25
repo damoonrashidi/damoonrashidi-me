@@ -11,7 +11,7 @@ companies. Companies that had already found their niche, a solid customer base
 and were profitable (or close to) before I joined. What I like about these types
 of companies is that things usually aren't in a panic, but resources are still
 finite and treated as such. Teams are usually small and focus has to be sharp,
-as the opporunity cost of any misguided venture to move the needle is steeper
+as the opporunity cost of any misguided venture to "move the needle" is steeper
 than for companies with more room to make bad investments. Personally, I think
 it's fun balancing these contraints with trying to be innovative and building
 good product. This article is probably only relevant for that type of company
@@ -119,8 +119,8 @@ able to filter by for instance by "chart complexity". Now, the Image Dashboard
 <sup>TM</sup> needs to be updated as well, only to be kept in parity with the
 original feature that spawned it, otherwise people won't use it. But the Diagram
 Filters aren't applicable to Images, so new Image Filters need to be derived,
-only for a feature that wasn't really needed. We've kept going, so we need to
-keep going.
+only for a feature that wasn't really needed in the first place. We've kept
+going, so we need to keep going.
 
 I'd go as far as saying that features should even be their own
 [eigenvalue](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors), so
@@ -162,17 +162,11 @@ feature when it has to be maintained in perpetuity.
 Now, all of a sudden, this bearly used implementation has expanded the surface
 area of things to fix when other things change or break.
 
-It could be as simple as having checkboxes in our component library, and they
-can be stacked vertically and horizontally by setting some `direction` property.
-Next up is radio buttons, it would fall naturally that the API would be
-identical, but the question should be asked, is there an immediate use-case for
-being able set direction for radio buttons as well? Should we then spend time
-implementing it now, only to keep the API consistent, without it having any
-value on it's own, at least not yet.
-
 In summary, I think there is a lot of value of being cognizant of when you are
 writing a feature that stands on its own legs, a _Mario_, or when it's not
-justified fully unto itself, a _Waluigi_.
+justified fully unto itself, a _Waluigi_, and when you make a Waluigi, it's
+worth considering the maintenance and opportunity costs, not only the
+development cost.
 
 ## Disclaimers
 

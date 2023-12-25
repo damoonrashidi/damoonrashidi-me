@@ -27,7 +27,7 @@ export default function PostPage(props: PageProps<Post>) {
         />
       </Head>
       <Header />
-      <article className="max-w-prose m-auto font-display p-8 sm:p-0">
+      <article className="max-w-prose m-auto font-display p-12 sm:p-8">
         <div>
           <h1 className="text-4xl">{post.title}</h1>
           <p className="pt-4">
