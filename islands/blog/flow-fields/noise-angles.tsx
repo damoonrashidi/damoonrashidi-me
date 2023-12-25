@@ -81,7 +81,7 @@ export function NoiseAngleIllustration(
 
   return (
     <Illustration>
-      <div className="flex gap-10">
+      <div className="flex gap-10 pb-4">
         <Button
           onClick={() => {
             draw();

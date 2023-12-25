@@ -70,13 +70,15 @@ export function NoiseIllustration() {
 
   return (
     <Illustration>
-      <Button
-        onClick={() => {
-          draw();
-        }}
-      >
-        Re-generate
-      </Button>
+      <div className="pb-2">
+        <Button
+          onClick={() => {
+            draw();
+          }}
+        >
+          Re-generate
+        </Button>
+      </div>
       <canvas className="h-[500px] w-full" ref={canvas} />
     </Illustration>
   );

@@ -57,7 +57,23 @@ export default function PostPage({ data: post }: PageProps<Post>) {
             </a>{" "}
             which I strongly suggest reading.
           </p>
-
+          <div className="flex w-full items-center justify-center flex-wrap lg:flex-nowrap gap-4 pb-12 py-4 ">
+            <img
+              src="/articles/flow-field-methods/example-1.png"
+              width={300}
+              height={475}
+            />
+            <img
+              src="/articles/flow-field-methods/example-2.png"
+              width={300}
+              height={475}
+            />
+            <img
+              src="/articles/flow-field-methods/example-3.png"
+              width={300}
+              height={475}
+            />
+          </div>
           <h2>Noise functions</h2>
           <p>
             Without regurgitating the{" "}
