@@ -107,9 +107,9 @@ export default function PostPage({ data: post }: PageProps<Post>) {
 }`}
           </Code>
           <p>
-            This doesn't look like much currently, it would appear that lines
-            are fairly disjointed and lines go off fairly randomly. Not at all
-            the smooth effect we're going for.
+            This doesn't look like much currently. It would appear that lines
+            are fairly disjointed and lines go off in seemingly random
+            directions. Not at all the smooth effect we're going for.
           </p>
           <p>
             It turns out that noise functions are fairly sensative, you'd think
@@ -126,7 +126,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
             for the x-axis, for a total distance of <code>1.0</code>.
           </p>
           <p>
-            let say that we have a constant{" "}
+            Lets say that we have a constant{" "}
             <code>c = 100</code>. If we divide all our x and y values by that
             constant <code>c</code> we'd end up with something like:{" "}
             <code>p1 = (0.01, 0.01), p2 = (0.01, 0.02)</code>, making the

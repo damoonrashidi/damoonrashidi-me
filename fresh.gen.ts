@@ -6,8 +6,8 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $art from "./routes/art.tsx";
 import * as $articles_slug_ from "./routes/articles/[slug].tsx";
+import * as $articles_flow_field_methods from "./routes/articles/flow-field-methods.tsx";
 import * as $articles_index from "./routes/articles/index.tsx";
-import * as $articles_what_ive_learned_about_flow_fields from "./routes/articles/what-ive-learned-about-flow-fields.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $blog_code from "./islands/blog/code.tsx";
 import * as $blog_flow_fields_noise_angles from "./islands/blog/flow-fields/noise-angles.tsx";
@@ -21,9 +21,8 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/art.tsx": $art,
     "./routes/articles/[slug].tsx": $articles_slug_,
+    "./routes/articles/flow-field-methods.tsx": $articles_flow_field_methods,
     "./routes/articles/index.tsx": $articles_index,
-    "./routes/articles/what-ive-learned-about-flow-fields.tsx":
-      $articles_what_ive_learned_about_flow_fields,
     "./routes/index.tsx": $index,
   },
   islands: {
