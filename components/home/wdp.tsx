@@ -9,6 +9,8 @@ export function Wdp() {
           src="/wdp.png"
           loading="lazy"
           alt="An illustration of the CLI tool WDP"
+          width={495}
+          height={271}
         />
         <div>
           <h2 className="text-highlight text-5xl font-[700]">

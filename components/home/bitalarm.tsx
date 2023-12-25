@@ -32,6 +32,8 @@ export function BitAlarm() {
           <img
             src="/bitalarm.png"
             alt="Two screenshots of the mobile app BitAlarm"
+            width={480}
+            height={663}
             loading="lazy"
           />
         </div>

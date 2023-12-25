@@ -2,13 +2,15 @@ import { Head } from "$fresh/runtime.ts";
 import { Header } from "@/components/header.tsx";
 
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { getPost } from "@/blog/getPost.ts";
 import { Post } from "@/blog/post.ts";
 import { NoiseIllustration } from "@/islands/blog/flow-fields/noise.tsx";
-import post from "@/posts/advanced/what-ive-learned-about-flow-fields.tsx";
 
 export const handler: Handlers<Post> = {
-  GET(_req, ctx) {
-    return ctx.render(post);
+  async GET(_req, ctx) {
+    const url = import.meta.url.split("/").pop() as string;
+    const post = await getPost(url.replace(".tsx", ""));
+    return ctx.render(post as Post);
   },
 };
 
@@ -45,6 +47,16 @@ export default function PostPage({ data: post }: PageProps<Post>) {
             which I strongly suggest reading.
           </p>
 
+          <h2>Noise functions</h2>
+          <p>
+            Without regurgitating the wikipedia article, a noise function is a
+            function that takes a coordinate in 2d space (higher dimension
+            noise-functions also exist, but not for the purpose of this article)
+            and returns a value in the range <code>-1..=1</code>{" "}
+            such as points close together return similar values, but slightly
+            different values.
+          </p>
+          <p>The illustration below illustrates this.</p>
           <NoiseIllustration />
         </div>
       </article>
