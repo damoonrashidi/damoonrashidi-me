@@ -103,14 +103,14 @@ such as "Diagrams created per day" and "Diagram Complexity" aggregated by
 customer. It would be easy to go "we already have this data, why not build a
 dashboard to show the user how much value we provide, _it's easy enough to do_".
 
-TAM grown. Investors fed.
-
 Next up for our Diagramming app some stakeholders thought it'd be a good idea to
 add the ability to do free hand drawings as well, bringing the app more into the
 realm of online whiteboarding. We add some fields to our diagram model such as
 `type: Diagram | Drawing;`<sup>
 [*](#this-is-a-bad-idea-were-now-in-bad-abstraction-land)</sup> everything just
 works, easy. It's now Luigi o'clock.
+
+TAM grown. Investors fed.
 
 Now, the logical next step would be to add a new dashboard (or worse yet, add
 more tangentially related data to the original dashboard, fragmenting its
