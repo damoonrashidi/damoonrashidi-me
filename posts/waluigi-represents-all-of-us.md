@@ -11,13 +11,13 @@ companies. Companies that had already found their niche, a solid customer base
 and were profitable (or close to) before I joined. What I like about these types
 of companies is that things usually aren't in a panic, but resources are still
 finite and treated as such. Teams are usually small and focus has to be sharp,
-as the opporunity cost of any misguided venture to "move the needle" is steeper
+as the opportunity cost of any misguided venture to "move the needle" is steeper
 than for companies with more room to make bad investments. This article is aimed
 mostly at these kinds of companies.
 
 The common truth between all these scale-ups is that a core product had been
 developed that solved a very specific problem for some target market, and the
-market was large enough and the product mature enough to justify the existance
+market was large enough and the product mature enough to justify the existence
 of a company to staff developers that would maintain that product, so now the
 question is _what is next_?
 
@@ -50,7 +50,7 @@ Second is the opportunity cost, the price we pay to work on this thing instead
 of every other thing we could be doing right now. This one is fairly abstract as
 the _what to work on_-decisions are often made on a higher level.
 
-Finally the maintenance cost, what does it mean to keep this thing alive and
+Finally, the maintenance cost, what does it mean to keep this thing alive and
 kicking, and this one is often difficult to calculate, since code bases race
 towards entropy in the midst of changing requirements, staff turnover making
 knowledge ephemeral and 3rd party
@@ -61,14 +61,14 @@ while being littered throughout code bases with tight couplings and
 
 Adding these three costs together you end up with a number that (hopefully) is
 smaller than the value of the feature produced. So when picking our Next Thing
-To Do<sup>TM</sup> it's easy to only look at the development cost since it's
+To Do <sup>TM</sup> it's easy to only look at the development cost since it's
 more tangible, and you already spend time trying to guess it.
 
 ## Enter, Waluigi
 
 In the beginning there was only Mario, and to be able to play two player games,
 Luigi was created. Luigi's purpose is as an accompaniment to Mario. Then Mario
-needed an adversary, so Wario was created. Finally with the
+needed an adversary, so Wario was created. Finally, with the
 [release of Mario Tennis](https://en.wikipedia.org/wiki/Waluigi), where double
 matches could be played and Mario and Luigi being a natural pairing, Wario
 needed a partner too, so Waluigi was created. We've kept going so much that we
@@ -91,7 +91,7 @@ brands and commerce we are all Waluigi."
 </blockquote>
 
 Out of pocket political and social commentary aside, the gist of it is that
-things should be built because their existance provide value unto themselves,
+things should be built because their existence provide value unto themselves,
 not because they somewhat fit into our product offering and it's _easy enough to
 add another waluigi to our product_<sup>
 [*](#waluigi-is-my-favorite-nintento-character-and-i-picked-him-all-the-time-when-playing-mario-tennis-on-the-n64)</sup>.
@@ -99,7 +99,7 @@ add another waluigi to our product_<sup>
 Let's say for example that we're building a UML diagramming app where was to be
 able to create UML diagrams and export them to a few different image formats.
 That's it. Product Market fitted. We also have some internal metrics on this,
-such as "Diagrams created per day" and "Diagram Complexity" aggregagted by
+such as "Diagrams created per day" and "Diagram Complexity" aggregated by
 customer. It would be easy to go "we already have this data, why not build a
 dashboard to show the user how much value we provide, _it's easy enough to do_".
 
@@ -139,7 +139,7 @@ whenever some stakeholder asks for it. Why not, _it's a quick fix_, so you have
 no reason to say no and the proxy metric for value delivered is "what have you
 shipped for me lately". It's therefore also important to also point towards the
 opportunity and maintenance costs for features as being _easy enough to add_
-isn't reason enough to validate a product or feature's existance.
+isn't reason enough to validate a product or feature's existence.
 
 > "It's just another couple hundred lines of code"
 
@@ -147,7 +147,7 @@ Good developers are often good at
 [saying no](https://grugbrain.dev/#grug-on-saying-no), but people are rarely
 praised for work they didn't do. The success of one feature cannot easily be
 attributed to the _non-development_ of another, especially as an organisation is
-easily likend to a
+easily likened to a
 [complex dynamic parallel process](https://codahale.com/work-is-work/#corporate-americas-next-top-model).
 Developing a good product is difficult, writing good software that is both easy
 to use and easy to maintain is difficult, and knowing why a certain feature
