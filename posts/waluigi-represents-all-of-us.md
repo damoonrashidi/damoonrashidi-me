@@ -12,18 +12,16 @@ and were profitable (or close to) before I joined. What I like about these types
 of companies is that things usually aren't in a panic, but resources are still
 finite and treated as such. Teams are usually small and focus has to be sharp,
 as the opporunity cost of any misguided venture to "move the needle" is steeper
-than for companies with more room to make bad investments. Personally, I think
-it's fun balancing these contraints with trying to be innovative and building
-good product. This article is probably only relevant for that type of company
-(and early stage start-ups).
+than for companies with more room to make bad investments. This article is aimed
+mostly at these kinds of companies.
 
 The common truth between all these scale-ups is that a core product had been
 developed that solved a very specific problem for some target market, and the
 market was large enough and the product mature enough to justify the existance
-of a company to staff developers that would maintain that product, but what was
-next?
+of a company to staff developers that would maintain that product, so now the
+question is _what is next_?
 
-## No one buys WinRAR.<sup> [*](#disclaimer-2)</sup>
+## No one buys WinRAR.<sup> [*](#people-do-buy-winrar)</sup>
 
 The [axiom](https://en.wikipedia.org/wiki/Axiom) that the tech world seems to
 have settled on is this, simply having a successful product that solves
@@ -32,7 +30,8 @@ customer's problems isn't enough. Investors must eat too, the
 scale ups must scale, it's in the name, anything else would be illegal. So, off
 we go chasing infinite growth and now our cURL GUI needs to
 [raise _another_ $225M in investments](https://www.postman.com/company/about-postman/#the-investors).
-<sup> [*](#disclaimers)</sup>
+<sup>
+[*](#postman-does-more-than-put-a-gui-over-curl-but-500m-is-a-lot-of-money)</sup>
 
 Since the
 [Product Market has been fitted](https://mailchimp.com/resources/product-market-fit/#heading+defining+product-market+fit),
@@ -41,19 +40,20 @@ other related problems to solve. We pick something from a roadmap, or an
 opportunity tree or whatever framework we're using and start to calculate the
 cost of it.
 
-I'd say that there are three costs associated with developing a new feature for
-a product, first the upfront development cost, the time from when a solution has
-been conceived until it's been deployed, this one is hopefully fairly small if
-you're good at pruning your MVPs. The upfront development cost is the easiest
-one to see, because you already spend hours planning and grooming breaking
-things down.
+The first cost, and the easiest one to see is the upfront development cost, the
+time from when a solution has been conceived until it's been deployed. This one
+is the easiest one to see, because you already spend hours planning and grooming
+and breaking things down. It's hopefully also fairly small if you're good at
+pruning your MVPs.
 
 Second is the opportunity cost, the price we pay to work on this thing instead
-of every other thing we could be doing right now. Finally the maintenance cost,
-what does it mean to keep this thing alive and kicking, and this one is often
-difficult to calculate, since code bases race towards entropy in the midst of
-changing requirements, staff turnover causing knowledge to disappear and 3rd
-party
+of every other thing we could be doing right now. This one is fairly abstract as
+the _what to work on_-decisions are often made on a higher level.
+
+Finally the maintenance cost, what does it mean to keep this thing alive and
+kicking, and this one is often difficult to calculate, since code bases race
+towards entropy in the midst of changing requirements, staff turnover making
+knowledge ephemeral and 3rd party
 [dependencies](https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code)
 [breaking](https://www.thegingerviking.com/the-right-to-delete-fakerjs-fragile-nature-open-source/)
 while being littered throughout code bases with tight couplings and
@@ -61,7 +61,8 @@ while being littered throughout code bases with tight couplings and
 
 Adding these three costs together you end up with a number that (hopefully) is
 smaller than the value of the feature produced. So when picking our Next Thing
-To Do<sup>TM</sup> we fall back to looking for something that has
+To Do<sup>TM</sup> it's easy to only look at the development cost since it's
+more tangible, and you already spend time trying to guess it.
 
 ## Enter, Waluigi
 
@@ -92,7 +93,8 @@ brands and commerce we are all Waluigi."
 Out of pocket political and social commentary aside, the gist of it is that
 things should be built because their existance provide value unto themselves,
 not because they somewhat fit into our product offering and it's _easy enough to
-add another waluigi to our product_.
+add another waluigi to our product_<sup>
+[*](#waluigi-is-my-favorite-nintento-character-and-i-picked-him-all-the-time-when-playing-mario-tennis-on-the-n64)</sup>.
 
 Let's say for example that we're building a UML diagramming app where was to be
 able to create UML diagrams and export them to a few different image formats.
@@ -103,11 +105,12 @@ dashboard to show the user how much value we provide, _it's easy enough to do_".
 
 TAM grown. Investors fed.
 
-Next up for our Diagramming app some stakeholders thought it would be a good
-idea to add the ability to do free hand drawings as well, bringing the app more
-into the realm of online whiteboarding. We add some fields to our diagram model
-such as `type: Diagram | Drawing;` everything just works, easy. It's now Luigi
-o'clock.
+Next up for our Diagramming app some stakeholders thought it'd be a good idea to
+add the ability to do free hand drawings as well, bringing the app more into the
+realm of online whiteboarding. We add some fields to our diagram model such as
+`type: Diagram | Drawing;`<sup>
+[*](#this-is-a-bad-idea-were-now-in-bad-abstraction-land)</sup> everything just
+works, easy. It's now Luigi o'clock.
 
 Now, the logical next step would be to add a new dashboard (or worse yet, add
 more tangentially related data to the original dashboard, fragmenting its
@@ -119,8 +122,8 @@ able to filter by for instance by "chart complexity". Now, the Image Dashboard
 <sup>TM</sup> needs to be updated as well, only to be kept in parity with the
 original feature that spawned it, otherwise people won't use it. But the Diagram
 Filters aren't applicable to Images, so new Image Filters need to be derived,
-only for a feature that wasn't really needed in the first place. We've kept
-going, so we need to keep going.
+only for a feature that wasn't really justified in the first place. We've kept
+going so much that we need to keep going.
 
 I'd go as far as saying that features should even be their own
 [eigenvalue](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors), so
@@ -159,21 +162,22 @@ in the lower left quadrant of the
 The ratio of value to maintenance cost will approach zero for a poorly vetted
 feature when it has to be maintained in perpetuity.
 
-Now, all of a sudden, this bearly used implementation has expanded the surface
+Now, all of a sudden, this barely used implementation has expanded the surface
 area of things to fix when other things change or break.
 
-In summary, I think there is a lot of value of being cognizant of when you are
+In summary, I think there is a lot of value in being cognizant of when you are
 writing a feature that stands on its own legs, a _Mario_, or when it's not
 justified fully unto itself, a _Waluigi_, and when you make a Waluigi, it's
 worth considering the maintenance and opportunity costs, not only the
-development cost.
+development cost and only after factoring these costs in should you decide if
+it's truly worth doing, or if it's just easy.
 
 ## Disclaimers
 
-_Disclaimer 1: Waluigi is my favorite Nintento character and I picked him all
-the time when playing Mario Tennis on the N64._
+###### People do buy WinRAR.
 
-_Disclaimer 2: People do buy WinRAR._
+###### Postman does more than put a GUI over cURL, but $500M is a lot of money.
 
-_Disclaimer 3: Postman does more than put a GUI over cURL, but not half a
-billion dollars more, in my opinion._
+###### Waluigi is my favorite Nintento character and I picked him all the time when playing Mario Tennis on the N64.
+
+###### This is a bad idea, we're now in bad abstraction land.

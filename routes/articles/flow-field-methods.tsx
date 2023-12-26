@@ -86,8 +86,8 @@ export default function PostPage({ data: post }: PageProps<Post>) {
             space (higher dimension noise-functions also exist, but not for the
             purpose of this article) and returns a value in the range{" "}
             <code>-1..=1</code>{" "}
-            such as points close together return similar values, but slightly
-            different values.
+            such as points close together return similar, but slightly
+            different, values.
           </p>
           <p>The interactive illustration below shows how this works.</p>
           <NoiseIllustration />
@@ -154,7 +154,9 @@ export default function PostPage({ data: post }: PageProps<Post>) {
             same.
           </p>
           <p>The only change we need to make to our code is the following:</p>
-          <Code language="typescript">{"const n = noise(x/100, y/100);"}</Code>
+          <Code language="typescript">
+            {"const n = noise(x / 100, y / 100);"}
+          </Code>
           <NoiseAngleIllustration showSmoothening />
 
           <p>

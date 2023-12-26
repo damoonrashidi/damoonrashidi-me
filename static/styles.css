@@ -94,7 +94,7 @@ pre, code {
   font-size: 0.8rem;
 }
 
-span:target {
-  background: var(--text-highlight);
-  color: var(--text-fg);
+*:target {
+  background: var(--background-light);
+  color:var(--text-highlight);
 }
