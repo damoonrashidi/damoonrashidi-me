@@ -3,7 +3,7 @@ title: Waluigi represents all of us.
 createdAt: 2023-12-23T22:19:00Z
 updatedAt: 2023-12-23T22:19:00Z
 status: draft
-snippet: The axiom that the tech world has seemed to settle on is this, simply having a successful product that solves customer's problems isn't enough. Investors must eat too and the TAM must grow.
+snippet: The axiom that the tech world has seemed to settle on is simply having a successful product that solves customer's problems isn't enough. The TAM must grow and investors must eat too.
 ---
 
 The better part my career has been spent at self-proclaimed scale-up SaaS
@@ -24,21 +24,21 @@ question is _what is next_?
 ## No one buys WinRAR.<sup> [*](#people-do-buy-winrar)</sup>
 
 The [axiom](https://en.wikipedia.org/wiki/Axiom) that the tech world seems to
-have settled on is this, simply having a successful product that solves
-customer's problems isn't enough. Investors must eat too, the
-[TAM](https://en.wikipedia.org/wiki/Total_addressable_market) must grow and
-scale ups must scale, it's in the name, anything else would be illegal. So, off
-we go chasing infinite growth and now our cURL GUI needs to
+have settled on is simply having a successful product that solves customer's
+problems isn't enough. The
+[TAM](https://en.wikipedia.org/wiki/Total_addressable_market) must grow,
+investors must eat too and scale ups must scale, it's in the name, anything else
+would be illegal. So, off we go chasing infinite growth and now our cURL GUI
+needs to
 [raise _another_ $225M in investments](https://www.postman.com/company/about-postman/#the-investors).
 <sup>
 [*](#postman-does-more-than-put-a-gui-over-curl-but-500m-is-a-lot-of-money)</sup>
 
-Since the
-[Product Market has been fitted](https://mailchimp.com/resources/product-market-fit/#heading+defining+product-market+fit),
-but the product needs to continue to grow, we now need to go out searching for
-other related problems to solve. We pick something from a roadmap, or an
-opportunity tree or whatever framework we're using and start to calculate the
-cost of it.
+Since the Product has been
+[Market Fitted](https://mailchimp.com/resources/product-market-fit/#heading+defining+product-market+fit)
+but still needs to continue to grow we now need to go out searching for other
+related problems to solve. We pick something from a roadmap or an opportunity
+tree or whatever framework we're using and start to calculate the cost of it.
 
 The first cost, and the easiest one to see is the upfront development cost, the
 time from when a solution has been conceived until it's been deployed. This one
@@ -48,12 +48,16 @@ pruning your MVPs.
 
 Second is the opportunity cost, the price we pay to work on this thing instead
 of every other thing we could be doing right now. This one is fairly abstract as
-the _what to work on_-decisions are often made on a higher level.
+the _what to work on_-decisions are often made further up in the coprorate
+hierarchy and trickles down to engineering in the form of JIRA tasks or
+roadmaps. You could argue that whatever we're doing _right now_ is the most
+imporant thing we could be doing, otherwise we obviously shouldn't be doing it,
+we should be doing the other thing that is more important.
 
 Finally, the maintenance cost, what does it mean to keep this thing alive and
-kicking, and this one is often difficult to calculate, since code bases race
-towards entropy in the midst of changing requirements, staff turnover making
-knowledge ephemeral and 3rd party
+kicking. This one is often difficult to calculate, since code bases race towards
+entropy in the midst of changing requirements, staff turnover making knowledge
+ephemeral and 3rd party
 [dependencies](https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code)
 [breaking](https://www.thegingerviking.com/the-right-to-delete-fakerjs-fragile-nature-open-source/)
 while being littered throughout code bases with tight couplings and
@@ -62,7 +66,8 @@ while being littered throughout code bases with tight couplings and
 Adding these three costs together you end up with a number that (hopefully) is
 smaller than the value of the feature produced. So when picking our Next Thing
 To Do <sup>TM</sup> it's easy to only look at the development cost since it's
-more tangible, and you already spend time trying to guess it.
+more tangible, and you most likely already have processes in place to estimate
+these.
 
 ## Enter, Waluigi
 
@@ -96,12 +101,12 @@ not because they somewhat fit into our product offering and it's _easy enough to
 add another waluigi to our product_<sup>
 [*](#waluigi-is-my-favorite-nintento-character-and-i-picked-him-all-the-time-when-playing-mario-tennis-on-the-n64)</sup>.
 
-Let's say for example that we're building a UML diagramming app where was to be
-able to create UML diagrams and export them to a few different image formats.
-That's it. Product Market fitted. We also have some internal metrics on this,
-such as "Diagrams created per day" and "Diagram Complexity" aggregated by
-customer. It would be easy to go "we already have this data, why not build a
-dashboard to show the user how much value we provide, _it's easy enough to do_".
+Let's say for example that we're building a UML diagramming app that let's you
+create UML diagrams and export them to a few different image formats. That's it.
+Product Market fitted. We also have some internal metrics on this, such as
+"Diagrams created per day" and "Diagram Complexity" aggregated by customer. It
+would be easy to go "we already have this data, why not build a dashboard to
+show the user how much value we provide, _it's easy enough to do_".
 
 Next up for our Diagramming app some stakeholders thought it'd be a good idea to
 add the ability to do free hand drawings as well, bringing the app more into the
@@ -127,9 +132,10 @@ going so much that we need to keep going.
 
 I'd go as far as saying that features should even be their own
 [eigenvalue](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors), so
-that when the systems they reference transform, they can remain constant.
-Because unlike Mario, who is eternal, features and code bases mutate with every
-new thing added, and if Mario changes then suddenly Waluigi must change as well.
+that when the product undergoes a transformation, the features with their own
+identity can remain constant. Because unlike Mario, who is eternal, features and
+code bases mutate with every new thing added and if Mario changes then suddenly
+Waluigi must change as well.
 
 ## Look at all the things I haven't done.
 
@@ -141,36 +147,37 @@ shipped for me lately". It's therefore also important to also point towards the
 opportunity and maintenance costs for features as being _easy enough to add_
 isn't reason enough to validate a product or feature's existence.
 
-> "It's just another couple hundred lines of code"
+<blockquote>"It's just another couple hundred lines of code"
+<figcaption>- Person who planned to maintain the code themselves until they leave and then who cares.</figcaption>
+</blockquote>
 
 Good developers are often good at
 [saying no](https://grugbrain.dev/#grug-on-saying-no), but people are rarely
 praised for work they didn't do. The success of one feature cannot easily be
-attributed to the _non-development_ of another, especially as an organisation is
-easily likened to a
-[complex dynamic parallel process](https://codahale.com/work-is-work/#corporate-americas-next-top-model).
-Developing a good product is difficult, writing good software that is both easy
-to use and easy to maintain is difficult, and knowing why a certain feature
-succeeded even with the benefit of retrospection can be difficult, as the only
-vantage point we can take to evaluate the feature (and the work building it) is
+attributed to the _non-development_ of another. Developing a good product is
+difficult, writing good software that is both easy to use and easy to maintain
+is difficult, and knowing why a certain feature succeeded even with the benefit
+of retrospection can be difficult, as the only vantage point we can take to
+evaluate the feature (and the work building it) is
 [emic](https://laulima.hawaii.edu/access/content/user/millerg/ANTH_200/A200Unit1/EmicEtic.html).
 
 The true cost of development isn't just the number of lines it took to deliver
 the feature. Even if development time might be close to zero and the feature is
 in the lower left quadrant of the
 [action priority matrix](https://www.productplan.com/glossary/action-priority-matrix/).
-The ratio of value to maintenance cost will approach zero for a poorly vetted
-feature when it has to be maintained in perpetuity.
+The ratio of value-to-maintenance cost will approach zero for a poorly vetted
+feature when it has to be maintained in perpetuity, and time could be spent
+doing something more valuable.
 
 Now, all of a sudden, this barely used implementation has expanded the surface
 area of things to fix when other things change or break.
 
 In summary, I think there is a lot of value in being cognizant of when you are
 writing a feature that stands on its own legs, a _Mario_, or when it's not
-justified fully unto itself, a _Waluigi_, and when you make a Waluigi, it's
-worth considering the maintenance and opportunity costs, not only the
-development cost and only after factoring these costs in should you decide if
-it's truly worth doing, or if it's just easy.
+justified fully unto itself, a _Waluigi_, and when you makee a Waluigi, it's
+worth considering the maintenance and opportunity cost as well. Only after
+factoring these costs in should you decide if it's truly worth doing, or if it's
+just easy.
 
 ## Disclaimers
 

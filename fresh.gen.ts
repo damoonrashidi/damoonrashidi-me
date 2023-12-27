@@ -9,9 +9,15 @@ import * as $articles_slug_ from "./routes/articles/[slug].tsx";
 import * as $articles_flow_field_methods from "./routes/articles/flow-field-methods.tsx";
 import * as $articles_index from "./routes/articles/index.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $blog_code from "./islands/blog/code.tsx";
-import * as $blog_flow_fields_noise_angles from "./islands/blog/flow-fields/noise-angles.tsx";
-import * as $blog_flow_fields_noise from "./islands/blog/flow-fields/noise.tsx";
+import * as $articles_code from "./islands/articles/code.tsx";
+import * as $articles_flow_fields_building_line from "./islands/articles/flow-fields/building-line.tsx";
+import * as $articles_flow_fields_illustration from "./islands/articles/flow-fields/illustration.tsx";
+import * as $articles_flow_fields_max_length from "./islands/articles/flow-fields/max-length.tsx";
+import * as $articles_flow_fields_noise_angles from "./islands/articles/flow-fields/noise-angles.tsx";
+import * as $articles_flow_fields_noise_line from "./islands/articles/flow-fields/noise-line.tsx";
+import * as $articles_flow_fields_noise from "./islands/articles/flow-fields/noise.tsx";
+import * as $articles_flow_fields_useColors from "./islands/articles/flow-fields/useColors.ts";
+import * as $articles_flow_fields_useResize from "./islands/articles/flow-fields/useResize.ts";
 import * as $home_art_spinner from "./islands/home/art-spinner.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -26,10 +32,22 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/blog/code.tsx": $blog_code,
-    "./islands/blog/flow-fields/noise-angles.tsx":
-      $blog_flow_fields_noise_angles,
-    "./islands/blog/flow-fields/noise.tsx": $blog_flow_fields_noise,
+    "./islands/articles/code.tsx": $articles_code,
+    "./islands/articles/flow-fields/building-line.tsx":
+      $articles_flow_fields_building_line,
+    "./islands/articles/flow-fields/illustration.tsx":
+      $articles_flow_fields_illustration,
+    "./islands/articles/flow-fields/max-length.tsx":
+      $articles_flow_fields_max_length,
+    "./islands/articles/flow-fields/noise-angles.tsx":
+      $articles_flow_fields_noise_angles,
+    "./islands/articles/flow-fields/noise-line.tsx":
+      $articles_flow_fields_noise_line,
+    "./islands/articles/flow-fields/noise.tsx": $articles_flow_fields_noise,
+    "./islands/articles/flow-fields/useColors.ts":
+      $articles_flow_fields_useColors,
+    "./islands/articles/flow-fields/useResize.ts":
+      $articles_flow_fields_useResize,
     "./islands/home/art-spinner.tsx": $home_art_spinner,
   },
   baseUrl: import.meta.url,

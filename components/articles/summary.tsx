@@ -3,9 +3,19 @@ export interface ArticleSummaryProps {
   title: string;
   snippet: string;
   createdAt: Date;
+  updatedAt: Date;
 }
 
 export function ArticleSummary({ post }: { post: ArticleSummaryProps }) {
+  const dateFormat = Intl.DateTimeFormat("en-us", {
+    year: "numeric",
+    day: "numeric",
+    month: "long",
+  });
+
+  const createdAt = dateFormat.format(post.createdAt);
+  const updatedAt = dateFormat.format(post.updatedAt);
+
   return (
     <article
       key={post.slug}
@@ -16,15 +26,12 @@ export function ArticleSummary({ post }: { post: ArticleSummaryProps }) {
           {post.title}
         </a>
       </h2>
-      <p className="text-lg">
+      <p className="text-md">
         {post.snippet}
       </p>
       <p className="text-subtle font-bold">
-        {Intl.DateTimeFormat("en-us", {
-          year: "numeric",
-          day: "numeric",
-          month: "long",
-        }).format(post.createdAt)}
+        {createdAt}
+        {createdAt !== updatedAt ? `, updated ${updatedAt}` : <></>}
       </p>
     </article>
   );

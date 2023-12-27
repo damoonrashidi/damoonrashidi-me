@@ -1,58 +1,41 @@
 import { openSimplexNoise2D } from "$noise";
-import { Illustration } from "@/components/articles/illustration.tsx";
 import { Button } from "@/components/ui/button.tsx";
+import { Illustration } from "@/islands/articles/flow-fields/illustration.tsx";
+import { useColors } from "@/islands/articles/flow-fields/useColors.ts";
+import { useResize } from "@/islands/articles/flow-fields/useResize.ts";
 import { useEffect, useRef, useState } from "preact/hooks";
 
 export function NoiseIllustration() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
-  const [maxHeight, setMaxHeight] = useState(0);
-  const [maxWidth, setMaxWidth] = useState(0);
-
-  useEffect(() => {
-    const observer = new ResizeObserver(() => {
-      if (!canvas.current) {
-        return;
-      }
-      const { width, height } = canvas.current?.getBoundingClientRect();
+  const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
+    if (canvas.current) {
       canvas.current.width = width;
       canvas.current.height = height;
-
-      setMaxWidth(width);
-      setMaxHeight(height);
-    });
-
-    if (canvas.current) {
-      observer.observe(canvas.current);
     }
+  });
+  const [fill, stroke] = useColors();
 
-    return () => {
-      if (canvas.current) {
-        observer.unobserve(canvas.current);
-      }
-    };
-  }, [canvas]);
-
+  useEffect(() => {
+    if (ctx) {
+      ctx.font = "10px 'Overpass Mono', monospace";
+      ctx.fillStyle = fill;
+      ctx.strokeStyle = stroke;
+    }
+  }, [ctx, stroke, fill]);
   useEffect(() => {
     if (!canvas.current) {
       return;
     }
+    setCtx(canvas.current.getContext("2d")!);
+  }, [canvas]);
 
-    const ctx = canvas.current.getContext("2d")!;
-
-    ctx.font = "10px 'Overpass Mono', monospace";
-    ctx.fillStyle = getComputedStyle(canvas.current).getPropertyValue(
-      "--text-fg",
-    );
-    ctx.strokeStyle = getComputedStyle(canvas.current).getPropertyValue(
-      "--text-fg",
-    );
-    setCtx(ctx);
+  useEffect(() => {
     draw();
-  }, [canvas, maxHeight, maxWidth]);
+  }, [canvas, ctx, maxWidth, maxHeight, fill, stroke]);
 
   const draw = () => {
-    if (!ctx) {
+    if (!ctx || maxWidth === 0 || maxHeight === 0) {
       return;
     }
 
@@ -70,6 +53,7 @@ export function NoiseIllustration() {
 
   return (
     <Illustration>
+      <canvas className="h-[500px] w-full" ref={canvas} />
       <div className="pb-2">
         <Button
           onClick={() => {
@@ -79,7 +63,6 @@ export function NoiseIllustration() {
           Re-generate
         </Button>
       </div>
-      <canvas className="h-[500px] w-full" ref={canvas} />
     </Illustration>
   );
 }

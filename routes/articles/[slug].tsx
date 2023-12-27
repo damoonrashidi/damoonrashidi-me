@@ -3,6 +3,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { render } from "$gfm";
 import { getPost } from "@/blog/getPost.ts";
 import { Post } from "@/blog/post.ts";
+import { ArticleLead } from "@/components/articles/lead.tsx";
 import { Header } from "@/components/header.tsx";
 
 export const handler: Handlers<Post> = {
@@ -28,17 +29,8 @@ export default function PostPage(props: PageProps<Post>) {
       </Head>
       <Header />
       <article className="max-w-prose m-auto font-display p-12 sm:p-8">
-        <div>
-          <h1 className="text-4xl">{post.title}</h1>
-          <p className="pt-4">
-            {Intl.DateTimeFormat("en-us", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }).format(post.createdAt)}
-          </p>
-        </div>
-        <div
+        <ArticleLead post={post} />
+        <section
           class="mt-8 markdown-body"
           dangerouslySetInnerHTML={{ __html: render(post.body) }}
         />

@@ -10,7 +10,7 @@ export async function getPosts(): Promise<Post[]> {
     promises.push(getPost(slug));
   }
   const posts = await Promise.all(promises) as Post[];
-  posts.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  posts.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
   return posts.filter(
     ({ status }) => status === PostStatus.Published,
   );
