@@ -45,7 +45,7 @@ export function NoiseIllustration() {
 
     for (let y = 0; y < maxHeight; y += 6) {
       for (let x = 0; x < maxWidth; x += 6) {
-        const n = Math.round(noise(x / 100, y / 100) * 5) / 5;
+        const n = Math.round(noise(x / 100, y / 100) * 10) / 10;
         ctx.fillText(`${n}`, x * 5, y * 5);
       }
     }

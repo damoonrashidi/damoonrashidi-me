@@ -4,11 +4,11 @@ import { Illustration } from "@/islands/articles/flow-fields/illustration.tsx";
 import { useColors } from "@/islands/articles/flow-fields/useColors.ts";
 import { useResize } from "@/islands/articles/flow-fields/useResize.ts";
 import { useEffect, useRef, useState } from "preact/hooks";
+const noise = openSimplexNoise2D();
 
 export function NoiseLineIllustration() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
-  const noise = openSimplexNoise2D();
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
     if (canvas.current) {
       canvas.current.width = width;

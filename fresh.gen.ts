@@ -12,7 +12,7 @@ import * as $index from "./routes/index.tsx";
 import * as $articles_code from "./islands/articles/code.tsx";
 import * as $articles_flow_fields_building_line from "./islands/articles/flow-fields/building-line.tsx";
 import * as $articles_flow_fields_illustration from "./islands/articles/flow-fields/illustration.tsx";
-import * as $articles_flow_fields_max_length from "./islands/articles/flow-fields/max-length.tsx";
+import * as $articles_flow_fields_line_variation from "./islands/articles/flow-fields/line-variation.tsx";
 import * as $articles_flow_fields_noise_angles from "./islands/articles/flow-fields/noise-angles.tsx";
 import * as $articles_flow_fields_noise_line from "./islands/articles/flow-fields/noise-line.tsx";
 import * as $articles_flow_fields_noise from "./islands/articles/flow-fields/noise.tsx";
@@ -37,8 +37,8 @@ const manifest = {
       $articles_flow_fields_building_line,
     "./islands/articles/flow-fields/illustration.tsx":
       $articles_flow_fields_illustration,
-    "./islands/articles/flow-fields/max-length.tsx":
-      $articles_flow_fields_max_length,
+    "./islands/articles/flow-fields/line-variation.tsx":
+      $articles_flow_fields_line_variation,
     "./islands/articles/flow-fields/noise-angles.tsx":
       $articles_flow_fields_noise_angles,
     "./islands/articles/flow-fields/noise-line.tsx":

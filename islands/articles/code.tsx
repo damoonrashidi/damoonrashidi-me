@@ -3,12 +3,11 @@ import ts from "npm:highlight.js/lib/languages/typescript";
 hljs.registerLanguage("typescript", ts);
 
 export const Code = (
-  { children, language }: {
+  { children }: {
     children: string;
-    language: string;
   },
 ) => {
-  const text = hljs.highlight(children.toString(), { language })
+  const text = hljs.highlight(children.toString(), { language: "typescript" })
     .value;
 
   return (

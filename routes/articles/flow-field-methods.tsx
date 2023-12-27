@@ -6,10 +6,10 @@ import { ArticleLead } from "@/components/articles/lead.tsx";
 import { Header } from "@/components/header.tsx";
 import { Code } from "@/islands/articles/code.tsx";
 import { BuildingALine } from "@/islands/articles/flow-fields/building-line.tsx";
-import { MaxLengthIllustration } from "@/islands/articles/flow-fields/max-length.tsx";
 import { NoiseAngleIllustration } from "@/islands/articles/flow-fields/noise-angles.tsx";
 import { NoiseLineIllustration } from "@/islands/articles/flow-fields/noise-line.tsx";
 import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
+import { LineVariationIllustration } from "../../islands/articles/flow-fields/line-variation.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
@@ -98,7 +98,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           And here is the code that generated the image above, abbreviated for
           clarity.
         </p>
-        <Code language="typescript">
+        <Code>
           {`for (let y = 0; y < 40; y++) {
   for (let x = 0; x < 40; x++) {
     const n = noise(x, y);
@@ -113,7 +113,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           of the noise value.
         </p>
         <NoiseAngleIllustration />
-        <Code language="typescript">
+        <Code>
           {`for (let y = 0; y < maxHeight; y += 20) {
   for (let x = 0; x < maxWidth; x += 20) {
     const n = noise(x, y);
@@ -159,7 +159,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           same.
         </p>
         <p>The only change we need to make to our code is the following:</p>
-        <Code language="typescript">
+        <Code>
           {`const smoothness = 100;
 const n = noise(x / smoothness, y / smoothness);`}
         </Code>
@@ -194,11 +194,11 @@ const n = noise(x / smoothness, y / smoothness);`}
           implementation is necessary. First we need to pick a random point on
           the canvas and then ride the flow field until we get out of bounds.
         </p>
-        <Code language="typescript">
+        <Code>
           {`const stepSize = 10;
 let x = 0;
 let y = random(0..height);
-while ((0..width).contains(x) && (0..height).contains(y)) {
+while (bounds.contains(x,y)) {
   const n = noise(x / smoothness, y / smoothness);
   x += cos(n) * stepSize;
   y += sin(n) * stepSize;
@@ -217,13 +217,13 @@ while ((0..width).contains(x) && (0..height).contains(y)) {
           Stop the loop when the line has reached the end of the canvas and
           finally draw the line.
         </p>
-        <Code language="typescript">
+        <Code>
           {`const stepSize = 10;
 let x = random(0..width);
 let y = random(0..height);
 beginPath();
 moveTo(x,y);
-while ((0..width).contains(x) && (0..height).contains(y)) {
+while (bounds.contains(x,y)) {
   const n = noise(x / smoothness, y / smoothness);
   x += cos(n) * stepSize;
   y += sin(n) * stepSize;
@@ -237,21 +237,60 @@ stroke();`}
           position.
         </p>
         <NoiseLineIllustration />
+
         <h2>Experimenting with lines.</h2>
         <p>
           So far not a lot of variance has been achieved. All results, no matter
           what the seed of the noise function is, will yield somewhat similar
-          images. A way to combat this is to change up the length of the lines.
-          A lot of short lines will yield a very different texture to lines that
-          run across the entire canvas.
+          images. There are a few ways to combat this, one way is by warping the
+          noise value a bit, resulting in lines exaggerating their turns, this
+          is done by simply multiplying the noise value by some constant before
+          applying the <code>cos()</code> and <code>sin()</code> functions.
         </p>
+        <Code>
+          {`const warp = 2.2;
+const n = noise(x, y);
+x += cos(n * warp) * stepSize;
+y += sin(n * warp) * stepSize;`}
+        </Code>
         <p>
-          If we had some accumulator counting how long the current line is when
-          making it, and instead of stopping when we reached the end of the
-          canvas we stopped when hitting some max line length images would start
-          to look pretty different.
+          Another way is by varying the length of the steps each line takes
+          between each step as it progresses through the field. Shorter steps
+          yield much smoother curves while longer steps will make the lines a
+          lot more jagged.
         </p>
-        <MaxLengthIllustration />
+        <Code>
+          {`const jaggedStepSize = 100;
+const n = noise(x, y);
+x += cos(n) * jaggedStepSize;
+y += sin(n) * jaggedStepSize;`}
+        </Code>
+        <LineVariationIllustration />
+        <h2>A note on noise functions</h2>
+        <p>So far we've been using a noise function called OpenSimplex.</p>
+        <blockquote>
+          OpenSimplex noise is an n-dimensional gradient noise function that was
+          developed in order to overcome the patent-related issues surrounding
+          Simplex noise, while continuing to also avoid the visually-significant
+          directional artifacts characteristic of Perlin noise.
+          <figcaption>
+            - Kurt Spencer
+          </figcaption>
+        </blockquote>
+        <p>
+          As alluded to in the quote, there are few different ones whose
+          objective is to produce similar values for similar coordinates. But
+          nothing is stopping us from writing our own. A proper noise function
+          is a bit complicated and out of scope for this article, but just
+          writing a function that returns similar values for a given coordinate
+          is pretty simple.
+        </p>
+
+        <h2>Collision Detection</h2>
+        <p>
+          In my opinion, the real fun doesn't really begin until we start
+          looking at having the lines interact with each other.
+        </p>
       </article>
     </>
   );

@@ -1,5 +1,4 @@
 import { openSimplexNoise2D } from "$noise";
-import { Button } from "@/components/ui/button.tsx";
 import { Illustration } from "@/islands/articles/flow-fields/illustration.tsx";
 import { useColors } from "@/islands/articles/flow-fields/useColors.ts";
 import { useResize } from "@/islands/articles/flow-fields/useResize.ts";
@@ -8,6 +7,8 @@ import { useEffect, useRef, useState } from "preact/hooks";
 export interface NoiseAngleIllustrationProps {
   showSmoothening?: boolean;
 }
+
+const noise = openSimplexNoise2D();
 
 export function NoiseAngleIllustration(
   { showSmoothening }: NoiseAngleIllustrationProps,
@@ -46,8 +47,6 @@ export function NoiseAngleIllustration(
       return;
     }
 
-    const noise = openSimplexNoise2D();
-
     ctx.clearRect(0, 0, maxWidth, maxHeight);
 
     for (let y = 0; y < maxHeight; y += 20) {
@@ -68,14 +67,7 @@ export function NoiseAngleIllustration(
   return (
     <Illustration>
       <canvas className="h-[500px] w-full" ref={canvas} />
-      <div className="flex gap-10 pt-4">
-        <Button
-          onClick={() => {
-            draw();
-          }}
-        >
-          Re-generate
-        </Button>
+      <div className="flex gap-4 pt-4 flex-wrap">
         {showSmoothening
           ? (
             <div className="flex items-center gap-1">

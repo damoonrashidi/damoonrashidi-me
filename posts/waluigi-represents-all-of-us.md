@@ -73,10 +73,10 @@ these.
 
 In the beginning there was only Mario, and to be able to play two player games,
 Luigi was created. Luigi's purpose is as an accompaniment to Mario. Then Mario
-needed an adversary, so Wario was created. Finally, with the
+needed an adversary so Wario was created. Finally with the
 [release of Mario Tennis](https://en.wikipedia.org/wiki/Waluigi), where double
 matches could be played and Mario and Luigi being a natural pairing, Wario
-needed a partner too, so Waluigi was created. We've kept going so much that we
+needed a partner too so Waluigi was created. We've kept going so much that we
 need to keep going.
 
 <blockquote>
