@@ -10,7 +10,9 @@ import * as $articles_flow_field_methods from "./routes/articles/flow-field-meth
 import * as $articles_index from "./routes/articles/index.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $articles_code from "./islands/articles/code.tsx";
+import * as $articles_flow_fields_angle_to_point from "./islands/articles/flow-fields/angle-to-point.tsx";
 import * as $articles_flow_fields_building_line from "./islands/articles/flow-fields/building-line.tsx";
+import * as $articles_flow_fields_distance_to_point from "./islands/articles/flow-fields/distance-to-point.tsx";
 import * as $articles_flow_fields_illustration from "./islands/articles/flow-fields/illustration.tsx";
 import * as $articles_flow_fields_line_variation from "./islands/articles/flow-fields/line-variation.tsx";
 import * as $articles_flow_fields_noise_angles from "./islands/articles/flow-fields/noise-angles.tsx";
@@ -33,8 +35,12 @@ const manifest = {
   },
   islands: {
     "./islands/articles/code.tsx": $articles_code,
+    "./islands/articles/flow-fields/angle-to-point.tsx":
+      $articles_flow_fields_angle_to_point,
     "./islands/articles/flow-fields/building-line.tsx":
       $articles_flow_fields_building_line,
+    "./islands/articles/flow-fields/distance-to-point.tsx":
+      $articles_flow_fields_distance_to_point,
     "./islands/articles/flow-fields/illustration.tsx":
       $articles_flow_fields_illustration,
     "./islands/articles/flow-fields/line-variation.tsx":

@@ -5,10 +5,12 @@ import { Post } from "@/blog/post.ts";
 import { ArticleLead } from "@/components/articles/lead.tsx";
 import { Header } from "@/components/header.tsx";
 import { Code } from "@/islands/articles/code.tsx";
+import { AngleBetweenIllustration } from "@/islands/articles/flow-fields/angle-to-point.tsx";
 import { BuildingALine } from "@/islands/articles/flow-fields/building-line.tsx";
 import { NoiseAngleIllustration } from "@/islands/articles/flow-fields/noise-angles.tsx";
 import { NoiseLineIllustration } from "@/islands/articles/flow-fields/noise-line.tsx";
 import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
+import { DistanceToPointIllustration } from "../../islands/articles/flow-fields/distance-to-point.tsx";
 import { LineVariationIllustration } from "../../islands/articles/flow-fields/line-variation.tsx";
 
 export const handler: Handlers<Post> = {
@@ -43,12 +45,20 @@ export default function PostPage({ data: post }: PageProps<Post>) {
       <Header />
       <article className="max-w-prose m-auto font-display p-8 sm:p-0">
         <ArticleLead post={post} />
+        <blockquote>
+          If this article is too wordy for you, skip all the text and play with
+          the illustrations, they get more and more fun as the articles rambles
+          on!
+          <figcaption>-- Me</figcaption>
+        </blockquote>
 
         <p>
           This article will describe the methods and concepts I used to create
-          the series of generated artworks pictured below, as well as I
-          understand them. I've also tried to visualise the the algorithms and
-          provide some code examples.
+          the series of generated artworks pictured below. I've tried to
+          visualise the algorithms and provide some code samples. The code
+          samples are written in a Typescript, with some non-typescripty APIs
+          thrown in to make them more concise and easy to follow. The general
+          algorithms can easily be ported to any language though.
         </p>
         <p>
           As a note, far more talented people than me have written{" "}
@@ -60,16 +70,19 @@ export default function PostPage({ data: post }: PageProps<Post>) {
         <div className="flex w-full items-center justify-center flex-wrap lg:flex-nowrap gap-4 pb-12 py-4 ">
           <img
             src="/articles/flow-field-methods/example-1.png"
+            alt="Flow field example one"
             width={300}
             height={475}
           />
           <img
             src="/articles/flow-field-methods/example-2.png"
+            alt="Flow field example two"
             width={300}
             height={475}
           />
           <img
             src="/articles/flow-field-methods/example-3.png"
+            alt="Flow field example three"
             width={300}
             height={475}
           />
@@ -266,7 +279,7 @@ x += cos(n) * jaggedStepSize;
 y += sin(n) * jaggedStepSize;`}
         </Code>
         <LineVariationIllustration />
-        <h2>A note on noise functions</h2>
+        <h2>Alternatives to noise functions</h2>
         <p>So far we've been using a noise function called OpenSimplex.</p>
         <blockquote>
           OpenSimplex noise is an n-dimensional gradient noise function that was
@@ -279,17 +292,64 @@ y += sin(n) * jaggedStepSize;`}
         </blockquote>
         <p>
           As alluded to in the quote, there are few different ones whose
-          objective is to produce similar values for similar coordinates. But
-          nothing is stopping us from writing our own. A proper noise function
-          is a bit complicated and out of scope for this article, but just
-          writing a function that returns similar values for a given coordinate
-          is pretty simple.
+          objective is to produce similar, but not identical, values for similar
+          coordinates. But nothing is stopping us from writing our own. A proper
+          noise function is a bit complicated and out of scope for this article,
+          but just writing a function that returns similar values for a given
+          coordinate is pretty simple.
         </p>
+        <p>
+          These home grown functions won't yield as random seeming results as a
+          noise function but they will let us control the final output much
+          more. They will also let us be much more creative in trying new things
+          out now that we can draw lines that reliably follow a path.
+        </p>
+        <p>
+          An easy first test we can do is simply taking a coordinate and return
+          it's distance to another point that we'll call the{" "}
+          <code>focalPoint</code>, just to see what would happen. This function
+          would satisfy the rule that points close together yield similar
+          values, making our lines nice and smooth.
+        </p>
+        <p>Mouse over the illustration below to set a new focal point</p>
+
+        <Code>
+          {`function distanceToCenter(
+  x: number,
+  y: number,
+  destinationX: number,
+  destinationY: number,
+): number {
+  const centerX = destinationX / 2;
+  const centerY = destinationY / 2;
+
+  const dx = x - centerX;
+  const dy = y - centerY;
+  return Math.sqrt(dx ** 2 + dy ** 2);
+}`}
+        </Code>
+
+        <DistanceToPointIllustration />
+
+        <p>
+          If we instead of returning the distance to <code>focalPoint</code>
+          {" "}
+          we can return the angle the line has from our point to{" "}
+          <code>focalPoint</code>
+        </p>
+
+        <AngleBetweenIllustration />
 
         <h2>Collision Detection</h2>
         <p>
           In my opinion, the real fun doesn't really begin until we start
           looking at having the lines interact with each other.
+        </p>
+
+        <h2>Colors</h2>
+        <p>
+          The theme for this article seems to converge to _"there are a lot of
+          different ways to do something"_
         </p>
       </article>
     </>

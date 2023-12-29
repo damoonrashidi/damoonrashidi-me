@@ -2,9 +2,12 @@
 title: Waluigi represents all of us.
 createdAt: 2023-12-23T22:19:00Z
 updatedAt: 2023-12-23T22:19:00Z
-status: draft
+status: published
 snippet: The axiom that the tech world has seemed to settle on is simply having a successful product that solves customer's problems isn't enough. The TAM must grow and investors must eat too.
 ---
+
+This article started out as a satirical take on start ups but has since devolved
+into my unhinged ramblings on software development and should be read as such.
 
 The better part my career has been spent at self-proclaimed scale-up SaaS
 companies. Companies that had already found their niche, a solid customer base
@@ -41,10 +44,12 @@ related problems to solve. We pick something from a roadmap or an opportunity
 tree or whatever framework we're using and start to calculate the cost of it.
 
 The first cost, and the easiest one to see is the upfront development cost, the
-time from when a solution has been conceived until it's been deployed. This one
-is the easiest one to see, because you already spend hours planning and grooming
-and breaking things down. It's hopefully also fairly small if you're good at
-pruning your MVPs.
+time from when a solution has been conceived until it's been deployed. It's the
+easiest one to see because you already spend hours in planning and grooming
+breaking things down to get an estimate that isn't off by a power of ten. It's
+hopefully also fairly small if you're good at pruning your MVPs because being
+off by a power of ten for a small thing is being off by less than being off a
+power of ten for a big thing.
 
 Second is the opportunity cost, the price we pay to work on this thing instead
 of every other thing we could be doing right now. This one is fairly abstract as
@@ -52,7 +57,8 @@ the _what to work on_-decisions are often made further up in the coprorate
 hierarchy and trickles down to engineering in the form of JIRA tasks or
 roadmaps. You could argue that whatever we're doing _right now_ is the most
 imporant thing we could be doing, otherwise we obviously shouldn't be doing it,
-we should be doing the other thing that is more important.
+we should be doing that other thing that is more important. But we're doing this
+thing and the cost of it is not doing those other things.
 
 Finally, the maintenance cost, what does it mean to keep this thing alive and
 kicking. This one is often difficult to calculate, since code bases race towards
@@ -69,7 +75,7 @@ To Do <sup>TM</sup> it's easy to only look at the development cost since it's
 more tangible, and you most likely already have processes in place to estimate
 these.
 
-## Enter, Waluigi
+## Enter, Waluigi.
 
 In the beginning there was only Mario, and to be able to play two player games,
 Luigi was created. Luigi's purpose is as an accompaniment to Mario. Then Mario
@@ -112,10 +118,14 @@ Next up for our Diagramming app some stakeholders thought it'd be a good idea to
 add the ability to do free hand drawings as well, bringing the app more into the
 realm of online whiteboarding. We add some fields to our diagram model such as
 `type: Diagram | Drawing;`<sup>
-[*](#this-is-a-bad-idea-were-now-in-bad-abstraction-land)</sup> everything just
-works, easy. It's now Luigi o'clock.
+[*](#this-is-a-bad-idea-were-now-in-bad-abstraction-land)</sup>, add some mouse
+events to our canvas and calculate some deltas and now we have MS Paint.
 
-TAM grown. Investors fed.
+TAM grown. Investors fed. It's now Luigi o'clock.
+
+We've built something we didn't set out to do, but it still fills a clear
+purpose. Even if it companies wouldn't buy a licence to our freehand drawing
+tool it might still be a good accompaniment to our original product.
 
 Now, the logical next step would be to add a new dashboard (or worse yet, add
 more tangentially related data to the original dashboard, fragmenting its
@@ -141,14 +151,14 @@ Waluigi must change as well.
 
 With a lot of things unfortunately being easy to do, and when faced with low
 upfront development costs it's easy to say yes to building something new
-whenever some stakeholder asks for it. Why not, _it's a quick fix_, so you have
-no reason to say no and the proxy metric for value delivered is "what have you
-shipped for me lately". It's therefore also important to also point towards the
-opportunity and maintenance costs for features as being _easy enough to add_
-isn't reason enough to validate a product or feature's existence.
+whenever some stakeholder asks for it. You have no reason to say no and the
+proxy metric for value delivered is "what have you shipped for me lately". It's
+therefore also important to also point towards the opportunity and maintenance
+costs for features as being _easy enough to add_ isn't reason enough to validate
+a product or feature's existence.
 
 <blockquote>"It's just another couple hundred lines of code"
-<figcaption>- Person who planned to maintain the code themselves until they leave and then who cares.</figcaption>
+<figcaption>- Person who won't document the feature.</figcaption>
 </blockquote>
 
 Good developers are often good at
@@ -174,8 +184,8 @@ area of things to fix when other things change or break.
 
 In summary, I think there is a lot of value in being cognizant of when you are
 writing a feature that stands on its own legs, a _Mario_, or when it's not
-justified fully unto itself, a _Waluigi_, and when you makee a Waluigi, it's
-worth considering the maintenance and opportunity cost as well. Only after
+justified fully unto itself, a _Waluigi_, and when you do make a Waluigi, it's
+worth being upfront about the maintenance and opportunity cost. Only after
 factoring these costs in should you decide if it's truly worth doing, or if it's
 just easy.
 

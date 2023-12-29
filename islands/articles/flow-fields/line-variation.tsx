@@ -15,7 +15,8 @@ export function LineVariationIllustration() {
   const [fill, stroke] = useColors();
   const [maxLineLength, setMaxLineLength] = useState(10);
   const [warp, setWarp] = useState(1.0);
-  const [stepSize, setStepSize] = useState(15);
+  const [stepSize, setStepSize] = useState(5);
+  const [smoothness, setSmoothness] = useState(100);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
     if (canvas.current) {
@@ -37,7 +38,17 @@ export function LineVariationIllustration() {
       ctx.strokeStyle = stroke;
     }
     draw();
-  }, [ctx, fill, stroke, maxHeight, maxWidth, maxLineLength, warp, stepSize]);
+  }, [
+    ctx,
+    fill,
+    stroke,
+    maxHeight,
+    maxWidth,
+    maxLineLength,
+    warp,
+    stepSize,
+    smoothness,
+  ]);
 
   const draw = () => {
     if (!ctx) {
@@ -57,7 +68,7 @@ export function LineVariationIllustration() {
         x > 0 && y > 0 && x < maxWidth && y < maxHeight &&
         length < maxLineLength
       ) {
-        const n = noise(x / 80, y / 80);
+        const n = noise(x / smoothness, y / smoothness);
         x += Math.cos(n * warp) * stepSize;
         y += Math.sin(n * warp) * stepSize;
         length += stepSize;
@@ -75,8 +86,27 @@ export function LineVariationIllustration() {
       />
       <div className="pt-4 flex flex-col gap-4">
         <div className="flex gap-2">
-          <span>Warp</span>
+          <label className="w-[120px] text-right" for="smoothness_variation">
+            Smoothness
+          </label>
           <input
+            type="range"
+            value={smoothness}
+            id="smoothness_variation"
+            min={20}
+            max={500}
+            onChange={(event) =>
+              setSmoothness(parseInt(event.currentTarget.value, 10))}
+          />
+          <span className="inline-block w-[50px]">{smoothness}</span>
+        </div>
+
+        <div className="flex gap-2">
+          <label className="w-[120px] text-right" for="warp_variation">
+            Warp
+          </label>
+          <input
+            id="warp_variation"
             type="range"
             value={warp}
             min={0.5}
@@ -88,10 +118,13 @@ export function LineVariationIllustration() {
         </div>
 
         <div className="flex gap-2">
-          <span>Max length</span>
+          <label className="w-[120px] text-right" for="max_length_variation">
+            Max length
+          </label>
           <input
             type="range"
             value={maxLineLength}
+            id="max_length_variation"
             min={5}
             max={150}
             onChange={(event) =>
@@ -101,12 +134,15 @@ export function LineVariationIllustration() {
         </div>
 
         <div className="flex gap-2">
-          <span>Step size</span>
+          <label className="w-[120px] text-right" for="step_size_variation">
+            Step size
+          </label>
           <input
             type="range"
             value={stepSize}
-            min={5}
-            max={100}
+            id="step_size_variation"
+            min={1}
+            max={50}
             onChange={(event) =>
               setStepSize(parseInt(event.currentTarget.value, 10))}
           />

@@ -22,7 +22,7 @@ export function NoiseIllustration() {
       ctx.fillStyle = fill;
       ctx.strokeStyle = stroke;
     }
-  }, [ctx, stroke, fill]);
+  }, [ctx, stroke, fill, maxWidth, maxHeight]);
   useEffect(() => {
     if (!canvas.current) {
       return;

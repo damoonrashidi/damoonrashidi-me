@@ -12,7 +12,7 @@ export const Code = (
 
   return (
     <pre
-      className="p-4 my-4 bg-[#faf4ed] dark:bg-[#12111a] rounded-md"
+      className="p-4 my-4 bg-[#fdfbf8] dark:bg-[#12111a] rounded-md"
       dangerouslySetInnerHTML={{ __html: text }}
     />
   );

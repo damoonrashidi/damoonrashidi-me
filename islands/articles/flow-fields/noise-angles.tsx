@@ -14,6 +14,7 @@ export function NoiseAngleIllustration(
   { showSmoothening }: NoiseAngleIllustrationProps,
 ) {
   const canvas = useRef<HTMLCanvasElement>(null);
+  const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const [fill, stroke] = useColors();
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
     if (canvas.current) {
@@ -21,8 +22,7 @@ export function NoiseAngleIllustration(
       canvas.current.height = height;
     }
   });
-  const [c, setC] = useState(1);
-  const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
+  const [smoothness, setSmoothness] = useState(1);
 
   useEffect(() => {
     if (ctx) {
@@ -30,7 +30,7 @@ export function NoiseAngleIllustration(
       ctx.fillStyle = fill;
       ctx.strokeStyle = stroke;
     }
-  }, [ctx, fill, stroke]);
+  }, [ctx, fill, stroke, maxWidth, maxHeight]);
 
   useEffect(() => {
     if (canvas.current) {
@@ -40,7 +40,7 @@ export function NoiseAngleIllustration(
 
   useEffect(() => {
     draw();
-  }, [canvas, ctx, c, maxWidth, maxHeight, stroke, fill]);
+  }, [canvas, ctx, smoothness, maxWidth, maxHeight, stroke, fill]);
 
   const draw = () => {
     if (!ctx) {
@@ -51,7 +51,7 @@ export function NoiseAngleIllustration(
 
     for (let y = 0; y < maxHeight; y += 20) {
       for (let x = 0; x < maxWidth; x += 20) {
-        const n = noise(x / c, y / c);
+        const n = noise(x / smoothness, y / smoothness);
         ctx.beginPath();
         ctx.moveTo(x, y + 15);
         ctx.lineTo(
@@ -71,15 +71,17 @@ export function NoiseAngleIllustration(
         {showSmoothening
           ? (
             <div className="flex items-center gap-1">
-              <span>smoothness =</span>
+              <label for="smoothness_angles">smoothness =</label>
               <input
                 type="range"
                 min={1}
                 max={100}
-                value={c}
-                onChange={(e) => setC(parseInt(e.currentTarget.value, 10))}
+                id="smoothness_angles"
+                value={smoothness}
+                onChange={(e) =>
+                  setSmoothness(parseInt(e.currentTarget.value, 10))}
               />
-              <span>{c}</span>
+              <span>{smoothness}</span>
             </div>
           )
           : <></>}
