@@ -9,6 +9,7 @@ export function BuildingALine() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const noise = openSimplexNoise2D();
+  const [stepLabel, setButtonLabel] = useState("Simulate a step");
   const [fill, stroke] = useColors();
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
     if (canvas.current) {
@@ -83,13 +84,18 @@ export function BuildingALine() {
       <div className="pb-2 flex gap-4 py-4 items-center justify-center">
         <Button
           onClick={() => {
+            step(2, Math.random() * maxHeight + 0.1 * 0.9);
+            setButtonLabel("Simulate another step");
+          }}
+        >
+          {stepLabel}
+        </Button>
+        <Button
+          onClick={() => {
             draw();
           }}
         >
           Reset
-        </Button>
-        <Button onClick={() => step(2, Math.random() * maxHeight * 0.9)}>
-          Step
         </Button>
       </div>
     </Illustration>

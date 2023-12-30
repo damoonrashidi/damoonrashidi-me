@@ -7,12 +7,12 @@ snippet: The axiom that the tech world has seemed to settle on is simply having 
 ---
 
 This article started out as a satirical take on start ups but has since devolved
-into my unhinged ramblings on software development and should be read as such.
+into my unhinged ramblings on product development and should be read as such.
 
 The better part my career has been spent at self-proclaimed scale-up SaaS
 companies. Companies that had already found their niche, a solid customer base
 and were profitable (or close to) before I joined. What I like about these types
-of companies is that things usually aren't in a panic, but resources are still
+of companies is that things' usually aren't in a panic, but resources are still
 finite and treated as such. Teams are usually small and focus has to be sharp,
 as the opportunity cost of any misguided venture to "move the needle" is steeper
 than for companies with more room to make bad investments. This article is aimed
@@ -39,26 +39,26 @@ needs to
 
 Since the Product has been
 [Market Fitted](https://mailchimp.com/resources/product-market-fit/#heading+defining+product-market+fit)
-but still needs to continue to grow we now need to go out searching for other
+but still needs to continue to grow so now we need to go out searching for other
 related problems to solve. We pick something from a roadmap or an opportunity
 tree or whatever framework we're using and start to calculate the cost of it.
 
 The first cost, and the easiest one to see is the upfront development cost, the
 time from when a solution has been conceived until it's been deployed. It's the
-easiest one to see because you already spend hours in planning and grooming
+easiest one to see because you already spend hours in plannings and groomings
 breaking things down to get an estimate that isn't off by a power of ten. It's
 hopefully also fairly small if you're good at pruning your MVPs because being
-off by a power of ten for a small thing is being off by less than being off a
-power of ten for a big thing.
+off by a power of ten for a small thing is better than being off a power of ten
+for a big thing.
 
 Second is the opportunity cost, the price we pay to work on this thing instead
 of every other thing we could be doing right now. This one is fairly abstract as
 the _what to work on_-decisions are often made further up in the coprorate
 hierarchy and trickles down to engineering in the form of JIRA tasks or
-roadmaps. You could argue that whatever we're doing _right now_ is the most
-imporant thing we could be doing, otherwise we obviously shouldn't be doing it,
-we should be doing that other thing that is more important. But we're doing this
-thing and the cost of it is not doing those other things.
+roadmaps. You could argue that whatever we're doing _right now_ should be the
+most imporant thing we could be doing, otherwise we obviously shouldn't be doing
+it. We should be doing that other thing that is more important. But we're doing
+this thing and the cost of it is not doing those other things.
 
 Finally, the maintenance cost, what does it mean to keep this thing alive and
 kicking. This one is often difficult to calculate, since code bases race towards
@@ -71,19 +71,17 @@ while being littered throughout code bases with tight couplings and
 
 Adding these three costs together you end up with a number that (hopefully) is
 smaller than the value of the feature produced. So when picking our Next Thing
-To Do <sup>TM</sup> it's easy to only look at the development cost since it's
-more tangible, and you most likely already have processes in place to estimate
-these.
+To Do <sup>TM</sup> it's easy to overlook the a lot of these costs since you
+most likely don't have processes in place to calculate them.
 
 ## Enter, Waluigi.
 
 In the beginning there was only Mario, and to be able to play two player games,
 Luigi was created. Luigi's purpose is as an accompaniment to Mario. Then Mario
-needed an adversary so Wario was created. Finally with the
-[release of Mario Tennis](https://en.wikipedia.org/wiki/Waluigi), where double
-matches could be played and Mario and Luigi being a natural pairing, Wario
-needed a partner too so Waluigi was created. We've kept going so much that we
-need to keep going.
+needed an adversary so Wario was created. Finally, with the
+[release of Mario Tennis](https://en.wikipedia.org/wiki/Waluigi), where Mario
+and Luigi teamed up to become a doubles pairing, Wario needed a partner too so
+Waluigi was created. We've kept going so much that we need to keep going.
 
 <blockquote>
 "Waluigi is the ultimate example of the individual shaped by the signifier.
@@ -104,71 +102,77 @@ brands and commerce we are all Waluigi."
 Out of pocket political and social commentary aside, the gist of it is that
 things should be built because their existence provide value unto themselves,
 not because they somewhat fit into our product offering and it's _easy enough to
-add another waluigi to our product_<sup>
+add another Waluigi to our product_<sup>
 [*](#waluigi-is-my-favorite-nintento-character-and-i-picked-him-all-the-time-when-playing-mario-tennis-on-the-n64)</sup>.
 
 Let's say for example that we're building a UML diagramming app that let's you
 create UML diagrams and export them to a few different image formats. That's it.
 Product Market fitted. We also have some internal metrics on this, such as
-"Diagrams created per day" and "Diagram Complexity" aggregated by customer. It
-would be easy to go "we already have this data, why not build a dashboard to
-show the user how much value we provide, _it's easy enough to do_".
+"Diagrams created per day" and "Diagram Complexity" aggregated by customer.
+
+It would be easy to go "we already have this data, why not build a dashboard to
+show the user how much value we provide, _it's easy enough to do_". So we
+quickly add a dashboard with some filters.
 
 Next up for our Diagramming app some stakeholders thought it'd be a good idea to
 add the ability to do free hand drawings as well, bringing the app more into the
 realm of online whiteboarding. We add some fields to our diagram model such as
 `type: Diagram | Drawing;`<sup>
 [*](#this-is-a-bad-idea-were-now-in-bad-abstraction-land)</sup>, add some mouse
-events to our canvas and calculate some deltas and now we have MS Paint.
+events to our canvas and calculate some mouse position deltas and now we have MS
+Paint.
 
 TAM grown. Investors fed. It's now Luigi o'clock.
 
-We've built something we didn't set out to do, but it still fills a clear
-purpose. Even if it companies wouldn't buy a licence to our freehand drawing
-tool it might still be a good accompaniment to our original product.
+We originally set out to build the best diagramming tool we could but now we're
+doing something slightly different. Even if companies wouldn't buy a license to
+our freehand drawing tool on it's own it might still be a good accompaniment to
+our original product.
 
 Now, the logical next step would be to add a new dashboard (or worse yet, add
 more tangentially related data to the original dashboard, fragmenting its
 purpose), one for drawings instead of diagrams, since we already had all the
-data for this new mutation available. It's now Waluigi o'clock.
+data for this new mutation available. It's now Waluigi o'clock, we've added a
+new dashboard only to aim for feature parity and consistent APIs not because it
+had any value unto itself.
 
-Imagine what will happen when we add filters to the original dashboard, being
-able to filter by for instance by "chart complexity". Now, the Image Dashboard
-<sup>TM</sup> needs to be updated as well, only to be kept in parity with the
-original feature that spawned it, otherwise people won't use it. But the Diagram
-Filters aren't applicable to Images, so new Image Filters need to be derived,
-only for a feature that wasn't really justified in the first place. We've kept
-going so much that we need to keep going.
+As the original Diagram Dashboard continues to grow, as more and more
+functionality is added diagrams, we'll observe how the maintenance costs for the
+Image Dashboard continues to grow too. We've kept going so much that we need to
+keep going. Filters added to diagrams will need to be ported over to images
+otherwise it'll be left in some perpetual and incomplete v.1 state while the
+feature factory keeps churning out more important things.
 
 I'd go as far as saying that features should even be their own
 [eigenvalue](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors), so
 that when the product undergoes a transformation, the features with their own
 identity can remain constant. Because unlike Mario, who is eternal, features and
 code bases mutate with every new thing added and if Mario changes then suddenly
-Waluigi must change as well.
+Waluigi must change as well, and if we can't justify spending time changing
+Waluigi then maybe the time spent creating him wasn't time well spent.
 
 ## Look at all the things I haven't done.
 
 With a lot of things unfortunately being easy to do, and when faced with low
 upfront development costs it's easy to say yes to building something new
-whenever some stakeholder asks for it. You have no reason to say no and the
-proxy metric for value delivered is "what have you shipped for me lately". It's
-therefore also important to also point towards the opportunity and maintenance
-costs for features as being _easy enough to add_ isn't reason enough to validate
-a product or feature's existence.
+whenever some stakeholder asks for it because the proxy metric for value
+delivered is "what have you shipped for me lately". It's therefore also
+important to remember to point towards the opportunity and maintenance costs for
+features too, as being _easy enough to add_ isn't reason enough to validate a
+product or feature's existence.
 
 <blockquote>"It's just another couple hundred lines of code"
-<figcaption>- Person who won't document the feature.</figcaption>
+<figcaption>- Person who doesn't factor in maintenance costs.</figcaption>
 </blockquote>
 
 Good developers are often good at
 [saying no](https://grugbrain.dev/#grug-on-saying-no), but people are rarely
 praised for work they didn't do. The success of one feature cannot easily be
 attributed to the _non-development_ of another. Developing a good product is
-difficult, writing good software that is both easy to use and easy to maintain
-is difficult, and knowing why a certain feature succeeded even with the benefit
-of retrospection can be difficult, as the only vantage point we can take to
-evaluate the feature (and the work building it) is
+difficult, writing good software that is easy to maintain is difficult, and
+knowing why a certain feature succeeded even with the benefit of retrospection
+can be difficult as the only vantage point we can take to evaluate the feature
+(and the work building it) is
 [emic](https://laulima.hawaii.edu/access/content/user/millerg/ANTH_200/A200Unit1/EmicEtic.html).
 
 The true cost of development isn't just the number of lines it took to deliver
@@ -179,15 +183,13 @@ The ratio of value-to-maintenance cost will approach zero for a poorly vetted
 feature when it has to be maintained in perpetuity, and time could be spent
 doing something more valuable.
 
-Now, all of a sudden, this barely used implementation has expanded the surface
-area of things to fix when other things change or break.
+## To summarize this rant
 
-In summary, I think there is a lot of value in being cognizant of when you are
-writing a feature that stands on its own legs, a _Mario_, or when it's not
-justified fully unto itself, a _Waluigi_, and when you do make a Waluigi, it's
-worth being upfront about the maintenance and opportunity cost. Only after
-factoring these costs in should you decide if it's truly worth doing, or if it's
-just easy.
+I think there is a lot of value in being cognizant of when you are writing a
+feature that stands on its own legs, a _Mario_, or when it's not justified fully
+unto itself, a _Waluigi_, and when you do make a Waluigi, it's worth being
+upfront about the maintenance and opportunity cost. Only after factoring these
+costs in should you decide if it's truly worth doing, or if it's just easy.
 
 ## Disclaimers
 
@@ -195,6 +197,6 @@ just easy.
 
 ###### Postman does more than put a GUI over cURL, but $500M is a lot of money.
 
-###### Waluigi is my favorite Nintento character and I picked him all the time when playing Mario Tennis on the N64.
+###### Waluigi is my favorite Nintendo character and I picked him all the time when playing Mario Tennis on the N64.
 
 ###### This is a bad idea, we're now in bad abstraction land.

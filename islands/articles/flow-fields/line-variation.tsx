@@ -15,7 +15,7 @@ export function LineVariationIllustration() {
   const [fill, stroke] = useColors();
   const [maxLineLength, setMaxLineLength] = useState(10);
   const [warp, setWarp] = useState(1.0);
-  const [stepSize, setStepSize] = useState(5);
+  const [stepSize, setStepSize] = useState(2);
   const [smoothness, setSmoothness] = useState(100);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
@@ -142,7 +142,7 @@ export function LineVariationIllustration() {
             value={stepSize}
             id="step_size_variation"
             min={1}
-            max={50}
+            max={12}
             onChange={(event) =>
               setStepSize(parseInt(event.currentTarget.value, 10))}
           />

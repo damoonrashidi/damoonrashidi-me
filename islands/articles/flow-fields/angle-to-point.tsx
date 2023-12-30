@@ -4,27 +4,18 @@ import { useColors } from "@/islands/articles/flow-fields/useColors.ts";
 import { useResize } from "@/islands/articles/flow-fields/useResize.ts";
 import { useEffect, useRef, useState } from "preact/hooks";
 
-function angleBetween(
-  x: number,
-  y: number,
-  destinationX: number,
-  destinationY: number,
-): number {
-  const angle = Math.atan2(y - destinationY, x - destinationX);
-
-  return angle + 0.05;
+function angleToCenter(x: number, y: number, cx: number, cy: number) {
+  const distance = Math.sqrt(
+    Math.pow(x - cx, 2) + Math.pow(y - cy, 2),
+  );
+  return Math.atan2(y - cy, x - cx);
 }
 
-function map(value: number, oldRange: number[], newRange: number[]) {
-  const newValue = (value - oldRange[0]) * (newRange[1] - newRange[0]) /
-      (oldRange[1] - oldRange[0]) + newRange[0];
-  return Math.min(Math.max(newValue, newRange[0]), newRange[1]);
-}
 export function AngleBetweenIllustration() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const [center, setCenter] = useState([0, 0]);
-  const [mode, setMode] = useState<"lines" | "numbers">("numbers");
+  const [mode, setMode] = useState<"lines" | "numbers">("lines");
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
     if (canvas.current) {
       canvas.current.width = width;
@@ -62,8 +53,8 @@ export function AngleBetweenIllustration() {
       for (let y = 0; y < maxHeight; y += 6) {
         for (let x = 0; x < maxWidth; x += 6) {
           const n = Math.round(
-            angleBetween(x * 5, y * 5, center[0], center[1]),
-          );
+            angleToCenter(x * 5, y * 5, center[0], center[1]) * 10,
+          ) / 10;
           ctx.fillText(`${n}`, x * 5, y * 5);
         }
       }
@@ -72,19 +63,20 @@ export function AngleBetweenIllustration() {
 
     ctx.lineWidth = 0.5;
 
-    for (let i = 0; i < 5_000; i++) {
+    for (let i = 0; i < 50; i++) {
       let x = Math.random() * maxWidth;
       let y = Math.random() * maxHeight;
 
       ctx.beginPath();
       ctx.moveTo(x, y);
-      let length = 0;
-      const stepSize = 5;
-      while (x > 0 && y > 0 && x < maxWidth && y < maxHeight && length < 20) {
-        const n = angleBetween(x, y, center[0], center[1]);
-        x += Math.cos(n * 2.2) * stepSize;
-        y += Math.sin(n * 2.2) * stepSize;
-        length += stepSize;
+      for (let i = 0; i < 100; i++) {
+        const distance = Math.sqrt(
+          Math.pow(x - center[0], 2) + Math.pow(y - center[1], 2),
+        );
+        const angle = angleToCenter(x, y, center[0], center[1]);
+
+        x = center[0] + Math.cos(angle + 0.01) * distance;
+        y = center[1] + Math.sin(angle + 0.02) * distance;
         ctx.lineTo(x, y);
       }
       ctx.stroke();

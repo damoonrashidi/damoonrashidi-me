@@ -46,16 +46,16 @@ export default function PostPage({ data: post }: PageProps<Post>) {
       <article className="max-w-prose m-auto font-display p-8 sm:p-0">
         <ArticleLead post={post} />
         <blockquote>
-          If this article is too wordy for you, skip all the text and play with
-          the illustrations, they get more and more fun as the articles rambles
-          on!
+          If you feel that this article is too wordy skip all the text and play
+          with the illustrations, they get more and more fun as the articles
+          rambles on!
           <figcaption>-- Me</figcaption>
         </blockquote>
 
         <p>
           This article will describe the methods and concepts I used to create
           the series of generated artworks pictured below. I've tried to
-          visualise the algorithms and provide some code samples. The code
+          visualize the algorithms and provide some code samples. The code
           samples are written in a Typescript, with some non-typescripty APIs
           thrown in to make them more concise and easy to follow. The general
           algorithms can easily be ported to any language though.
@@ -69,19 +69,19 @@ export default function PostPage({ data: post }: PageProps<Post>) {
         </p>
         <div className="flex w-full items-center justify-center flex-wrap lg:flex-nowrap gap-4 pb-12 py-4 ">
           <img
-            src="/articles/flow-field-methods/example-1.png"
+            src="/articles/flow-field-methods/example-1.webp"
             alt="Flow field example one"
             width={300}
             height={475}
           />
           <img
-            src="/articles/flow-field-methods/example-2.png"
+            src="/articles/flow-field-methods/example-2.webp"
             alt="Flow field example two"
             width={300}
             height={475}
           />
           <img
-            src="/articles/flow-field-methods/example-3.png"
+            src="/articles/flow-field-methods/example-3.webp"
             alt="Flow field example three"
             width={300}
             height={475}
@@ -101,7 +101,10 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           values.
         </p>
         <p>
-          The interactive illustration below shows how this works. Click{" "}
+          The interactive illustration below shows how this works by uniformly
+          sampling points in a grid and calling the noise function for that
+          point. Note that the values have been rounded to one decimal for
+          legibility, the actual values have far more precision. Click{" "}
           <code>Regenerate</code>{" "}
           to run the noise function again with a new seed to get new noise
           values.
@@ -120,7 +123,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
 }`}
         </Code>
         <p>
-          To make it a bit easier to digest, we can visualise this in a more
+          To make it a bit easier to digest, we can visualize this in a more
           effective manner by translating the noise values into degrees and draw
           lines from a starting position and a few pixels following the degree
           of the noise value.
@@ -151,7 +154,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           It turns out that noise functions are pretty sensitive. You'd think
           that the points
           <code>(1.0, 1.0)</code> and <code>(1.0, 2.0)</code>{" "}
-          would produce somewhat simlar noise values, following the rule that
+          would produce somewhat similar noise values, following the rule that
           points in close proximity yield fairly similar noise values, but
           they're not close enough to each other.
         </p>
@@ -216,7 +219,7 @@ while (bounds.contains(x,y)) {
   x += cos(n) * stepSize;
   y += sin(n) * stepSize;
   const radius = 5;
-  cirle(x, y, radius);
+  circle(x, y, radius);
   fill();
 }`}
         </Code>
@@ -311,7 +314,6 @@ y += sin(n) * jaggedStepSize;`}
           would satisfy the rule that points close together yield similar
           values, making our lines nice and smooth.
         </p>
-        <p>Mouse over the illustration below to set a new focal point</p>
 
         <Code>
           {`function distanceToCenter(
@@ -328,14 +330,16 @@ y += sin(n) * jaggedStepSize;`}
   return Math.sqrt(dx ** 2 + dy ** 2);
 }`}
         </Code>
+        <p>Mouse over the illustration below to set a new focal point</p>
 
         <DistanceToPointIllustration />
 
         <p>
           If we instead of returning the distance to <code>focalPoint</code>
           {" "}
-          we can return the angle the line has from our point to{" "}
-          <code>focalPoint</code>
+          we can return the angle the line has from our point to{"  "}
+          and offset our point along the radius (with a slight distortion to the
+          y-axis) we can get a nice swirl-like effect.
         </p>
 
         <AngleBetweenIllustration />

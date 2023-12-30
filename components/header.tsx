@@ -23,7 +23,7 @@ export const Header = () => (
             srcset="/github-dark.png"
             media="(prefers-color-scheme: dark)"
           />
-          <img src="/github.png" alt="github" width={24} />
+          <img src="/github.png" alt="github" width={24} height={24} />
         </picture>
       </a>
 
@@ -37,7 +37,7 @@ export const Header = () => (
             srcset="/linkedin-dark.png"
             media="(prefers-color-scheme: dark)"
           />
-          <img src="/linkedin.png" alt="linkedin" width={24} />
+          <img src="/linkedin.png" alt="linkedin" width={24} height={24} />
         </picture>
       </a>
     </div>

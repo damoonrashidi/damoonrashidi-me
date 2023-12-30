@@ -43,7 +43,6 @@ export function NoiseLineIllustration() {
     x += Math.cos(n) * 7;
     y += Math.sin(n) * 7;
     ctx.lineTo(x, y);
-    ctx.closePath();
     ctx.stroke();
     requestAnimationFrame(() => drawLine(x, y));
   };
@@ -85,8 +84,8 @@ export function NoiseLineIllustration() {
         onMouseMove={(event) => drawLine(event.offsetX, event.offsetY)}
       />
       <div className="pt-4 flex gap-4 items-center justify-center">
-        <Button onClick={() => draw()}>Reset</Button>
         <Button onClick={() => fillCanvas()}>Fill the canvas</Button>
+        <Button onClick={() => draw()}>Reset</Button>
       </div>
     </Illustration>
   );
