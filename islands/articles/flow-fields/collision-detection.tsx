@@ -43,7 +43,7 @@ export function CollisionDetectionIllustration() {
 
   const createLine = (x: number, y: number) => {
     const r = Math.random() * 30 + 10;
-    const colors = ["#191724", "#1f1d2e", "#6e6a86", "#f6c177"];
+    const colors = ["#b4637a", "#907aa9", "#d7827e", "#ea9d34"];
     const color = colors[Math.floor(Math.random() * colors.length)];
     const line: [number, number, number][] = [];
     line.push([x, y, r]);
@@ -55,7 +55,7 @@ export function CollisionDetectionIllustration() {
       y += Math.sin(n * 1.4) * 0.5;
       if (
         points.some(([px, py, pr]) =>
-          distance([x, y], [px, py]) < (r + pr) / 2 + 10
+          distance([x, y], [px, py]) < (r + pr) / 2 + 5
         )
       ) {
         break;
@@ -93,14 +93,28 @@ export function CollisionDetectionIllustration() {
     }
 
     ctx.clearRect(0, 0, maxWidth, maxHeight);
+
+    for (let i = 0; i < 70; i++) {
+      const x = Math.random() * maxWidth;
+      const y = Math.random() * maxHeight;
+      createLine(x, y);
+    }
   };
 
   return (
     <Illustration>
       <canvas
-        className="h-[500px] w-full"
+        className="h-[500px] w-full touch-none"
         ref={canvas}
         onMouseMove={(event) => createLine(event.offsetX, event.offsetY)}
+        onTouchMove={(event) => {
+          const [touch] = event.touches;
+          const bbox = event.currentTarget.getBoundingClientRect();
+          createLine(
+            touch.clientX - bbox.left,
+            touch.clientY - bbox.top,
+          );
+        }}
       />
       <div className="pt-2">
         <Button

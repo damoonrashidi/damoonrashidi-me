@@ -13,6 +13,7 @@ import * as $articles_code from "./islands/articles/code.tsx";
 import * as $articles_flow_fields_angle_to_point from "./islands/articles/flow-fields/angle-to-point.tsx";
 import * as $articles_flow_fields_building_line from "./islands/articles/flow-fields/building-line.tsx";
 import * as $articles_flow_fields_collision_detection from "./islands/articles/flow-fields/collision-detection.tsx";
+import * as $articles_flow_fields_collision_example from "./islands/articles/flow-fields/collision-example.tsx";
 import * as $articles_flow_fields_distance_to_point from "./islands/articles/flow-fields/distance-to-point.tsx";
 import * as $articles_flow_fields_illustration from "./islands/articles/flow-fields/illustration.tsx";
 import * as $articles_flow_fields_line_variation from "./islands/articles/flow-fields/line-variation.tsx";
@@ -42,6 +43,8 @@ const manifest = {
       $articles_flow_fields_building_line,
     "./islands/articles/flow-fields/collision-detection.tsx":
       $articles_flow_fields_collision_detection,
+    "./islands/articles/flow-fields/collision-example.tsx":
+      $articles_flow_fields_collision_example,
     "./islands/articles/flow-fields/distance-to-point.tsx":
       $articles_flow_fields_distance_to_point,
     "./islands/articles/flow-fields/illustration.tsx":

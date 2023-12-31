@@ -57,9 +57,10 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           This article will describe the methods and concepts I used to create
           the series of generated artworks pictured below. I've tried to
           visualize the algorithms and provide some code samples. The code
-          samples are written in a Typescript, with some non-typescripty APIs
-          thrown in to make them more concise and easy to follow. The general
-          algorithms can easily be ported to any language though.
+          samples are written in a Typescript with some simplifications so that
+          the code is readable on mobile and to make them more concise and easy
+          to follow. The general algorithms can easily be ported to any language
+          though.
         </p>
         <p>
           As a note, far more talented people than me have written{" "}
@@ -216,7 +217,7 @@ const n = noise(x / smoothness, y / smoothness);`}
 let x = 0;
 let y = random(0..height);
 while (bounds.contains(x,y)) {
-  const n = noise(x / smoothness, y / smoothness);
+  const n = noise(x / smooth, y / smooth);
   x += cos(n) * stepSize;
   y += sin(n) * stepSize;
   const radius = 5;
@@ -241,7 +242,7 @@ let y = random(0..height);
 beginPath();
 moveTo(x,y);
 while (bounds.contains(x,y)) {
-  const n = noise(x / smoothness, y / smoothness);
+  const n = noise(x / smooth, y / smooth);
   x += cos(n) * stepSize;
   y += sin(n) * stepSize;
   lineTo(x,y);
@@ -327,7 +328,7 @@ y += sin(n) * jaggedStepSize;`}
 
   const dx = x - centerX;
   const dy = y - centerY;
-  return Math.sqrt(dx ** 2 + dy ** 2);
+  return sqrt(dx ** 2 + dy ** 2);
 }`}
         </Code>
         <p>Mouse over the illustration below to set a new focal point</p>
@@ -349,7 +350,7 @@ y += sin(n) * jaggedStepSize;`}
   centerX: number,
   centerY: number,
 ) {
-return Math.atan2(y - centerY, x - centerX);
+return atan2(y - centerY, x - centerX);
 }`}
         </Code>
 
@@ -357,11 +358,11 @@ return Math.atan2(y - centerY, x - centerX);
           {`beginPath();
 moveTo(x, y);
 for (let i = 0; i < lineLength; i++) {
-  const distance = distance(x, y, centerX, centerY)
-  const angle = angleBetween(x, y, centerX, centerY);
+  const dist = distance(x, y, cx, cy)
+  const angle = angleBetween(x, y, cx, cy);
 
-  x = centerX + cos(angle + 0.01) * (distance - 0.1);
-  y = centerY + sin(angle + 0.015) * (distance - 0.15);
+  x = cx + cos(angle + 0.01) * (dist - 0.1);
+  y = cy + sin(angle + 0.015) * (dist - 0.15);
   lineTo(x, y);
 }
 stroke();`}
@@ -382,7 +383,7 @@ stroke();`}
         <CollisionDetectionIllustration />
 
         <p>
-          Now, a lot can be said about collision detection, and how to make it
+          Now, a lot can be said about collision detection and how to make it
           performant. I'll show only one method and a small optimization to keep
           it somewhat performant, but this is really a field you can dive deep
           into.
@@ -416,24 +417,35 @@ stroke();`}
 
 type Point = [number, number];
 
-function distance([x1, y1]: Point, [x2, y2]: Point) {
+function distance(
+  [x1, y1]: Point,
+  [x2, y2]: Point,
+) {
   return sqrt((x1 - x2) ** 2, (y1 - y2) ** 2);
 }
 
-function overlap(a: Circle, b: Circle): boolean {
+function overlap(
+  a: Circle,
+  b: Circle,
+): boolean {
   const d = distance([a.x, a.y], [b.x, b.y]);
   return d < a.r + b.r;
-}
-        
-        `}
+}`}
         </Code>
 
-        <p>If we change our line creation method into</p>
+        <p>
+          Here is another illustration that highlights when two non-linear lines
+          meet using this method.
+        </p>
+
+        <h3>Optimizing it slightly</h3>
 
         <h2>Colors</h2>
         <p>
-          The theme for this article seems to converge to _"there are a lot of
-          different ways to do something"_
+          The theme for this article is converging to{" "}
+          <em>
+            "there are a lot of different ways to do something"
+          </em>. That's true for applying colors to these images as well.
         </p>
       </article>
     </>

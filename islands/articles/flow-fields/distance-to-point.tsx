@@ -4,6 +4,11 @@ import { useColors } from "@/islands/articles/flow-fields/useColors.ts";
 import { useResize } from "@/islands/articles/flow-fields/useResize.ts";
 import { useEffect, useRef, useState } from "preact/hooks";
 
+const points = Array.from({ length: 1000 }, () => [
+  Math.random() * 595,
+  Math.random() * 595,
+]);
+
 function distanceToCenter(
   x: number,
   y: number,
@@ -65,10 +70,7 @@ export function DistanceToPointIllustration() {
       return;
     }
 
-    for (let i = 0; i < 5_000; i++) {
-      let x = Math.random() * maxWidth;
-      let y = Math.random() * maxHeight;
-
+    for (let [x, y] of points) {
       ctx.beginPath();
       ctx.moveTo(x, y);
       let length = 0;
@@ -86,13 +88,21 @@ export function DistanceToPointIllustration() {
   return (
     <Illustration>
       <canvas
-        className="h-[500px] w-full"
+        className="h-[500px] w-full touch-none"
         ref={canvas}
         onMouseMove={(event) =>
           setCenter([
             event.offsetX,
             event.offsetY,
           ])}
+        onTouchMove={(event) => {
+          const [touch] = event.touches;
+          const bbox = event.currentTarget.getBoundingClientRect();
+          setCenter([
+            touch.clientX - bbox.left,
+            touch.clientY - bbox.top,
+          ]);
+        }}
       />
       <div className="pt-2">
         <Button

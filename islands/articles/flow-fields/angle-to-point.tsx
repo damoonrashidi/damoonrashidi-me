@@ -10,7 +10,7 @@ function angleToCenter(x: number, y: number, cx: number, cy: number) {
 const colors = ["#f6c177", "#ea9a97", "#3e8fb0", "#9ccfd8", "#2a283e"];
 
 const points: [number, number, string, number][] = Array.from(
-  { length: 20 },
+  { length: 5 },
   () => [
     Math.random() * 500,
     Math.random() * 595,
@@ -64,8 +64,9 @@ export function AngleBetweenIllustration() {
             Math.pow(x - center[0], 2) + Math.pow(y - center[1], 2),
           );
           const n = Math.round(
-                angleToCenter(x * 5, y * 5, center[0], center[1]) * 10,
-              ) / 10 - (1 / distance);
+            (angleToCenter(x * 5, y * 5, center[0], center[1]) -
+              (1 / distance)) * 10,
+          ) / 10;
 
           ctx.fillText(`${n}`, x * 5, y * 5);
         }
@@ -86,10 +87,12 @@ export function AngleBetweenIllustration() {
         );
         const angle = angleToCenter(x, y, center[0], center[1]);
 
-        x = center[0] + Math.cos(angle + 0.01) * (distance - 0.1);
-        y = center[1] + Math.sin(angle + 0.015) * (distance - 0.15);
+        x = center[0] +
+          Math.cos(angle + 0.01) * (distance - 0.1) + Math.random();
+        y = center[1] +
+          Math.sin(angle + 0.015) * (distance - 0.15) + Math.random();
 
-        if (Math.abs(x - center[0]) < 10 && Math.abs(y - center[1]) < 10) {
+        if (Math.abs(x - center[0]) < 10 && Math.abs(y - center[1]) < 15) {
           break;
         }
         ctx.lineTo(x, y);
@@ -101,13 +104,21 @@ export function AngleBetweenIllustration() {
   return (
     <Illustration>
       <canvas
-        className="h-[500px] w-full"
+        className="h-[500px] w-full touch-none"
         ref={canvas}
         onMouseMove={(event) =>
           setCenter([
             event.offsetX,
             event.offsetY,
           ])}
+        onTouchMove={(event) => {
+          const [touch] = event.touches;
+          const bbox = event.currentTarget.getBoundingClientRect();
+          setCenter([
+            touch.clientX - bbox.left,
+            touch.clientY - bbox.top,
+          ]);
+        }}
       />
       <div className="pt-2">
         <Button

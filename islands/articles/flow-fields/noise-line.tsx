@@ -79,9 +79,17 @@ export function NoiseLineIllustration() {
   return (
     <Illustration>
       <canvas
-        className="h-[500px] w-full"
+        className="h-[500px] w-full touch-none"
         ref={canvas}
         onMouseMove={(event) => drawLine(event.offsetX, event.offsetY)}
+        onTouchMove={(event) => {
+          const [touch] = event.touches;
+          const bbox = event.currentTarget.getBoundingClientRect();
+          drawLine(
+            touch.clientX - bbox.left,
+            touch.clientY - bbox.top,
+          );
+        }}
       />
       <div className="pt-4 flex gap-4 items-center justify-center">
         <Button onClick={() => fillCanvas()}>Fill the canvas</Button>
