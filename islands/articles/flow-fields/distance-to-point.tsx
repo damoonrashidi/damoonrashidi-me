@@ -19,7 +19,7 @@ export function DistanceToPointIllustration() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>();
   const [center, setCenter] = useState([0, 0]);
-  const [mode, setMode] = useState<"lines" | "numbers">("numbers");
+  const [mode, setMode] = useState<"lines" | "numbers">("lines");
   const [maxWidth, maxHeight] = useResize(canvas, (width, height) => {
     if (canvas.current) {
       canvas.current.width = width;

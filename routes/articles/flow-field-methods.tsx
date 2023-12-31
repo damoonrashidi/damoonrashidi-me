@@ -7,6 +7,7 @@ import { Header } from "@/components/header.tsx";
 import { Code } from "@/islands/articles/code.tsx";
 import { AngleBetweenIllustration } from "@/islands/articles/flow-fields/angle-to-point.tsx";
 import { BuildingALine } from "@/islands/articles/flow-fields/building-line.tsx";
+import { CollisionDetectionIllustration } from "@/islands/articles/flow-fields/collision-detection.tsx";
 import { NoiseAngleIllustration } from "@/islands/articles/flow-fields/noise-angles.tsx";
 import { NoiseLineIllustration } from "@/islands/articles/flow-fields/noise-line.tsx";
 import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
@@ -294,12 +295,11 @@ y += sin(n) * jaggedStepSize;`}
           </figcaption>
         </blockquote>
         <p>
-          As alluded to in the quote, there are few different ones whose
-          objective is to produce similar, but not identical, values for similar
-          coordinates. But nothing is stopping us from writing our own. A proper
-          noise function is a bit complicated and out of scope for this article,
-          but just writing a function that returns similar values for a given
-          coordinate is pretty simple.
+          As alluded to in the quote, there are few different noise functions. A
+          proper noise function is a bit complicated and out of scope for this
+          article, but nothing is stopping us from writing a function that
+          returns similar values for a given coordinate, that part can be done
+          pretty easily.
         </p>
         <p>
           These home grown functions won't yield as random seeming results as a
@@ -319,11 +319,11 @@ y += sin(n) * jaggedStepSize;`}
           {`function distanceToCenter(
   x: number,
   y: number,
-  destinationX: number,
-  destinationY: number,
+  width: number,
+  height: number,
 ): number {
-  const centerX = destinationX / 2;
-  const centerY = destinationY / 2;
+  const centerX = width / 2;
+  const centerY = height / 2;
 
   const dx = x - centerX;
   const dy = y - centerY;
@@ -342,13 +342,93 @@ y += sin(n) * jaggedStepSize;`}
           y-axis) we can get a nice swirl-like effect.
         </p>
 
+        <Code>
+          {`function angleBetween(
+  x: number,
+  y: number,
+  centerX: number,
+  centerY: number,
+) {
+return Math.atan2(y - centerY, x - centerX);
+}`}
+        </Code>
+
+        <Code>
+          {`beginPath();
+moveTo(x, y);
+for (let i = 0; i < lineLength; i++) {
+  const distance = distance(x, y, centerX, centerY)
+  const angle = angleBetween(x, y, centerX, centerY);
+
+  x = centerX + cos(angle + 0.01) * (distance - 0.1);
+  y = centerY + sin(angle + 0.015) * (distance - 0.15);
+  lineTo(x, y);
+}
+stroke();`}
+        </Code>
+
         <AngleBetweenIllustration />
 
         <h2>Collision Detection</h2>
         <p>
           In my opinion, the real fun doesn't really begin until we start
-          looking at having the lines interact with each other.
+          looking at having the lines interact with each other. Instead of
+          stopping when we reach the end of the canvas or we've reached the max
+          line length we can instead stop when this line would collide with
+          another line.
         </p>
+
+        <p>Hover the illustration to add lines of varying width.</p>
+        <CollisionDetectionIllustration />
+
+        <p>
+          Now, a lot can be said about collision detection, and how to make it
+          performant. I'll show only one method and a small optimization to keep
+          it somewhat performant, but this is really a field you can dive deep
+          into.
+        </p>
+
+        <p>
+          Checking the{" "}
+          <a href="https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection">
+            intersection of two straight lines
+          </a>{" "}
+          isn't too bad and can be done in O(1) time. Our lines aren't straight
+          however so we'll have to be a bit more clever. If we go back to the
+          beginning of how we drew the line, it started with stepping through
+          the noise field and adding a point for each step. If we made that
+          point into a circle by giving it same radius as the line and kept
+          track of each circle, not just in the line but in all lines it's a lot
+          easier to check if the circle we are about to draw overlaps any other
+          circle.
+        </p>
+
+        <p>
+          Checking if two circles overlap is only a matter of checking if the
+          sum of their radii is smaller than the distance between their origo.
+        </p>
+        <Code>
+          {`interface Circle {
+  x: number;
+  y: number;
+  r: number;
+}
+
+type Point = [number, number];
+
+function distance([x1, y1]: Point, [x2, y2]: Point) {
+  return sqrt((x1 - x2) ** 2, (y1 - y2) ** 2);
+}
+
+function overlap(a: Circle, b: Circle): boolean {
+  const d = distance([a.x, a.y], [b.x, b.y]);
+  return d < a.r + b.r;
+}
+        
+        `}
+        </Code>
+
+        <p>If we change our line creation method into</p>
 
         <h2>Colors</h2>
         <p>

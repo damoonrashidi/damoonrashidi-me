@@ -5,11 +5,19 @@ import { useResize } from "@/islands/articles/flow-fields/useResize.ts";
 import { useEffect, useRef, useState } from "preact/hooks";
 
 function angleToCenter(x: number, y: number, cx: number, cy: number) {
-  const distance = Math.sqrt(
-    Math.pow(x - cx, 2) + Math.pow(y - cy, 2),
-  );
   return Math.atan2(y - cy, x - cx);
 }
+const colors = ["#f6c177", "#ea9a97", "#3e8fb0", "#9ccfd8", "#2a283e"];
+
+const points: [number, number, string, number][] = Array.from(
+  { length: 20 },
+  () => [
+    Math.random() * 500,
+    Math.random() * 595,
+    colors[Math.floor(Math.random() * colors.length)],
+    (Math.random() * 20 + 10) - 10,
+  ],
+);
 
 export function AngleBetweenIllustration() {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -52,31 +60,38 @@ export function AngleBetweenIllustration() {
     if (mode === "numbers") {
       for (let y = 0; y < maxHeight; y += 6) {
         for (let x = 0; x < maxWidth; x += 6) {
+          const distance = Math.sqrt(
+            Math.pow(x - center[0], 2) + Math.pow(y - center[1], 2),
+          );
           const n = Math.round(
-            angleToCenter(x * 5, y * 5, center[0], center[1]) * 10,
-          ) / 10;
+                angleToCenter(x * 5, y * 5, center[0], center[1]) * 10,
+              ) / 10 - (1 / distance);
+
           ctx.fillText(`${n}`, x * 5, y * 5);
         }
       }
       return;
     }
 
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = 2.5;
 
-    for (let i = 0; i < 50; i++) {
-      let x = Math.random() * maxWidth;
-      let y = Math.random() * maxHeight;
-
+    for (let [x, y, color, width] of points) {
+      ctx.lineWidth = width;
+      ctx.strokeStyle = color;
       ctx.beginPath();
       ctx.moveTo(x, y);
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 1000; i++) {
         const distance = Math.sqrt(
           Math.pow(x - center[0], 2) + Math.pow(y - center[1], 2),
         );
         const angle = angleToCenter(x, y, center[0], center[1]);
 
-        x = center[0] + Math.cos(angle + 0.01) * distance;
-        y = center[1] + Math.sin(angle + 0.02) * distance;
+        x = center[0] + Math.cos(angle + 0.01) * (distance - 0.1);
+        y = center[1] + Math.sin(angle + 0.015) * (distance - 0.15);
+
+        if (Math.abs(x - center[0]) < 10 && Math.abs(y - center[1]) < 10) {
+          break;
+        }
         ctx.lineTo(x, y);
       }
       ctx.stroke();
