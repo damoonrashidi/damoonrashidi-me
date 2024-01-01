@@ -3,17 +3,20 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { Post } from "@/blog/post.ts";
 import { PostService } from "@/blog/postService.ts";
 import { ArticleLead } from "@/components/articles/lead.tsx";
+import { TableOfContents } from "@/components/articles/table-of-contents.tsx";
 import { Header } from "@/components/header.tsx";
 import { Code } from "@/islands/articles/code.tsx";
 import { AngleBetweenIllustration } from "@/islands/articles/flow-fields/angle-to-point.tsx";
 import { BuildingALine } from "@/islands/articles/flow-fields/building-line.tsx";
 import { CollisionDetectionIllustration } from "@/islands/articles/flow-fields/collision-detection.tsx";
 import { CollisionExampleIllustration } from "@/islands/articles/flow-fields/collision-example.tsx";
+import { ColorIllustration } from "@/islands/articles/flow-fields/color.tsx";
 import { DistanceToPointIllustration } from "@/islands/articles/flow-fields/distance-to-point.tsx";
 import { LineVariationIllustration } from "@/islands/articles/flow-fields/line-variation.tsx";
 import { NoiseAngleIllustration } from "@/islands/articles/flow-fields/noise-angles.tsx";
 import { NoiseLineIllustration } from "@/islands/articles/flow-fields/noise-line.tsx";
 import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
+import { PointMapIllustration } from "@/islands/articles/flow-fields/pointmap.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
@@ -23,6 +26,28 @@ export const handler: Handlers<Post> = {
     return ctx.render(post as Post);
   },
 };
+
+const tableOfContents = [
+  { id: "intro", label: "Brief introduction" },
+  { id: "noise-functions", label: "Noise functions" },
+  { id: "drawing-lines", label: "Drawing lines" },
+  {
+    id: "noise-function-alternatives",
+    label: "Alternatives to noise functions",
+  },
+  {
+    id: "collision-detection",
+    label: "Collision detection",
+    children: [
+      {
+        id: "optimizing-collision-detection",
+        label: "Optimizing collision detection",
+      },
+    ],
+  },
+  { id: "colors", label: "colors" },
+  { id: "conclusion", label: "Conclusion" },
+];
 
 export default function PostPage({ data: post }: PageProps<Post>) {
   return (
@@ -55,6 +80,12 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           <figcaption>-- Me</figcaption>
         </blockquote>
 
+        <section className="py-8">
+          <span className="pb-4 inline-block text-lg">Table of contents</span>
+          <TableOfContents items={tableOfContents} />
+        </section>
+
+        <h2 id="intro">Brief introduction.</h2>
         <p>
           This article will describe the methods and concepts I used to create
           the series of generated artworks pictured below. I've tried to
@@ -62,14 +93,18 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           samples are written in a Typescript with some simplifications so that
           the code is readable on mobile and to make them more concise and easy
           to follow. The general algorithms can easily be ported to any language
-          though.
+          though, I have for instance done some{" "}
+          <a href="https://github.com/damoonrashidi/generative-art">
+            implementations using Rust
+          </a>.
         </p>
         <p>
           As a note, far more talented people than me have written{" "}
           <a href="https://tylerxhobbs.com/essays/2020/flow-fields">
             articles on the subject
           </a>{" "}
-          which I strongly suggest reading.
+          upon which my work is very obviously based. I recommend reading that
+          one too!
         </p>
         <div className="flex w-full items-center justify-center flex-wrap lg:flex-nowrap gap-4 pb-12 py-4 ">
           <img
@@ -91,7 +126,8 @@ export default function PostPage({ data: post }: PageProps<Post>) {
             height={475}
           />
         </div>
-        <h2>Noise functions</h2>
+
+        <h2 id="noise-functions">Noise functions</h2>
         <p>
           The main driving force behind these flow field images is usually a
           noise function. Without regurgitating the{" "}
@@ -196,7 +232,7 @@ const n = noise(x / smoothness, y / smoothness);`}
           this case, the lines start to smooth out and patterns start to emerge.
         </p>
 
-        <h2>Drawing lines.</h2>
+        <h2 id="drawing-lines">Drawing lines.</h2>
         <p>
           At this point we know how to navigate the flow field. Pick any point
           {" "}
@@ -258,7 +294,7 @@ stroke();`}
         </p>
         <NoiseLineIllustration />
 
-        <h2>Experimenting with lines.</h2>
+        <h2 id="experimenting-with-lines">Experimenting with lines.</h2>
         <p>
           So far not a lot of variance has been achieved. All results, no matter
           what the seed of the noise function is, will yield somewhat similar
@@ -286,7 +322,10 @@ x += cos(n) * jaggedStepSize;
 y += sin(n) * jaggedStepSize;`}
         </Code>
         <LineVariationIllustration />
-        <h2>Alternatives to noise functions</h2>
+
+        <h2 id="noise-function-alternatives">
+          Alternatives to noise functions
+        </h2>
         <p>So far we've been using a noise function called OpenSimplex.</p>
         <blockquote>
           OpenSimplex noise is an n-dimensional gradient noise function that was
@@ -372,7 +411,7 @@ stroke();`}
 
         <AngleBetweenIllustration />
 
-        <h2>Collision Detection</h2>
+        <h2 id="collision-detection">Collision Detection</h2>
         <p>
           In my opinion, the real fun doesn't really begin until we start
           looking at having the lines interact with each other. Instead of
@@ -381,14 +420,16 @@ stroke();`}
           another line.
         </p>
 
-        <p>Hover the illustration to add lines of varying width.</p>
+        <p>
+          Hover the illustration (or slide your finger over it) to add lines of
+          varying width.
+        </p>
         <CollisionDetectionIllustration />
 
         <p>
           Now, a lot can be said about collision detection and how to make it
           performant. I'll show only one method and a small optimization to keep
-          it somewhat performant, but this is really a field you can dive deep
-          into.
+          the solution somewhat performant.
         </p>
 
         <p>
@@ -437,32 +478,195 @@ function overlap(
 
         <p>
           Here is another illustration that highlights when two non-linear lines
-          meet using this method. Hover the image to move the colliding line.
+          meet using this method. Play with the illustration to move the
+          colliding line.
         </p>
 
         <CollisionExampleIllustration />
 
-        <h3>Optimizing it slightly.</h3>
+        <Code>
+          {`const previousPoints = [];
+function drawLine(x: number, y: number) {
+  beginPath();
+  moveTo(x,y);
+  const lineWidth = 4;
+  const pointsForLine = [];
+  while (canvas.contains(x,y)) {
+    const n = noise(x / smooth, y / smooth) * warp;
+    x += cos(n) * step;
+    y += sin(n) * step;
+
+    if (previousPoints.some(
+      point => distance([x,y],point)) < lineWidth
+    ) {
+      break;
+    }
+    pointsForLine.push([x,y]);
+    lineTo(x,y);
+  }
+  previousPoints.push(...pointsForLine);
+  stroke();
+}
+`}
+        </Code>
+
+        <h3 id="optimizing-collision-detection">Optimizing it slightly.</h3>
         <p>
           These example illustrations are fairly small so we haven't ran into
           any performance issues when checking if our line collides with any
-          other line yet. When trying to make a larger image however, for print
-          for instance, we'd end up with a lot of lines with a lot of points
-          that we could potentially collide with, meaning that for every new
-          point we add we must check against collisions against all other
-          points. This stacks up fast and will make your render times a lot
-          longer than desired. A way to mitigate this is to first split our
-          canvas up into a grid of boxes
+          other line... yet. When trying to make a larger image however, in a
+          print-friendly size for instance, we'd end up with a lot of lines with
+          a lot of points that we could potentially collide with, meaning that
+          for every new point we add we must check against collisions against
+          all other points. This stacks up fast and will make your render times
+          a lot longer than desired. A way to mitigate this is to only check
+          against points that are close enough for us to collide with.
         </p>
 
-        <p></p>
+        <p>
+          The simplest way of doing that is by dividing our canvas up into a
+          grid of boxes and whenever we are about to add a new point check which
+          box it would go in, and then only check against collisions with points
+          in that box.
+        </p>
 
-        <h2>Finally, Colors.</h2>
+        <p>
+          Time for another illustration. This time, move your finger or mouse
+          cursor around to see which points belong to the same box.
+        </p>
+
+        <PointMapIllustration />
+
+        <p>
+          Now, with 100 boxes (10 across, 10 down) and if the points are
+          distributed uniformly on the canvas, we end up doing 1/100<sup>
+            th
+          </sup>{" "}
+          as many checks that we did previously, increasing rendering
+          performance by quite a bit! One thing to note however, is that if our
+          boxes would be too small to reliably hold points with the radius of
+          our lines then we'd start to get overlapping lines at the edges. This
+          would also happen if a points origo was at the very edge of a box,
+          causing its body to spill outside the boxes area. We could fix that by
+          checking surrounding boxes for collisions as well, but that would mean
+          we'd check another eight boxes besides the current one, increasing the
+          search space a bit, but the result would be more exact.
+        </p>
+
+        <p>
+          A final optimisatiion we can do with this technique is that if our
+          step size (the distance between each point in each line) is
+          sufficiently small we could skip checking a few points in the box,
+          since if our circle overlaps with one of the circles there's a high
+          chance that it overlaps with some other circles as well. Now this
+          might yield a less accurate result, but accuracy is not necessarly the
+          end goal. Some small overlaps for a few lines might introduce some
+          visually pleasing artifacts. Usually those kinds of details are{" "}
+          <em>happy little accidents</em>.
+        </p>
+
+        <Code>
+          {`function overlapsAny(
+  circle: Circle,
+  box: Circle[],
+): boolean {
+  for (let i = 0; i < box.length; i += 7) {
+    const d = distance(box[i], circle);
+    const r = box[i].r + circle.r;
+    if (d < r) {
+      return true;
+    }
+  }
+  return false;
+}`}
+        </Code>
+        <p>
+          Here we check against every 7<sup>th</sup>{" "}
+          circle in a box hoping to get a hit if there is one. The contant{" "}
+          <code>7</code>{" "}
+          might be too high in some cases, or could be increased even more, it
+          all depends on the step size for the lines and can be tweaked to get a
+          good balance between render times and corroectness.
+        </p>
+
+        <h2 id="colors">Finally, Colors.</h2>
         <p>
           The theme for this article is converging to{" "}
           <em>
-            "there are a lot of different ways to do something"
-          </em>. That's true for applying colors to these images as well.
+            "you can achieve a lot of variation with some tweaks"
+          </em>. That's true for applying colors to these images as well. So far
+          things in this article have been pretty monochrome to focus on the
+          underlying techniques of how to achieve the overarching look.
+        </p>
+        <p>
+          The easiest way to get some color in there is to create a palette with
+          a few different colors and picking at random when creating a new line.
+        </p>
+
+        <Code>
+          {`const palette = [
+  "#eb6f92",
+  "#f6c177",
+  "#ea9a97",
+  "#3e8fb0",
+  "#9ccfd8",
+];
+
+const color = floor(random() * palette.length);
+drawLine(x,y,color);`}
+        </Code>
+
+        <ColorIllustration mode="by-line" />
+
+        <p>
+          Another coloring method is by coloring each line by the angle of the
+          noise function where the line started. This will yield a gradient like
+          coloring across larger images.
+        </p>
+
+        <Code>
+          {`const n = noise(x / 120, y / 120) * warp;
+const hue =  n % 255;
+const color = \`hsl(\${hue}deg, 70%, 50%)\`;`}
+        </Code>
+
+        <ColorIllustration mode="angle" />
+
+        <p>
+          Finally, my favorite method is by subdividing the canvas into a set of
+          regions, either by some{" "}
+          <a href="https://en.wikipedia.org/wiki/Composition_with_Red_Blue_and_Yellow">
+            Piet Mondrian Composition style
+          </a>, or recursively splitting the canvas into more and more refined
+          polygons. After the canvas has been divided I assign each region a
+          color and whenever a line spawns assign it the color of the region it
+          spawned in.
+        </p>
+        <p>
+          This method creates a nice effect where things don't look as
+          disjointed and more like streams of paint flowing into other buckets
+          of paint.
+        </p>
+
+        <ColorIllustration mode="region" />
+
+        <h2 id="conclusion">Conclusion</h2>
+        <p>
+          Even though this article got quite long, it only scratches the surface
+          of all the variants that can be achieved using the fundamental
+          techniques described. I highly recommend trying things out and
+          experimenting, swapping a <code>cos()</code> for a <code>sin()</code>
+          {" "}
+          somewhere, or maybe even a <code>tan()</code> if you're crazy.
+        </p>
+        <p>
+          Try subdividing the canvas into subregions who all have their own
+          rules, or maybe dive deeper into noise functions. Or have a small
+          border around the canvas and let some small percent of the lines
+          escape it. Why use lines at all? Why not circles or squares or blobs?
+        </p>
+        <p>
+          Thanks for sticking in there this long, hope it was helpful.
         </p>
       </article>
     </>
