@@ -1,23 +1,25 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost } from "@/blog/getPost.ts";
 import { Post } from "@/blog/post.ts";
+import { PostService } from "@/blog/postService.ts";
 import { ArticleLead } from "@/components/articles/lead.tsx";
 import { Header } from "@/components/header.tsx";
 import { Code } from "@/islands/articles/code.tsx";
 import { AngleBetweenIllustration } from "@/islands/articles/flow-fields/angle-to-point.tsx";
 import { BuildingALine } from "@/islands/articles/flow-fields/building-line.tsx";
 import { CollisionDetectionIllustration } from "@/islands/articles/flow-fields/collision-detection.tsx";
+import { CollisionExampleIllustration } from "@/islands/articles/flow-fields/collision-example.tsx";
+import { DistanceToPointIllustration } from "@/islands/articles/flow-fields/distance-to-point.tsx";
+import { LineVariationIllustration } from "@/islands/articles/flow-fields/line-variation.tsx";
 import { NoiseAngleIllustration } from "@/islands/articles/flow-fields/noise-angles.tsx";
 import { NoiseLineIllustration } from "@/islands/articles/flow-fields/noise-line.tsx";
 import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
-import { DistanceToPointIllustration } from "../../islands/articles/flow-fields/distance-to-point.tsx";
-import { LineVariationIllustration } from "../../islands/articles/flow-fields/line-variation.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
     const url = import.meta.url.split("/").pop() as string;
-    const post = await getPost(url.replace(".tsx", ""));
+    const postService = new PostService();
+    const post = await postService.getPost(url.replace(".tsx", ""));
     return ctx.render(post as Post);
   },
 };
@@ -435,12 +437,27 @@ function overlap(
 
         <p>
           Here is another illustration that highlights when two non-linear lines
-          meet using this method.
+          meet using this method. Hover the image to move the colliding line.
         </p>
 
-        <h3>Optimizing it slightly</h3>
+        <CollisionExampleIllustration />
 
-        <h2>Colors</h2>
+        <h3>Optimizing it slightly.</h3>
+        <p>
+          These example illustrations are fairly small so we haven't ran into
+          any performance issues when checking if our line collides with any
+          other line yet. When trying to make a larger image however, for print
+          for instance, we'd end up with a lot of lines with a lot of points
+          that we could potentially collide with, meaning that for every new
+          point we add we must check against collisions against all other
+          points. This stacks up fast and will make your render times a lot
+          longer than desired. A way to mitigate this is to first split our
+          canvas up into a grid of boxes
+        </p>
+
+        <p></p>
+
+        <h2>Finally, Colors.</h2>
         <p>
           The theme for this article is converging to{" "}
           <em>

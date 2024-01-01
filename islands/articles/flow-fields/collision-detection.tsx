@@ -42,7 +42,10 @@ export function CollisionDetectionIllustration() {
   }, [canvas, ctx, maxWidth, maxHeight, fill, stroke]);
 
   const createLine = (x: number, y: number) => {
-    const r = Math.random() * 30 + 10;
+    let r = Math.random() * 30 + 10;
+    if (Math.random() > 0.98) {
+      r = 60;
+    }
     const colors = ["#b4637a", "#907aa9", "#d7827e", "#ea9d34"];
     const color = colors[Math.floor(Math.random() * colors.length)];
     const line: [number, number, number][] = [];
@@ -93,12 +96,6 @@ export function CollisionDetectionIllustration() {
     }
 
     ctx.clearRect(0, 0, maxWidth, maxHeight);
-
-    for (let i = 0; i < 70; i++) {
-      const x = Math.random() * maxWidth;
-      const y = Math.random() * maxHeight;
-      createLine(x, y);
-    }
   };
 
   return (

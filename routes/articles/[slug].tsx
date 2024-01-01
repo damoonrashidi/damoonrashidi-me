@@ -1,14 +1,15 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { render } from "$gfm";
-import { getPost } from "@/blog/getPost.ts";
 import { Post } from "@/blog/post.ts";
+import { PostService } from "@/blog/postService.ts";
 import { ArticleLead } from "@/components/articles/lead.tsx";
 import { Header } from "@/components/header.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
-    const post = await getPost(ctx.params.slug);
+    const postService = new PostService();
+    const post = await postService.getPost(ctx.params.slug);
     if (post === null) {
       return ctx.renderNotFound();
     }
