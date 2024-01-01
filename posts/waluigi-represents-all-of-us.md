@@ -39,7 +39,7 @@ needs to
 
 Since the Product has been
 [Market Fitted](https://mailchimp.com/resources/product-market-fit/#heading+defining+product-market+fit)
-but still needs to continue to grow so now we need to go out searching for other
+but still needs to continue to grow we now need to go out searching for other
 related problems to solve. We pick something from a roadmap or an opportunity
 tree or whatever framework we're using and start to calculate the cost of it.
 
@@ -120,9 +120,9 @@ realm of online whiteboarding. We add some fields to our diagram model such as
 `type: Diagram | Drawing;`<sup>
 [*](#this-is-a-bad-idea-were-now-in-bad-abstraction-land)</sup>, add some mouse
 events to our canvas and calculate some mouse position deltas and now we have MS
-Paint.
+Paint. It's now Luigi o'clock.
 
-TAM grown. Investors fed. It's now Luigi o'clock.
+TAM grown. Investors fed.
 
 We originally set out to build the best diagramming tool we could but now we're
 doing something slightly different. Even if companies wouldn't buy a license to
@@ -132,16 +132,11 @@ our original product.
 Now, the logical next step would be to add a new dashboard (or worse yet, add
 more tangentially related data to the original dashboard, fragmenting its
 purpose), one for drawings instead of diagrams, since we already had all the
-data for this new mutation available. It's now Waluigi o'clock, we've added a
-new dashboard only to aim for feature parity and consistent APIs not because it
-had any value unto itself.
+data for this new mutation available. It's now Waluigi o'clock. We've added a
+new dashboard only to aim for feature parity and consistent APIs between dashboards, not because it had any value unto itself.
 
 As the original Diagram Dashboard continues to grow, as more and more
-functionality is added diagrams, we'll observe how the maintenance costs for the
-Image Dashboard continues to grow too. We've kept going so much that we need to
-keep going. Filters added to diagrams will need to be ported over to images
-otherwise it'll be left in some perpetual and incomplete v.1 state while the
-feature factory keeps churning out more important things.
+functionality is added to diagrams, we'll observe how the maintenance costs for the Image Dashboard continues to grow too. We've kept going so much that we need to keep going. Filters added to diagrams will need to be ported over to images otherwise it'll be left in some perpetual and incomplete v.1 state while the feature factory keeps churning out more important things.
 
 I'd go as far as saying that features should even be their own
 [eigenvalue](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors), so
