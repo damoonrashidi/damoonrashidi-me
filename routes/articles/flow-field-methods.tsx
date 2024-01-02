@@ -582,11 +582,11 @@ function drawLine(x: number, y: number) {
         </Code>
         <p>
           Here we check against every 7<sup>th</sup>{" "}
-          circle in a box hoping to get a hit if there is one. The contant{" "}
+          circle in a box hoping to get a hit if there is one. The constant{" "}
           <code>7</code>{" "}
           might be too high in some cases, or could be increased even more, it
           all depends on the step size for the lines and can be tweaked to get a
-          good balance between render times and corroectness.
+          good balance between render times and correctness.
         </p>
 
         <h2 id="colors">Finally, Colors.</h2>
