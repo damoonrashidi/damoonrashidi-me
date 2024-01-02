@@ -612,7 +612,7 @@ function drawLine(x: number, y: number) {
   "#9ccfd8",
 ];
 
-const color = floor(random() * palette.length);
+const color = palette[floor(random() * palette.length)];
 drawLine(x,y,color);`}
         </Code>
 
