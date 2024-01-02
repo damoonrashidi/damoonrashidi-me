@@ -517,10 +517,10 @@ function drawLine(x: number, y: number) {
           other line... yet. When trying to make a larger image however, in a
           print-friendly size for instance, we'd end up with a lot of lines with
           a lot of points that we could potentially collide with, meaning that
-          for every new point we add we must check against collisions against
-          all other points. This stacks up fast and will make your render times
-          a lot longer than desired. A way to mitigate this is to only check
-          against points that are close enough for us to collide with.
+          for every new point we add we must check collisions against all other
+          points. This stacks up fast and will make your render times a lot
+          longer than desired. A way to mitigate this is to only check against
+          points that are close enough for us to collide with.
         </p>
 
         <p>
@@ -554,14 +554,14 @@ function drawLine(x: number, y: number) {
         </p>
 
         <p>
-          A final optimisatiion we can do with this technique is that if our
-          step size (the distance between each point in each line) is
-          sufficiently small we could skip checking a few points in the box,
-          since if our circle overlaps with one of the circles there's a high
-          chance that it overlaps with some other circles as well. Now this
-          might yield a less accurate result, but accuracy is not necessarly the
-          end goal. Some small overlaps for a few lines might introduce some
-          visually pleasing artifacts. Usually those kinds of details are{" "}
+          A final optimisation we can do with this technique is that if our step
+          size (the distance between each point in each line) is sufficiently
+          small we could skip checking a few points in the box, since if our
+          circle overlaps with one of the circles there's a high chance that it
+          overlaps with some other circles as well. Now this might yield a less
+          accurate result, but accuracy is not necessarly the end goal. Some
+          small overlaps for a few lines might introduce some visually pleasing
+          artifacts. Usually those kinds of details are{" "}
           <em>happy little accidents</em>.
         </p>
 
