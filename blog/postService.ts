@@ -17,7 +17,7 @@ export class PostService {
     );
   }
 
-  async getPost(slug: string): Promise<Post | null> {
+  async getPost(slug: string): Promise<Post> {
     const text = await Deno.readTextFile(join("./posts", `${slug}.md`));
     this.incrementReadCount(slug);
     const { attrs, body } = extract<Post>(text);
@@ -31,6 +31,7 @@ export class PostService {
         : PostStatus.Published,
       body,
       snippet: attrs.snippet,
+      ogImageUrl: attrs.ogImageUrl,
     };
   }
 

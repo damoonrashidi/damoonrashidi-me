@@ -9,11 +9,12 @@ import { Header } from "@/components/header.tsx";
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
     const postService = new PostService();
-    const post = await postService.getPost(ctx.params.slug);
-    if (post === null) {
+    try {
+      const post = await postService.getPost(ctx.params.slug);
+      return ctx.render(post);
+    } catch {
       return ctx.renderNotFound();
     }
-    return ctx.render(post);
   },
 };
 
@@ -27,6 +28,11 @@ export default function PostPage(props: PageProps<Post>) {
           name="description"
           content={post.snippet}
         />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.snippet} />
+        {post.ogImageUrl
+          ? <meta property="og:image" content={post.ogImageUrl} />
+          : <></>}
       </Head>
       <Header />
       <article className="max-w-prose m-auto font-display p-12 sm:p-8">

@@ -22,8 +22,12 @@ export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
     const url = import.meta.url.split("/").pop() as string;
     const postService = new PostService();
-    const post = await postService.getPost(url.replace(".tsx", ""));
-    return ctx.render(post as Post);
+    try {
+      const post = await postService.getPost(url.replace(".tsx", ""));
+      return ctx.render(post as Post);
+    } catch {
+      return ctx.renderNotFound();
+    }
   },
 };
 
@@ -69,6 +73,11 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           name="description"
           content={post.snippet}
         />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.snippet} />
+        {post.ogImageUrl
+          ? <meta property="og:image" content={post.ogImageUrl} />
+          : <></>}
       </Head>
       <Header />
       <article className="max-w-prose m-auto font-display p-8 sm:p-0">

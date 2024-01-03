@@ -11,4 +11,5 @@ export interface Post {
   status: PostStatus;
   snippet: string;
   body: string;
+  ogImageUrl?: string;
 }
