@@ -19,7 +19,6 @@ export class PostService {
 
   async getPost(slug: string): Promise<Post> {
     const text = await Deno.readTextFile(join("./posts", `${slug}.md`));
-    this.incrementReadCount(slug);
     const { attrs, body } = extract<Post>(text);
     return {
       slug,
@@ -35,7 +34,7 @@ export class PostService {
     };
   }
 
-  private async incrementReadCount(slug: string): Promise<void> {
+  async incrementReadCount(slug: string): Promise<void> {
     const kv = await Deno.openKv();
     await kv.atomic()
       .mutate({

@@ -11,6 +11,7 @@ export const handler: Handlers<Post> = {
     const postService = new PostService();
     try {
       const post = await postService.getPost(ctx.params.slug);
+      postService.incrementReadCount(post.slug);
       return ctx.render(post);
     } catch {
       return ctx.renderNotFound();
