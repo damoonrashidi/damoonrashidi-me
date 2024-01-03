@@ -626,7 +626,7 @@ drawLine(x,y,color);`}
 
         <Code>
           {`const n = noise(x / 120, y / 120) * warp;
-const hue =  n % 255;
+const hue = n % 255;
 const color = \`hsl(\${hue}deg, 70%, 50%)\`;`}
         </Code>
 

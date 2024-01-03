@@ -71,8 +71,8 @@ while being littered throughout code bases with tight couplings and
 
 Adding these three costs together you end up with a number that (hopefully) is
 smaller than the value of the feature produced. So when picking our Next Thing
-To Do <sup>TM</sup> it's easy to overlook the a lot of these costs since you
-most likely don't have processes in place to calculate them.
+To Do <sup>TM</sup> it's easy to overlook a lot of these costs since you most
+likely don't have processes in place to calculate them.
 
 ## Enter, Waluigi.
 

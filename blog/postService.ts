@@ -18,8 +18,8 @@ export class PostService {
   }
 
   async getPost(slug: string): Promise<Post | null> {
-    this.incrementReadCount(slug);
     const text = await Deno.readTextFile(join("./posts", `${slug}.md`));
+    this.incrementReadCount(slug);
     const { attrs, body } = extract<Post>(text);
     return {
       slug,
