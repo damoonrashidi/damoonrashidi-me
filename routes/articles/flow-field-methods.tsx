@@ -18,6 +18,7 @@ import { NoiseAngleIllustration } from "@/islands/articles/flow-fields/noise-ang
 import { NoiseLineIllustration } from "@/islands/articles/flow-fields/noise-line.tsx";
 import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
 import { PointMapIllustration } from "@/islands/articles/flow-fields/pointmap.tsx";
+import { ZoomingIllustration } from "@/islands/articles/flow-fields/zooming.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(req, ctx) {
@@ -216,6 +217,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           <code>1.0</code> for the y-axis, and <code>0.0</code>{" "}
           for the x-axis, for a total distance of <code>1.0</code>.
         </p>
+        <ZoomingIllustration />
         <p>
           If we divide all our x and y values by the constant{" "}
           <code>smoothness = 100</code>{"  "}we'd end up with:{" "}

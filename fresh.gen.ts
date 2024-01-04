@@ -25,6 +25,7 @@ import * as $articles_flow_fields_noise from "./islands/articles/flow-fields/noi
 import * as $articles_flow_fields_pointmap from "./islands/articles/flow-fields/pointmap.tsx";
 import * as $articles_flow_fields_useColors from "./islands/articles/flow-fields/useColors.ts";
 import * as $articles_flow_fields_useResize from "./islands/articles/flow-fields/useResize.ts";
+import * as $articles_flow_fields_zooming from "./islands/articles/flow-fields/zooming.tsx";
 import * as $home_art_spinner from "./islands/home/art-spinner.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -67,6 +68,7 @@ const manifest = {
       $articles_flow_fields_useColors,
     "./islands/articles/flow-fields/useResize.ts":
       $articles_flow_fields_useResize,
+    "./islands/articles/flow-fields/zooming.tsx": $articles_flow_fields_zooming,
     "./islands/home/art-spinner.tsx": $home_art_spinner,
   },
   baseUrl: import.meta.url,
