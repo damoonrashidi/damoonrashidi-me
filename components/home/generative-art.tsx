@@ -1,7 +1,14 @@
 import { ArtSpinner } from "@/islands/home/art-spinner.tsx";
 
 export function GenerativeArtSpinner() {
-  const images = ["forces", "nightfall", "wildlands", "grid", "genesis"];
+  const images = [
+    "forces",
+    "nightfall",
+    "disrupted-arrival",
+    "wildlands",
+    "grid",
+    "genesis",
+  ];
 
   return (
     <section title="Generative Art">

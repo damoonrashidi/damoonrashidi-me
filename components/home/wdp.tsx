@@ -30,7 +30,7 @@ export function Wdp() {
           <p className="font-[300]">
             View on{" "}
             <a
-              href="https://github.com/damoonrashidi/bitalarm"
+              href="https://github.com/damoonrashidi/wdp"
               target="_blank"
               className="text-link underline underline-offset-2"
               rel="noopener nofollow"
