@@ -217,7 +217,6 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           <code>1.0</code> for the y-axis, and <code>0.0</code>{" "}
           for the x-axis, for a total distance of <code>1.0</code>.
         </p>
-        <ZoomingIllustration />
         <p>
           If we divide all our x and y values by the constant{" "}
           <code>smoothness = 100</code>{"  "}we'd end up with:{" "}
@@ -226,6 +225,9 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           <code>0.01</code>, but keeping the relation between the points the
           same.
         </p>
+
+        <ZoomingIllustration />
+
         <p>The only change we need to make to our code is the following:</p>
         <Code>
           {`const smoothness = 100;

@@ -29,6 +29,7 @@ distance(
           value={smooth}
           onChange={(event) => setSmooth(Number(event.currentTarget.value))}
         />
+        <span className="w-[50px]">{smooth}</span>
       </div>
     </Illustration>
   );
