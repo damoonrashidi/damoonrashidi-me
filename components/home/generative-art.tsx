@@ -7,6 +7,7 @@ export function GenerativeArtSpinner() {
     "disrupted-arrival",
     "wildlands",
     "grid",
+    "mondrian",
     "genesis",
   ];
 
