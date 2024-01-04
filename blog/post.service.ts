@@ -3,8 +3,8 @@ import { Post, PostStatus } from "@/blog/post.ts";
 import { extract } from "front_matter";
 
 export class PostService {
-  async getPosts(): Promise<Post[]> {
-    const files = Deno.readDir("./posts");
+  static async getPosts(): Promise<Post[]> {
+    const files = Deno.readDir("./blog/posts");
     const promises = [];
     for await (const file of files) {
       const slug = file.name.replace(".md", "");
@@ -17,8 +17,8 @@ export class PostService {
     );
   }
 
-  async getPost(slug: string): Promise<Post> {
-    const text = await Deno.readTextFile(join("./posts", `${slug}.md`));
+  static async getPost(slug: string): Promise<Post> {
+    const text = await Deno.readTextFile(join("./blog/posts", `${slug}.md`));
     const { attrs, body } = extract<Post>(text);
     return {
       slug,
@@ -32,16 +32,5 @@ export class PostService {
       snippet: attrs.snippet,
       ogImageUrl: attrs.ogImageUrl,
     };
-  }
-
-  async incrementReadCount(slug: string): Promise<void> {
-    const kv = await Deno.openKv();
-    await kv.atomic()
-      .mutate({
-        type: "sum",
-        key: ["posts", slug, "read_count"],
-        value: new Deno.KvU64(1n),
-      })
-      .commit();
   }
 }

@@ -1,7 +1,8 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { AnalyticsService } from "@/analytics/analytics.service.ts";
+import { PostService } from "@/blog/post.service.ts";
 import { Post } from "@/blog/post.ts";
-import { PostService } from "@/blog/postService.ts";
 import { ArticleLead } from "@/components/articles/lead.tsx";
 import { TableOfContents } from "@/components/articles/table-of-contents.tsx";
 import { Header } from "@/components/header.tsx";
@@ -19,12 +20,11 @@ import { NoiseIllustration } from "@/islands/articles/flow-fields/noise.tsx";
 import { PointMapIllustration } from "@/islands/articles/flow-fields/pointmap.tsx";
 
 export const handler: Handlers<Post> = {
-  async GET(_req, ctx) {
+  async GET(req, ctx) {
     const url = import.meta.url.split("/").pop() as string;
-    const postService = new PostService();
     try {
-      const post = await postService.getPost(url.replace(".tsx", ""));
-      postService.incrementReadCount(post.slug);
+      const post = await PostService.getPost(url.replace(".tsx", ""));
+      AnalyticsService.readPost(post.slug, req.headers.get("Referer"));
       return ctx.render(post as Post);
     } catch {
       return ctx.renderNotFound();

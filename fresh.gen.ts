@@ -5,7 +5,6 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_articles_stats from "./routes/api/articles/stats.tsx";
-import * as $api_articles_trash from "./routes/api/articles/trash.tsx";
 import * as $art from "./routes/art.tsx";
 import * as $articles_slug_ from "./routes/articles/[slug].tsx";
 import * as $articles_flow_field_methods from "./routes/articles/flow-field-methods.tsx";
@@ -34,7 +33,6 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/articles/stats.tsx": $api_articles_stats,
-    "./routes/api/articles/trash.tsx": $api_articles_trash,
     "./routes/art.tsx": $art,
     "./routes/articles/[slug].tsx": $articles_slug_,
     "./routes/articles/flow-field-methods.tsx": $articles_flow_field_methods,

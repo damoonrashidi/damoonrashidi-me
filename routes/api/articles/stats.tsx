@@ -1,21 +1,38 @@
 import { Handlers } from "$fresh/server.ts";
-import { PostService } from "@/blog/postService.ts";
+import { PostService } from "@/blog/post.service.ts";
+
+interface Summary {
+  slug: string;
+  read_count: number;
+  referrals: Record<string, number>;
+}
 
 export const handler: Handlers = {
   async GET() {
-    const service = new PostService();
-    const posts = await service.getPosts();
-    const slugs = posts.map((post) => post.slug);
+    const data: Summary[] = [];
+
     const kv = await Deno.openKv();
-    const keys = slugs.map((slug) => ["posts", slug, "read_count"]);
-    const pairs = await kv.getMany<bigint[]>(keys);
-    const data: Record<string, number> = {};
-    for (const pair of pairs) {
-      data[String(pair.key.filter((part) => slugs.includes(String(part))))] =
-        Number(
-          pair.value ?? 0,
-        );
+    const slugs = (await PostService.getPosts()).map((post) => post.slug);
+
+    for (const slug of slugs) {
+      const readCount = await kv.get(["posts", slug, "read_count"]);
+      const summary: Summary = {
+        slug,
+        read_count: Number(readCount.value),
+        referrals: {},
+      };
+
+      const refs = kv.list({ prefix: ["posts", slug, "referrals"] });
+      for await (const ref of refs) {
+        const referral = String(ref.key[ref.key.length - 1]);
+        summary.referrals = {
+          ...summary.referrals,
+          [referral]: Number(ref.value),
+        };
+      }
+      data.push(summary);
     }
+
     return Response.json(data);
   },
 };

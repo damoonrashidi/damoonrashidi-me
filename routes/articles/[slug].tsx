@@ -1,17 +1,17 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { render } from "$gfm";
+import { AnalyticsService } from "@/analytics/analytics.service.ts";
+import { PostService } from "@/blog/post.service.ts";
 import { Post } from "@/blog/post.ts";
-import { PostService } from "@/blog/postService.ts";
 import { ArticleLead } from "@/components/articles/lead.tsx";
 import { Header } from "@/components/header.tsx";
 
 export const handler: Handlers<Post> = {
-  async GET(_req, ctx) {
-    const postService = new PostService();
+  async GET(req, ctx) {
     try {
-      const post = await postService.getPost(ctx.params.slug);
-      postService.incrementReadCount(post.slug);
+      const post = await PostService.getPost(ctx.params.slug);
+      AnalyticsService.readPost(post.slug, req.headers.get("Referer"));
       return ctx.render(post);
     } catch {
       return ctx.renderNotFound();

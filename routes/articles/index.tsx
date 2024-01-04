@@ -1,13 +1,12 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { PostService } from "@/blog/post.service.ts";
 import { Post } from "@/blog/post.ts";
 import { ArticleSummary } from "@/components/articles/summary.tsx";
 import { Header } from "@/components/header.tsx";
-import { PostService } from "../../blog/postService.ts";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
-    const postService = new PostService();
-    const posts = await postService.getPosts();
+    const posts = await PostService.getPosts();
     return ctx.render(posts);
   },
 };
