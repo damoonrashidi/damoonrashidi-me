@@ -6,6 +6,7 @@ export default {
       text: "var(--text-fg)",
       link: "var(--text-link)",
       subtle: "var(--text-subtle)",
+      quote: "var(--text-quote)",
       highlight: "var(--text-highlight)",
       bg: "var(--background)",
       bgLight: "var(--background-light)",

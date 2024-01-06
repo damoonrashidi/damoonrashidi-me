@@ -6,7 +6,8 @@
   --text-fg: #333;
   --text-highlight: #55801c;
   --text-link: #6e1adc;
-  --text-subtle: #252525;
+  --text-subtle: #838383;
+  --text-quote: #252525;
   --background: #fff;
   --background-light: #F5F5F5;
   
@@ -14,7 +15,8 @@
     --text-fg: #f0f0f0;
     --text-highlight: #659528;
     --text-link: #9497f8;
-    --text-subtle: #dedede;
+    --text-subtle: #a0a0a0;
+    --text-quote: #dedede;
     --background: #101010;
     --background-light: #141414;
   }
@@ -29,7 +31,7 @@ html, body {
 blockquote {
   border-left: 3px solid var(--text-fg);
   padding-left: 16px;
-  color: var(--text-subtle);
+  color: var(--text-quote);
   font-family: 'Overpass Mono', monospace;
   margin-bottom: 16px;
 }

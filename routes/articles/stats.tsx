@@ -69,8 +69,14 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
 						return (
 							<tr>
 								<td>
-									{url.hostname}
-									{url.pathname}
+									<a
+										href={ref}
+										rel="noopener noreferrer"
+										className="text-link no-underline"
+									>
+										{url.hostname}
+										{url.pathname}
+									</a>
 								</td>
 								<td className="pl-8 text-highlight">
 									{formatReadCount(count)}
