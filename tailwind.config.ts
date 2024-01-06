@@ -8,6 +8,7 @@ export default {
       highlight: "var(--text-highlight)",
       bg: "var(--background)",
       bgLight: "var(--background-light)",
+      transparent: "transparent",
     },
     extend: {
       fontFamily: {

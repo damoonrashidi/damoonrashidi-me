@@ -13,7 +13,7 @@ export default function App({ Component }: PageProps) {
           crossorigin="crossorigin"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Overpass:wght@400;700&Overpass+Mono:wght@300;700&family=Playfair+Display:wght@400;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Overpass:wght@400;700;900&Overpass+Mono:wght@300;700&family=Playfair+Display:wght@400;600&display=swap"
           rel="stylesheet"
         />
       </head>
