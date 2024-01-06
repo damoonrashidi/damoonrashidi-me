@@ -9,6 +9,7 @@ import * as $art from "./routes/art.tsx";
 import * as $articles_slug_ from "./routes/articles/[slug].tsx";
 import * as $articles_flow_field_methods from "./routes/articles/flow-field-methods.tsx";
 import * as $articles_index from "./routes/articles/index.tsx";
+import * as $articles_stats from "./routes/articles/stats.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $articles_code from "./islands/articles/code.tsx";
 import * as $articles_flow_fields_angle_to_point from "./islands/articles/flow-fields/angle-to-point.tsx";
@@ -38,6 +39,7 @@ const manifest = {
     "./routes/articles/[slug].tsx": $articles_slug_,
     "./routes/articles/flow-field-methods.tsx": $articles_flow_field_methods,
     "./routes/articles/index.tsx": $articles_index,
+    "./routes/articles/stats.tsx": $articles_stats,
     "./routes/index.tsx": $index,
   },
   islands: {

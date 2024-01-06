@@ -5,6 +5,7 @@ export default {
     colors: {
       text: "var(--text-fg)",
       link: "var(--text-link)",
+      subtle: "var(--text-subtle)",
       highlight: "var(--text-highlight)",
       bg: "var(--background)",
       bgLight: "var(--background-light)",

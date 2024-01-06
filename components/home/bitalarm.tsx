@@ -8,7 +8,7 @@ export function BitAlarm() {
 		>
 			<div className="flex flex-col items-center gap-10 m-auto lg:w-3/4 md:flex-row ">
 				<div className="font-textular">
-					<h2 className="bg-clip-text text-6xl w-[350px] text-transparent font-black bg-gradient-to-r from-[#4c5fde] to-[#63240e] 90%">
+					<h2 className="bg-clip-text text-4xl w-[350px] text-transparent font-black bg-gradient-to-r from-[#4c5fde] to-[#63240e] 90%">
 						BITALARM
 					</h2>
 					<p className="text-2xl font-[300] max-w-prose">
