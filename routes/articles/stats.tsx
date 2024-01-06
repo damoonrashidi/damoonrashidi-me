@@ -11,7 +11,10 @@ interface PostStatistic {
 	referrals: Record<string, number>;
 }
 
-const formatter = Intl.NumberFormat("en-us");
+function formatReadCount(count: number): string {
+	const formatter = Intl.NumberFormat("en-us");
+	return formatter.format(count).replace(",", "_");
+}
 
 export const handler: Handlers = {
 	async GET(_, ctx) {
@@ -54,7 +57,7 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
 			<h2 className="text-lg">
 				{statistic.slug}:{" "}
 				<span className="text-highlight">
-					{formatter.format(statistic.read_count).replace(",", "_")}
+					{formatReadCount(statistic.read_count)}
 				</span>
 			</h2>
 			<p className="text-subtle">{statistic.snippet}</p>
@@ -70,7 +73,7 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
 									{url.pathname}
 								</td>
 								<td className="pl-8 text-highlight">
-									{formatter.format(count).replace(",", "_")}
+									{formatReadCount(count)}
 								</td>
 							</tr>
 						);
@@ -92,7 +95,9 @@ export default function StatsPage({ data }: PageProps<PostStatistic[]>) {
 				<p>
 					There have been{" "}
 					<span className="text-highlight">
-						{data.reduce((sum, { read_count }) => sum + read_count, 0)}
+						{formatReadCount(
+							data.reduce((sum, { read_count }) => sum + read_count, 0),
+						)}
 					</span>{" "}
 					visits in total.
 				</p>
