@@ -8,7 +8,7 @@ interface PostStatistic {
 	snippet: string;
 	imageUrl?: string;
 	read_count: number;
-	referrals: Record<string, number>;
+	referrals: Record<string, Array<{ count: number; path: string }>>;
 }
 
 function formatReadCount(count: number): string {
@@ -34,18 +34,69 @@ export const handler: Handlers = {
 			};
 
 			const refs = kv.list({ prefix: ["posts", post.slug, "referrals"] });
+
+			const referrals: Record<
+				string,
+				Array<{ count: number; path: string }>
+			> = {};
 			for await (const ref of refs) {
-				const referral = String(ref.key[ref.key.length - 1]);
-				summary.referrals = {
-					...summary.referrals,
-					[referral]: Number(ref.value),
-				};
+				const url = new URL(String(ref.key[ref.key.length - 1]));
+				if (!referrals[url.host]) {
+					referrals[url.host] = [];
+				}
+				referrals[url.host].push({
+					count: Number(ref.value),
+					path: url.pathname,
+				});
+
+				referrals[url.host].sort((a, b) => b.count - a.count);
 			}
+
+			summary.referrals = referrals;
+
 			data.push(summary);
 		}
 
 		return ctx.render(data);
 	},
+};
+
+const Rows = ({
+	host,
+	paths,
+}: { host: string; paths: Array<{ count: number; path: string }> }) => {
+	if (paths.length === 1) {
+		return (
+			<tr>
+				<td>
+					<a href={`https://${host}`}>{host}</a>
+				</td>
+				<td className="text-highlight text-right">{paths[0].count}</td>
+			</tr>
+		);
+	}
+
+	return (
+		<>
+			<tr>
+				<td>{host}</td>
+				<td>{""}</td>
+			</tr>
+			{paths.map(({ path, count }) => (
+				<tr>
+					<td>
+						<a
+							href={`https://${host}${path}`}
+							className="ml-4 pl-2 border-l-2 border-dotted border-subtle inline-block"
+						>
+							{path}
+						</a>
+					</td>
+					<td className="text-right text-highlight">{count}</td>
+				</tr>
+			))}
+		</>
+	);
 };
 
 const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
@@ -61,29 +112,14 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
 				</span>
 			</h2>
 			<p className="text-subtle">{statistic.snippet}</p>
-			<table className="border-collapse border-spacing-0 border-none text-sm w-[100%]">
-				{Object.entries(statistic.referrals)
-					.sort(([, a], [, b]) => b - a)
-					.map(([ref, count]) => {
-						const url = new URL(ref);
-						return (
-							<tr>
-								<td>
-									<a
-										href={ref}
-										rel="noopener noreferrer"
-										className="text-link no-underline"
-									>
-										{url.hostname}
-										{url.pathname}
-									</a>
-								</td>
-								<td className="pl-8 text-highlight">
-									{formatReadCount(count)}
-								</td>
-							</tr>
-						);
-					})}
+			<table
+				cellPadding={0}
+				cellSpacing={0}
+				className="border-collapse border-spacing-0 border-none text-sm w-[100%]"
+			>
+				{Object.entries(statistic.referrals).map(([host, paths]) => (
+					<Rows host={host} paths={paths} />
+				))}
 			</table>
 		</section>
 	);
