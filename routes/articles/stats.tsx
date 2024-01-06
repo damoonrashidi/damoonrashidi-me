@@ -11,6 +11,8 @@ interface PostStatistic {
 	referrals: Record<string, number>;
 }
 
+const formatter = Intl.NumberFormat("en-us");
+
 export const handler: Handlers = {
 	async GET(_, ctx) {
 		const data: PostStatistic[] = [];
@@ -51,7 +53,9 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
 		>
 			<h2 className="text-lg">
 				{statistic.slug}:{" "}
-				<span className="text-highlight">{statistic.read_count}</span>
+				<span className="text-highlight">
+					{formatter.format(statistic.read_count).replace(",", "_")}
+				</span>
 			</h2>
 			<p className="text-subtle">{statistic.snippet}</p>
 			<table className="border-collapse border-spacing-0 border-none text-sm w-[100%]">
@@ -65,7 +69,9 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
 									{url.hostname}
 									{url.pathname}
 								</td>
-								<td className="pl-8 text-highlight">{count}</td>
+								<td className="pl-8 text-highlight">
+									{formatter.format(count).replace(",", "_")}
+								</td>
 							</tr>
 						);
 					})}
