@@ -83,7 +83,7 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
                     className="text-link no-underline"
                   >
                     {url.hostname}
-                    {url.pathname}
+                    {url.pathname.length > 10 ? url.pathname.substring(0, 10) + "..." : url.pathname}
                   </a>
                 </td>
                 <td className="pl-8 text-highlight">
