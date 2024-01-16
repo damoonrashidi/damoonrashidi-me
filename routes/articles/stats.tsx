@@ -16,6 +16,14 @@ function formatReadCount(count: number): string {
   return formatter.format(count).replace(",", "_");
 }
 
+const getHostName = (ref: string): string => {
+  try {
+    return new URL(ref).hostname;
+  } catch {
+    return ref;
+  }
+};
+
 export const handler: Handlers = {
   async GET(_, ctx) {
     const data: PostStatistic[] = [];
@@ -36,9 +44,13 @@ export const handler: Handlers = {
       const refs = kv.list({ prefix: ["posts", post.slug, "referrals"] });
       for await (const ref of refs) {
         const referral = String(ref.key[ref.key.length - 1]);
+        const host = getHostName(referral);
+
+        const previousValue = summary.referrals[host] ?? 0;
+
         summary.referrals = {
           ...summary.referrals,
-          [referral]: Number(ref.value),
+          [host]: previousValue + Number(ref.value),
         };
       }
       data.push(summary);
@@ -49,14 +61,6 @@ export const handler: Handlers = {
 };
 
 const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
-  const getUrl = (ref: string): { hostname: string; pathname: string } => {
-    try {
-      return new URL(ref);
-    } catch {
-      return { hostname: ref, pathname: "/" };
-    }
-  };
-
   return (
     <section
       key={statistic.slug}
@@ -73,18 +77,10 @@ const StatSummary = ({ statistic }: { statistic: PostStatistic }) => {
         {Object.entries(statistic.referrals)
           .sort(([, a], [, b]) => b - a)
           .map(([ref, count]) => {
-            const url = getUrl(ref);
             return (
               <tr>
                 <td>
-                  <a
-                    href={ref}
-                    rel="noopener noreferrer"
-                    className="text-link no-underline"
-                  >
-                    {url.hostname}
-                    {url.pathname.length > 10 ? url.pathname.substring(0, 10) + "..." : url.pathname}
-                  </a>
+                  {ref}
                 </td>
                 <td className="pl-8 text-highlight">
                   {formatReadCount(count)}
@@ -115,9 +111,7 @@ export default function StatsPage({ data }: PageProps<PostStatistic[]>) {
           </span>{" "}
           visits in total.
         </p>
-        {data.map((stat) => (
-          <StatSummary key={stat.slug} statistic={stat} />
-        ))}
+        {data.map((stat) => <StatSummary key={stat.slug} statistic={stat} />)}
       </main>
     </>
   );
