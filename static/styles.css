@@ -54,6 +54,10 @@ ul {
   margin-bottom: 16px;
   padding-left: 16px;
 }
+ol {
+  list-style-type: number;
+  padding-left: 16px;
+}
 
 h1 > a, h2 > a, h3 > a {
   color: var(--text-fg);

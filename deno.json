@@ -4,25 +4,16 @@
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
     "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run --unstable -A --watch=static/,routes/,posts dev.ts",
+    "start": "deno run --unstable -A --watch=static/,routes/,blog dev.ts",
     "build": "deno run --unstable -A dev.ts build",
     "preview": "deno run --unstable -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update ."
   },
-  "lint": {
-    "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
-    }
-  },
-  "exclude": [
-    "**/_fresh/*"
-  ],
+  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "exclude": ["**/_fresh/*"],
   "imports": {
     "@/": "./",
-    "$fresh/": "https://deno.land/x/fresh@1.6.1/",
+    "$fresh/": "https://deno.land/x/fresh@1.6.3/",
     "preact": "https://esm.sh/preact@10.19.2",
     "$noise": "https://deno.land/x/noise@v1.1.0/mod.ts",
     "front_matter": "https://deno.land/std@0.157.0/encoding/front_matter.ts",
@@ -35,9 +26,6 @@
     "tailwindcss/plugin": "npm:/tailwindcss@3.3.5/plugin.js",
     "$std/": "https://deno.land/std@0.208.0/"
   },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  },
+  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
   "nodeModulesDir": true
 }
