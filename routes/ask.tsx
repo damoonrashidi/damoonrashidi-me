@@ -2,9 +2,9 @@ import { Head } from "$fresh/runtime.ts";
 import { Header } from "@/components/header.tsx";
 import { Bash } from "@/components/ui/bash.tsx";
 import { TableOfContents } from "@/components/articles/table-of-contents.tsx";
-import { Code } from "@/islands/articles/code.tsx";
 
 const tableOfContents = [
+  { id: "demo", label: "Demo" },
   { id: "installation", label: "Installation" },
   { id: "configuration", label: "Configuration" },
 ];
@@ -35,9 +35,31 @@ export default function Art() {
             A per shell history is saved to offer quicker lookups and avoiding
             spamming OpenAI requests.
           </p>
+          <p>
+            Ask is also open source and available on{" "}
+            <a href="https://github.com/damoonrashidi/ask">github</a>.
+          </p>
+          <Bash>
+            <>
+              ❯ <span className="text-highlight font-bold">ask</span> list all
+              branches in this format name, author, last updated
+              {"\n"}? Command suggestions {"\n"}
+              &gt;{" "}
+              <span className="text-highlight">
+                {" "}
+                for-each-ref --format="%(refname:short), %(authorname),
+                %(committerdate:relative)" refs/heads/
+              </span>{" "}
+              {"\n"}
+              [↕ to select, ↵ to run and ESC to cancel]
+            </>
+          </Bash>
         </section>
         <section className="max-w-prose m-auto py-8">
           <TableOfContents items={tableOfContents} />
+        </section>
+        <section className="max-w-prose m-auto">
+          <h2>Demo</h2>
         </section>
         <div className="w-[90%] max-w-[800px] m-auto">
           <script
@@ -53,11 +75,17 @@ export default function Art() {
             and available in your environment variables, so add the following to
             your shell config file.
           </p>
-          <Bash>{`export OPENAI_KEY = "sk-...xxxx"`}</Bash>
+          <Bash>
+            <span>{`export OPENAI_KEY = "sk-...xxxx"`}</span>
+          </Bash>
           <h3>Homebrew</h3>
           <p>Install via homebrew.</p>
           <Bash>
-            {`brew tap damoonrashidi/homebrew-ask https://github.com/damoonrashidi/homebrew-ask\nbrew install ask`}
+            <span>
+              {`brew tap damoonrashidi/homebrew-ask https://github.com/damoonrashidi/homebrew-ask
+brew install ask`}
+            </span>
+            <br />
           </Bash>
           <h3>From source</h3>
           <p>
@@ -65,9 +93,11 @@ export default function Art() {
             up.
           </p>
           <Bash>
-            {`git clone https://github.com/damoonrashidi/ask
+            <span>
+              {`git clone https://github.com/damoonrashidi/ask
 cd ask
 cargo install --path .`}
+            </span>
           </Bash>
           <h3>Prebuilt binaries</h3>
           <p>
@@ -102,8 +132,8 @@ cargo install --path .`}
                 <br /># Default: 2, min: 1
               </span>
               <br />
-              <span>enable_history: </span>
-              <span className="text-highlight">bool</span>
+              <span>enable_history = </span>
+              <span className="text-highlight">true</span>
               <br />
               <br />
               <span className="text-subtle">
@@ -113,8 +143,8 @@ cargo install --path .`}
                 <br /># Default: 2, min: 1
               </span>
               <br />
-              <span>choice_count: </span>
-              <span className="text-highlight">number</span>
+              <span>choice_count = </span>
+              <span className="text-highlight">2</span>
               <br />
               <br />
               <span className="text-subtle">
@@ -122,8 +152,8 @@ cargo install --path .`}
                 # <br /># Default: "gpt-4-1106-preview"
               </span>
               <br />
-              <span>model: </span>
-              <span className="text-highlight">string</span>
+              <span>model = </span>
+              <span className="text-highlight">"gpt-4-1106-preview"</span>
               <br />
               <br />
               <span className="text-[#f00]">[shell]</span>
@@ -135,8 +165,8 @@ cargo install --path .`}
                 <br /># Default: None
               </span>
               <br />
-              <span>force_use: </span>
-              <span className="text-highlight">string</span>
+              <span>force_use = </span>
+              <span className="text-highlight">"powershell"</span>
               <br />
               <br />
               <span className="text-subtle">
@@ -146,8 +176,8 @@ cargo install --path .`}
                 # Default: "bash"
                 <br />
               </span>
-              <span>fallback: </span>
-              <span className="text-highlight">string</span>
+              <span>fallback = </span>
+              <span className="text-highlight">"bash"</span>
             </code>
           </pre>
         </section>
