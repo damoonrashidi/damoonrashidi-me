@@ -2,12 +2,22 @@ import { Head } from "$fresh/runtime.ts";
 import { Header } from "@/components/header.tsx";
 import { Bash } from "@/components/ui/bash.tsx";
 import { TableOfContents } from "@/components/articles/table-of-contents.tsx";
+import { Handlers } from "$fresh/src/server/mod.ts";
+import { AnalyticsService } from "@/analytics/analytics.service.ts";
 
 const tableOfContents = [
   { id: "demo", label: "Demo" },
   { id: "installation", label: "Installation" },
   { id: "configuration", label: "Configuration" },
 ];
+
+export const handler: Handlers<void> = {
+  GET(req, ctx) {
+    const url = import.meta.url.split("/").pop() as string;
+    AnalyticsService.viewPage("ask", req.headers.get("Referer")).then(() => {});
+    return ctx.render();
+  },
+};
 
 export default function Art() {
   return (
@@ -120,7 +130,7 @@ cargo install --path .`}
           </p>
           <pre>
             <code className="p-4 bg-bgLight w-full block overflow-x-auto">
-              <span className="text-[#f00]">[command]</span>
+              <span className="text-[#4290f5]">[command]</span>
               <br />
               <span className="text-subtle">
                 # If enabled, answers will be saved locally for each shell
@@ -129,7 +139,7 @@ cargo install --path .`}
                 call.
                 <br />
                 #
-                <br /># Default: 2, min: 1
+                <br /># Default: true
               </span>
               <br />
               <span>enable_history = </span>
@@ -156,7 +166,7 @@ cargo install --path .`}
               <span className="text-highlight">"gpt-4-1106-preview"</span>
               <br />
               <br />
-              <span className="text-[#f00]">[shell]</span>
+              <span className="text-[#4290f5]">[shell]</span>
               <br />
               <span className="text-subtle">
                 # If set, ask will no longer try to guess the active

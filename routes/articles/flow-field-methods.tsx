@@ -7,18 +7,18 @@ import { ArticleLead } from "@/components/articles/lead.tsx";
 import { TableOfContents } from "@/components/articles/table-of-contents.tsx";
 import { Header } from "@/components/header.tsx";
 import { Code } from "@/islands/articles/code.tsx";
-import { AngleBetweenIllustration } from "../../islands/articles/flow-fields-methods/angle-to-point.tsx";
-import { BuildingALine } from "../../islands/articles/flow-fields-methods/building-line.tsx";
-import { CollisionDetectionIllustration } from "../../islands/articles/flow-fields-methods/collision-detection.tsx";
-import { CollisionExampleIllustration } from "../../islands/articles/flow-fields-methods/collision-example.tsx";
-import { ColorIllustration } from "../../islands/articles/flow-fields-methods/color.tsx";
-import { DistanceToPointIllustration } from "../../islands/articles/flow-fields-methods/distance-to-point.tsx";
-import { LineVariationIllustration } from "../../islands/articles/flow-fields-methods/line-variation.tsx";
-import { NoiseAngleIllustration } from "../../islands/articles/flow-fields-methods/noise-angles.tsx";
-import { NoiseLineIllustration } from "../../islands/articles/flow-fields-methods/noise-line.tsx";
-import { NoiseIllustration } from "../../islands/articles/flow-fields-methods/noise.tsx";
-import { PointMapIllustration } from "../../islands/articles/flow-fields-methods/pointmap.tsx";
-import { ZoomingIllustration } from "../../islands/articles/flow-fields-methods/zooming.tsx";
+import { AngleBetweenIllustration } from "@/islands/articles/flow-fields-methods/angle-to-point.tsx";
+import { BuildingALine } from "@/islands/articles/flow-fields-methods/building-line.tsx";
+import { CollisionDetectionIllustration } from "@/islands/articles/flow-fields-methods/collision-detection.tsx";
+import { CollisionExampleIllustration } from "@/islands/articles/flow-fields-methods/collision-example.tsx";
+import { ColorIllustration } from "@/islands/articles/flow-fields-methods/color.tsx";
+import { DistanceToPointIllustration } from "@/islands/articles/flow-fields-methods/distance-to-point.tsx";
+import { LineVariationIllustration } from "@/islands/articles/flow-fields-methods/line-variation.tsx";
+import { NoiseAngleIllustration } from "@/islands/articles/flow-fields-methods/noise-angles.tsx";
+import { NoiseLineIllustration } from "@/islands/articles/flow-fields-methods/noise-line.tsx";
+import { NoiseIllustration } from "@/islands/articles/flow-fields-methods/noise.tsx";
+import { PointMapIllustration } from "@/islands/articles/flow-fields-methods/pointmap.tsx";
+import { ZoomingIllustration } from "@/islands/articles/flow-fields-methods/zooming.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(req, ctx) {
@@ -74,9 +74,11 @@ export default function PostPage({ data: post }: PageProps<Post>) {
         <meta name="description" content={post.snippet} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.snippet} />
-        {post.ogImageUrl
-          ? <meta property="og:image" content={post.ogImageUrl} />
-          : <></>}
+        {post.ogImageUrl ? (
+          <meta property="og:image" content={post.ogImageUrl} />
+        ) : (
+          <></>
+        )}
       </Head>
       <Header />
       <article className="max-w-prose m-auto font-display p-8 sm:p-0">
@@ -146,18 +148,16 @@ export default function PostPage({ data: post }: PageProps<Post>) {
           , a noise function is a function that takes a coordinate in 2d space
           (higher dimension noise-functions also exist, but are irrelevant for
           the purpose of this article) and returns a value in the range{" "}
-          <code>-1..=1</code>{" "}
-          such as points close together return similar, but slightly different,
-          values.
+          <code>-1..=1</code> such as points close together return similar, but
+          slightly different, values.
         </p>
         <p>
           The interactive illustration below shows how this works by uniformly
           sampling points in a grid and calling the noise function for that
           point. Note that the values have been rounded to one decimal for
           legibility, the actual values have far more precision. Click{" "}
-          <code>Regenerate</code>{" "}
-          to run the noise function again with a new seed to get new noise
-          values.
+          <code>Regenerate</code> to run the noise function again with a new
+          seed to get new noise values.
         </p>
         <NoiseIllustration />
         <p>
@@ -203,26 +203,25 @@ export default function PostPage({ data: post }: PageProps<Post>) {
         <p>
           It turns out that noise functions are pretty sensitive. You'd think
           that the points
-          <code>(1.0, 1.0)</code> and <code>(1.0, 2.0)</code>{" "}
-          would produce somewhat similar noise values, following the rule that
-          points in close proximity yield fairly similar noise values, but
-          they're not close enough to each other.
+          <code>(1.0, 1.0)</code> and <code>(1.0, 2.0)</code> would produce
+          somewhat similar noise values, following the rule that points in close
+          proximity yield fairly similar noise values, but they're not close
+          enough to each other.
         </p>
         <p>
           To combat this we can force our points to be closer together by just
           dividing our x and y coordinates by some smoothness constant. For
-          example, the distance between our two example points was previously
-          {" "}
-          <code>1.0</code> for the y-axis, and <code>0.0</code>{" "}
-          for the x-axis, for a total distance of <code>1.0</code>.
+          example, the distance between our two example points was previously{" "}
+          <code>1.0</code> for the y-axis, and <code>0.0</code> for the x-axis,
+          for a total distance of <code>1.0</code>.
         </p>
         <p>
           If we divide all our x and y values by the constant{" "}
-          <code>smoothness = 100</code>{"  "}we'd end up with:{" "}
+          <code>smoothness = 100</code>
+          {"  "}we'd end up with:{" "}
           <code>p1 = (0.01, 0.01), p2 = (0.01, 0.02)</code>, making the distance
-          only{" "}
-          <code>0.01</code>, but keeping the relation between the points the
-          same.
+          only <code>0.01</code>, but keeping the relation between the points
+          the same.
         </p>
 
         <ZoomingIllustration />
@@ -247,14 +246,11 @@ const n = noise(x / smoothness, y / smoothness);`}
 
         <h2 id="drawing-lines">Drawing lines.</h2>
         <p>
-          At this point we know how to navigate the flow field. Pick any point
-          {" "}
-          <code>P</code>, read the noise value <code>n</code>{" "}
-          for that point and increment <code>P.x</code> by <code>cos(n)</code>
-          {" "}
-          and <code>P.y</code> by <code>sin(n)</code>{" "}
-          as well as some extra pixels that represents the distance we want to
-          travel in the direction of the field.
+          At this point we know how to navigate the flow field. Pick any point{" "}
+          <code>P</code>, read the noise value <code>n</code> for that point and
+          increment <code>P.x</code> by <code>cos(n)</code> and <code>P.y</code>{" "}
+          by <code>sin(n)</code> as well as some extra pixels that represents
+          the distance we want to travel in the direction of the field.
         </p>
         <p>
           We did this in the previous examples by sampling points in a grid and
@@ -388,9 +384,8 @@ y += sin(n) * jaggedStepSize;`}
         <DistanceToPointIllustration />
 
         <p>
-          If we instead of returning the distance to <code>focalPoint</code>
-          {" "}
-          we can return the angle the line has from our point to{"  "}
+          If we instead of returning the distance to <code>focalPoint</code> we
+          can return the angle the line has from our point to{"  "}
           and offset our point along the radius (with a slight distortion to the
           y-axis) we can get a nice swirl-like effect.
         </p>
@@ -551,16 +546,16 @@ function drawLine(x: number, y: number) {
         <p>
           Now, with 100 boxes (10 across, 10 down) and if the points are
           distributed uniformly on the canvas, we end up doing 1/100
-          <sup>th</sup>{" "}
-          as many checks that we did previously, increasing rendering
-          performance by quite a bit! One thing to note however, is that if our
-          boxes would be too small to reliably hold points with the radius of
-          our lines then we'd start to get overlapping lines at the edges. This
-          would also happen if a points origo was at the very edge of a box,
-          causing its body to spill outside the boxes area. We could fix that by
-          checking surrounding boxes for collisions as well, but that would mean
-          we'd check another eight boxes besides the current one, increasing the
-          search space a bit, but the result would be more exact.
+          <sup>th</sup> as many checks that we did previously, increasing
+          rendering performance by quite a bit! One thing to note however, is
+          that if our boxes would be too small to reliably hold points with the
+          radius of our lines then we'd start to get overlapping lines at the
+          edges. This would also happen if a points origo was at the very edge
+          of a box, causing its body to spill outside the boxes area. We could
+          fix that by checking surrounding boxes for collisions as well, but
+          that would mean we'd check another eight boxes besides the current
+          one, increasing the search space a bit, but the result would be more
+          exact.
         </p>
 
         <p>
@@ -591,12 +586,11 @@ function drawLine(x: number, y: number) {
 }`}
         </Code>
         <p>
-          Here we check against every 7<sup>th</sup>{" "}
-          circle in a box hoping to get a hit if there is one. The constant{" "}
-          <code>7</code>{" "}
-          might be too high in some cases, or could be increased even more, it
-          all depends on the step size for the lines and can be tweaked to get a
-          good balance between render times and correctness.
+          Here we check against every 7<sup>th</sup> circle in a box hoping to
+          get a hit if there is one. The constant <code>7</code> might be too
+          high in some cases, or could be increased even more, it all depends on
+          the step size for the lines and can be tweaked to get a good balance
+          between render times and correctness.
         </p>
 
         <h2 id="colors">Finally, Colors.</h2>
@@ -665,8 +659,7 @@ const color = \`hsl(\${hue}deg, 70%, 50%)\`;`}
           Even though this article got quite long, it only scratches the surface
           of all the variants that can be achieved using the fundamental
           techniques described. I highly recommend trying things out and
-          experimenting, swapping a <code>cos()</code> for a <code>sin()</code>
-          {" "}
+          experimenting, swapping a <code>cos()</code> for a <code>sin()</code>{" "}
           somewhere, or maybe even a <code>tan()</code> if you're crazy.
         </p>
         <p>
