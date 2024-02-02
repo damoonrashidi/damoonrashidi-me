@@ -55,8 +55,9 @@ export function PointMapIllustration() {
       return;
     }
 
-    const clone: Point[][][] = Array.from({ length: 10 }, () =>
-      Array.from({ length: 10 }, () => []),
+    const clone: Point[][][] = Array.from(
+      { length: 10 },
+      () => Array.from({ length: 10 }, () => []),
     );
 
     const pointCount = Math.round(Math.random() * 1200);
@@ -124,8 +125,7 @@ export function PointMapIllustration() {
         onMouseMove={(event) =>
           setPos(
             getBoxForCoord(event.offsetX, event.offsetY, maxWidth, maxHeight),
-          )
-        }
+          )}
         onTouchMove={(event) => {
           const [touch] = event.touches;
           const bbox = event.currentTarget.getBoundingClientRect();

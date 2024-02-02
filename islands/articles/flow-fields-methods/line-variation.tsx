@@ -96,8 +96,7 @@ export function LineVariationIllustration() {
             min={20}
             max={500}
             onChange={(event) =>
-              setSmoothness(parseInt(event.currentTarget.value, 10))
-            }
+              setSmoothness(parseInt(event.currentTarget.value, 10))}
           />
           <span className="inline-block w-[50px]">{smoothness}</span>
         </div>
@@ -129,8 +128,7 @@ export function LineVariationIllustration() {
             min={5}
             max={150}
             onChange={(event) =>
-              setMaxLineLength(parseInt(event.currentTarget.value, 10))
-            }
+              setMaxLineLength(parseInt(event.currentTarget.value, 10))}
           />
           <span className="inline-block w-[50px]">{maxLineLength}</span>
         </div>
@@ -146,8 +144,7 @@ export function LineVariationIllustration() {
             min={1}
             max={12}
             onChange={(event) =>
-              setStepSize(parseInt(event.currentTarget.value, 10))
-            }
+              setStepSize(parseInt(event.currentTarget.value, 10))}
           />
           <span className="inline-block w-[50px]">{stepSize}</span>
         </div>

@@ -63,12 +63,11 @@ export function AngleBetweenIllustration() {
           const distance = Math.sqrt(
             (x - center[0]) ** 2 + (y - center[1]) ** 2,
           );
-          const n =
-            Math.round(
-              (angleToCenter(x * 5, y * 5, center[0], center[1]) -
-                1 / distance) *
-                10,
-            ) / 10;
+          const n = Math.round(
+            (angleToCenter(x * 5, y * 5, center[0], center[1]) -
+              1 / distance) *
+              10,
+          ) / 10;
 
           ctx.fillText(`${n}`, x * 5, y * 5);
         }
@@ -87,10 +86,9 @@ export function AngleBetweenIllustration() {
         const distance = Math.sqrt((x - center[0]) ** 2 + (y - center[1]) ** 2);
         const angle = angleToCenter(x, y, center[0], center[1]);
 
-        x =
-          center[0] + Math.cos(angle + 0.01) * (distance - 0.1) + Math.random();
-        y =
-          center[1] +
+        x = center[0] + Math.cos(angle + 0.01) * (distance - 0.1) +
+          Math.random();
+        y = center[1] +
           Math.sin(angle + 0.015) * (distance - 0.15) +
           Math.random();
 

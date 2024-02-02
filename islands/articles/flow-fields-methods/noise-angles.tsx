@@ -65,24 +65,23 @@ export function NoiseAngleIllustration({
     <Illustration>
       <canvas className="h-[500px] w-full" ref={canvas} />
       <div className="flex gap-4 pt-4 flex-wrap">
-        {showSmoothening ? (
-          <div className="flex items-center gap-1">
-            <label for="smoothness_angles">smoothness =</label>
-            <input
-              type="range"
-              min={1}
-              max={100}
-              id="smoothness_angles"
-              value={smoothness}
-              onChange={(e) =>
-                setSmoothness(parseInt(e.currentTarget.value, 10))
-              }
-            />
-            <span>{smoothness}</span>
-          </div>
-        ) : (
-          <></>
-        )}
+        {showSmoothening
+          ? (
+            <div className="flex items-center gap-1">
+              <label for="smoothness_angles">smoothness =</label>
+              <input
+                type="range"
+                min={1}
+                max={100}
+                id="smoothness_angles"
+                value={smoothness}
+                onChange={(e) =>
+                  setSmoothness(parseInt(e.currentTarget.value, 10))}
+              />
+              <span>{smoothness}</span>
+            </div>
+          )
+          : <></>}
       </div>
     </Illustration>
   );

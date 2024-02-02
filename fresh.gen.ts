@@ -11,6 +11,7 @@ import * as $articles_adding_variety_to_flow_fields from "./routes/articles/addi
 import * as $articles_flow_field_methods from "./routes/articles/flow-field-methods.tsx";
 import * as $articles_index from "./routes/articles/index.tsx";
 import * as $articles_stats from "./routes/articles/stats.tsx";
+import * as $ask from "./routes/ask.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $articles_code from "./islands/articles/code.tsx";
 import * as $articles_flow_field_variety_vector from "./islands/articles/flow-field-variety/vector.tsx";
@@ -45,6 +46,7 @@ const manifest = {
     "./routes/articles/flow-field-methods.tsx": $articles_flow_field_methods,
     "./routes/articles/index.tsx": $articles_index,
     "./routes/articles/stats.tsx": $articles_stats,
+    "./routes/ask.tsx": $ask,
     "./routes/index.tsx": $index,
   },
   islands: {

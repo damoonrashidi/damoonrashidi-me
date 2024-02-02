@@ -1,15 +1,12 @@
 import { Head } from "$fresh/runtime.ts";
 import { Header } from "@/components/header.tsx";
 
-export default function Home() {
+export default function Art() {
   return (
     <>
       <Head>
         <title>Generative Art - Damoon Rashidi</title>
-        <meta
-          name="description"
-          content="My generative art experiments"
-        />
+        <meta name="description" content="My generative art experiments" />
       </Head>
       <Header />
       <article className="max-w-prose m-auto">
