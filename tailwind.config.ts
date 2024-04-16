@@ -19,26 +19,38 @@ export default {
         code: "'Overpass Mono', monospace",
       },
       fontSize: {
-        sm: ["0.9rem", {
-          lineHeight: "2rem",
-          letterSpacing: "-0.01em",
-          fontWeight: "400",
-        }],
-        base: ["16px", {
-          lineHeight: "2rem",
-          letterSpacing: "-0.01em",
-          fontWeight: "400",
-        }],
-        lg: ["1.5rem", {
-          lineHeight: "2rem",
-          letterSpacing: "-0.01em",
-          fontWeight: "500",
-        }],
-        huge: ["3rem", {
-          lineHeight: "3rem",
-          letterSpacing: "-0.01em",
-          fontWeight: "500",
-        }],
+        sm: [
+          "0.9rem",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "-0.01em",
+            fontWeight: "400",
+          },
+        ],
+        base: [
+          "16px",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "-0.01em",
+            fontWeight: "400",
+          },
+        ],
+        lg: [
+          "1.5rem",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "-0.01em",
+            fontWeight: "500",
+          },
+        ],
+        huge: [
+          "3rem",
+          {
+            lineHeight: "3rem",
+            letterSpacing: "-0.01em",
+            fontWeight: "500",
+          },
+        ],
       },
       fontWeight: {
         thin: "100",
@@ -55,7 +67,5 @@ export default {
       },
     },
   },
-  content: [
-    "{routes,islands,components}/**/*.{ts,tsx}",
-  ],
+  content: ["{routes,islands,components}/**/*.{ts,tsx}"],
 } satisfies Config;

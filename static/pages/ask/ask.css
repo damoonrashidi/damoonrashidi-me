@@ -1,0 +1,27 @@
+:root {
+  --bg: #fdfdec;
+  --text-gradient-from: #b8b084;
+  --text-gradient-to: #d14693;
+  --text-matte: #581a3d;
+  @media (prefers-color-scheme: dark) {
+    --bg: #17181d;
+    --text-gradient-from: #31486a;
+    --text-gradient-to: #7594bd;
+    --text-matte: #57daeb;
+  }
+}
+
+body,
+html {
+  background: var(--bg);
+  color: var(--text-matte);
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    var(--text-gradient-from),
+    var(--text-gradient-to)
+  );
+  color: transparent;
+  background-clip: text;
+}
