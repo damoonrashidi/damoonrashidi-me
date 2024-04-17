@@ -1,10 +1,9 @@
 ---
 title: Huffman sprints
 status: draft
-snippet: 
-It is impossible to express an opinion on this without just adding to the endless pile of poorly written noise on the already toxic topic where everyone else has an opinion on how everyone else is doing it wrong, but here I go writing an article and expressing opinions and I guess I hate myself for it
-created_at: 2024-04-14T23:31:00
-updated_at: 2024-04-14T23:31:00
+snippet: It is impossible to express an opinion on this without just adding to the endless pile of poorly written noise on the already toxic topic where everyone else has an opinion on how everyone else is doing it wrong, but here I go writing an article and expressing opinions and I guess I hate myself for it
+created_at: 2024-04-14T23:31:00z
+updated_at: 2024-04-14T23:31:00z
 ---
 
 ## Modern scrum
