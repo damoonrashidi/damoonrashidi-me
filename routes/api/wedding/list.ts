@@ -9,16 +9,23 @@ export const handler: Handlers = {
 
     const urls: Record<string, string> = {};
     const invites: Invite[] = [];
+    const acceptList: Guest[] = [];
     let guestCount = 0;
-    const accepted: Guest[] = [];
 
     for await (const invite of inviteIterator) {
       invites.push(invite.value as Invite);
       urls[String(invite.key.at(-1))] = invite.value.displayName;
       guestCount += invite.value.guests.length;
-      accepted.push(...invite.value.guests.filter((guest) => guest.willAttend));
+      acceptList.push(
+        ...invite.value.guests.filter((guest) => guest.willAttend),
+      );
     }
 
-    return Response.json({ urls, count: guestCount, accepted });
+    return Response.json({
+      urls,
+      count: guestCount,
+      acceptCount: acceptList.length,
+      acceptList,
+    });
   },
 };

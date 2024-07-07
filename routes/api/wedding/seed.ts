@@ -326,16 +326,21 @@ export const handler: Handlers = {
           },
         ],
       },
-      bergman: {
-        displayName: "Familjen Bergman",
+      marthen: {
+        displayName: "Mårthen Bergman",
         guests: [
           {
-            name: "Mårten Bergman",
+            name: "Mårthen Bergman",
             willAttend: false,
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
+        ],
+      },
+      bergman: {
+        displayName: "Familjen Bergman",
+        guests: [
           {
             name: "Karin Bergman",
             willAttend: false,
