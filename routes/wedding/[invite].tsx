@@ -27,24 +27,39 @@ export const handler: Handlers<Invite> = {
 
     const data = await req.formData();
 
-    invite.value.guests.forEach((guest, i) => {
-      guest.willAttend = data.get(`guest-${i}-willAttend`)?.toString() === "on";
-      guest.foodPreferences = data.get(`guest-${i}-food`)?.toString() ?? "";
-      guest.willSpeak = data.get(`guest-${i}-willSpeak`)?.toString() === "on";
-      guest.bio = data.get(`guest-${i}-bio`)?.toString() ?? "";
-    });
+    const i = Number(data.get("index"));
 
-    console.table(invite.value.guests);
+    if (Number.isNaN(i)) {
+      return ctx.renderNotFound();
+    }
+
+    invite.value.guests[i].willAttend =
+      data.get(`guest-${i}-willAttend`)?.toString() === "on";
+    invite.value.guests[i].foodPreferences =
+      data.get(`guest-${i}-food`)?.toString() ?? "";
+    invite.value.guests[i].willSpeak =
+      data.get(`guest-${i}-willSpeak`)?.toString() === "on";
+    invite.value.guests[i].bio = data.get(`guest-${i}-bio`)?.toString() ?? "";
 
     await kv.set(["wedding", "invites", ctx.params.invite], invite.value);
 
-    return Response.redirect(req.url, 301);
+    return Response.redirect(req.url + "success", 301);
   },
 };
 
-export default function InvitePage({ data: invite }: PageProps<Invite>) {
+export default function InvitePage({
+  data: invite,
+  ...props
+}: PageProps<Invite>) {
+  const isSuccessPostback = props.url.searchParams.get("success") !== null;
+
   return (
     <>
+      {isSuccessPostback && (
+        <div className="fixed top-8 right-8 w-[200px] p-4 rounded-md bg-[#31f03a99] backdrop-blur-md text-[#fff]">
+          Ditt svar har blivit sparat!
+        </div>
+      )}
       <div className="max-w-prose px-8 m-auto py-16 font-display ">
         <div className="text-center">
           <h2>{invite.displayName}</h2>
@@ -66,12 +81,13 @@ export default function InvitePage({ data: invite }: PageProps<Invite>) {
             .
           </p>
         </div>
-        <form method="post" action="?" className="my-16">
-          {invite.guests.map((guest, i) => {
-            const id = `guest-${i}`;
-            return (
+        {invite.guests.map((guest, i) => {
+          const id = `guest-${i}`;
+          return (
+            <form method="post" action="?" className="my-16">
               <div className="py-4 flex flex-col gap-2">
                 <h4 className="mb-2">{guest.name}</h4>
+                <input type="hidden" value={i} name="index" />
                 <div className="flex gap-2 align-center">
                   <input
                     type="checkbox"
@@ -109,12 +125,12 @@ export default function InvitePage({ data: invite }: PageProps<Invite>) {
                   * Texten om dig själv är publik och kan ses av andra gäster
                 </span>
               </div>
-            );
-          })}
-          <button type="submit" className="border rounded-md px-4 py-2">
-            Svara
-          </button>
-        </form>
+              <button type="submit" className="border rounded-md px-4 py-2">
+                Svara
+              </button>
+            </form>
+          );
+        })}
       </div>
     </>
   );
