@@ -41,6 +41,12 @@ export default function Brollop() {
       <h3 className="pt-4">
         <span className="inline-block w-[90px]">Kväll</span> Grill
       </h3>
+
+      <h4>Klädsel Formell</h4>
+      <h4>
+        Vi önskar oss inga gåvor, men vill man ge något så uppskattar vi bidrag
+        till bröllopsresan.
+      </h4>
     </div>
   );
 }
