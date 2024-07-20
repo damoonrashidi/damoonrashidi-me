@@ -16,21 +16,21 @@ export const handler: Handlers = {
         displayName: "Mamma & Pappa (och parpar)",
         guests: [
           {
-            name: "Firouzeh",
+            name: "Firouzeh Badiee",
             willAttend: false,
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
-            name: "Ali",
+            name: "Ali Rashidi",
             willAttend: false,
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
-            name: "Parpar",
+            name: "Parpar Badiee",
             willAttend: false,
             foodPreferences: "",
             bio: "",
@@ -42,14 +42,14 @@ export const handler: Handlers = {
         displayName: "Mamma & Pappa",
         guests: [
           {
-            name: "Annmargaret",
+            name: "Ann Margaret Dahlström",
             willAttend: false,
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
-            name: "Mats",
+            name: "Mats Dahlström",
             willAttend: false,
             foodPreferences: "",
             bio: "",
@@ -130,7 +130,7 @@ export const handler: Handlers = {
             willSpeak: false,
           },
           {
-            name: "Lucille Nordenmark",
+            name: "Lucile Nordenmark",
             willAttend: false,
             foodPreferences: "",
             bio: "",
@@ -252,7 +252,7 @@ export const handler: Handlers = {
           },
         ],
       },
-      besjen: {
+      jenik: {
         displayName: "Besnik & Jenny",
         guests: [
           {
@@ -276,6 +276,25 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Viktor Gaddefors",
+            willAttend: false,
+            foodPreferences: "",
+            bio: "",
+            willSpeak: false,
+          },
+        ],
+      },
+      golnaz: {
+        displayName: "Kierulf Afshar",
+        guests: [
+          {
+            name: "Golnaz Kierulf Afshar",
+            willAttend: false,
+            foodPreferences: "",
+            bio: "",
+            willSpeak: false,
+          },
+          {
+            name: "Johan Kierulf Afshar",
             willAttend: false,
             foodPreferences: "",
             bio: "",
@@ -339,7 +358,7 @@ export const handler: Handlers = {
         ],
       },
       bergman: {
-        displayName: "Familjen Bergman",
+        displayName: "Karin och Thomas",
         guests: [
           {
             name: "Karin Bergman",
@@ -395,8 +414,8 @@ export const handler: Handlers = {
           },
         ],
       },
-      sanjon: {
-        displayName: "Sandra & Jonas",
+      sandra: {
+        displayName: "Sandra Skilberg",
         guests: [
           {
             name: "Sandra Skilberg",
@@ -406,7 +425,7 @@ export const handler: Handlers = {
             willSpeak: false,
           },
           {
-            name: "Jonas Bäsk",
+            name: "Gäst",
             willAttend: false,
             foodPreferences: "",
             bio: "",

@@ -16,6 +16,7 @@ import * as $articles_index from "./routes/articles/index.tsx";
 import * as $articles_stats from "./routes/articles/stats.tsx";
 import * as $ask from "./routes/ask.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $osa from "./routes/osa.tsx";
 import * as $wedding_invite_ from "./routes/wedding/[invite].tsx";
 import * as $wedding_index from "./routes/wedding/index.tsx";
 import * as $wedding_schema from "./routes/wedding/schema.ts";
@@ -38,6 +39,7 @@ import * as $articles_illustration from "./islands/articles/illustration.tsx";
 import * as $articles_useColors from "./islands/articles/useColors.ts";
 import * as $articles_useResize from "./islands/articles/useResize.ts";
 import * as $home_art_spinner from "./islands/home/art-spinner.tsx";
+import * as $wedding_InviteFinder from "./islands/wedding/InviteFinder.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -57,6 +59,7 @@ const manifest = {
     "./routes/articles/stats.tsx": $articles_stats,
     "./routes/ask.tsx": $ask,
     "./routes/index.tsx": $index,
+    "./routes/osa.tsx": $osa,
     "./routes/wedding/[invite].tsx": $wedding_invite_,
     "./routes/wedding/index.tsx": $wedding_index,
     "./routes/wedding/schema.ts": $wedding_schema,
@@ -95,6 +98,7 @@ const manifest = {
     "./islands/articles/useColors.ts": $articles_useColors,
     "./islands/articles/useResize.ts": $articles_useResize,
     "./islands/home/art-spinner.tsx": $home_art_spinner,
+    "./islands/wedding/InviteFinder.tsx": $wedding_InviteFinder,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

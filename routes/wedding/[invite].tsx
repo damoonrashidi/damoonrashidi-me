@@ -4,13 +4,17 @@ import { Invite } from "@/routes/wedding/schema.ts";
 export const handler: Handlers<Invite> = {
   async GET(_req, ctx) {
     const kv = await Deno.openKv();
-    const invite = await kv.get(["wedding", "invites", ctx.params.invite]);
+    const invite = await kv.get<Invite>([
+      "wedding",
+      "invites",
+      ctx.params.invite,
+    ]);
 
     if (!invite.value) {
       return ctx.renderNotFound();
     }
 
-    return ctx.render(invite.value as Invite);
+    return ctx.render(invite.value);
   },
 
   async POST(req, ctx) {
