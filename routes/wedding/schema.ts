@@ -5,7 +5,7 @@ export interface Invite {
 
 export interface Guest {
   name: string;
-  willAttend: boolean;
+  willAttend: "yes" | "no" | "unknown";
   foodPreferences: string;
   bio: string;
   willSpeak: boolean;

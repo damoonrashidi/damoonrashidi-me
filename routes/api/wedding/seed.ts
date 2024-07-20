@@ -17,21 +17,21 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Firouzeh Badiee",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Ali Rashidi",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Parpar Badiee",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -43,14 +43,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Ann Margaret Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Mats Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -62,7 +62,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Firooz Badiee",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -74,14 +74,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Fariba Badiee",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Said Afshar",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -93,7 +93,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Faramarz Badiee",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -105,14 +105,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Danial Rashidi",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Josefin Ragnarsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -124,14 +124,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Nicklas Nordenmark",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Lucile Nordenmark",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -143,14 +143,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Mikael Karlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Beatrice Briesch",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "Vegan",
             bio: "",
             willSpeak: false,
@@ -162,14 +162,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Stefan Danneil",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Natalie Danneil",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -181,14 +181,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Carl Forsgren",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Genet Tadesse",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -200,14 +200,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Anton Gaddefors",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Julia Keranovic",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -219,14 +219,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Ben Wolfgang McAdam",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Elin McAdam",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -238,14 +238,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Anton Bjertin",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Ida Glenne",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -257,14 +257,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Besnik Gashi",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Jenny Jeppsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -276,7 +276,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Viktor Gaddefors",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -288,14 +288,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Golnaz Kierulf Afshar",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Johan Kierulf Afshar",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -307,7 +307,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Peyman Afshar",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -319,7 +319,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Sara Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -331,14 +331,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Tilde Bergman",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Sam Meskanen",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -350,7 +350,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Mårthen Bergman",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -362,14 +362,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Karin Bergman",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Thomas Bergman",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -381,14 +381,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Emma Karlsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Christoffer Toyler",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -400,14 +400,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Inez Ekblad",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Amelia Johansson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -419,14 +419,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Sandra Skilberg",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Gäst",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -438,7 +438,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Marco Del Canale",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -450,7 +450,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Love Ekberg",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -462,7 +462,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Christopher Agersand",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -474,14 +474,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Isabelle Gilezan",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Felix Nilsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -493,14 +493,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Charlotte Lagersten",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Björn Lagersten",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -512,7 +512,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Carolina Lagersten",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -524,7 +524,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Sophia Lagersten",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -536,14 +536,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Dorothea Neumann",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Fredrik Söderstedt",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -555,7 +555,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Stephanie Neumann",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -567,7 +567,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Olle Wennberg",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -579,7 +579,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Wiltrud Neumann",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -591,14 +591,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Bobo Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Karin Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -610,7 +610,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Johan Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -622,14 +622,14 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Mikael Dahlström",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Sabina Dahlin",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -641,28 +641,28 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Julia Salazar Gustavsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Joakim Salazar Gustavsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Gabriella Salazar Gustavsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
           },
           {
             name: "Isabelle Salazar Gustavsson",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -674,7 +674,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Tilde Avelin",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -686,7 +686,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Erik Tagiev",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,
@@ -698,7 +698,7 @@ export const handler: Handlers = {
         guests: [
           {
             name: "Ingela Seger",
-            willAttend: false,
+            willAttend: "unknown",
             foodPreferences: "",
             bio: "",
             willSpeak: false,

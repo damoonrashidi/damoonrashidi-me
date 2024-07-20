@@ -37,8 +37,9 @@ export const handler: Handlers<Invite> = {
       return ctx.renderNotFound();
     }
 
-    invite.value.guests[i].willAttend =
-      data.get(`guest-${i}-willAttend`)?.toString() === "on";
+    invite.value.guests[i].willAttend = data.get(`guest-${i}-willAttend`) as
+      | "yes"
+      | "no";
     invite.value.guests[i].foodPreferences =
       data.get(`guest-${i}-food`)?.toString() ?? "";
     invite.value.guests[i].willSpeak =
@@ -94,12 +95,22 @@ export default function InvitePage({
                 <input type="hidden" value={i} name="index" />
                 <div className="flex gap-2 align-center">
                   <input
-                    type="checkbox"
-                    id={`${id}-attend`}
-                    checked={guest.willAttend}
+                    type="radio"
+                    id={`${id}-attend-yes`}
+                    value="yes"
+                    checked={guest.willAttend === "yes"}
                     name={`${id}-willAttend`}
                   />
-                  <label htmlFor={`${id}-attend`}>Jag kommer gärna.</label>
+                  <label htmlFor={`${id}-attend-yes`}>Jag kommer gärna.</label>
+
+                  <input
+                    type="radio"
+                    id={`${id}-attend-no`}
+                    value="no"
+                    checked={guest.willAttend === "no"}
+                    name={`${id}-willAttend`}
+                  />
+                  <label htmlFor={`${id}-attend-no`}>Jag kan inte komma.</label>
                 </div>
                 <div className="flex gap-2 align-center">
                   <input

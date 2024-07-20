@@ -13,7 +13,7 @@ export const InviteFinder = ({
       <input
         placeholder="Ditt namn"
         value={query}
-        className="rounded-sm px-4 py-2 border-b font-display text-xl w-full border-[#eee]"
+        className="rounded-sm px-4 py-2 border font-display text-xl w-full border-[#aaa]"
         onInput={(event) => setQuery(event.currentTarget.value.toLowerCase())}
       />
       {invites

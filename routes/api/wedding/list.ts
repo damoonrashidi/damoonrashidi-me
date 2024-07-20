@@ -10,6 +10,7 @@ export const handler: Handlers = {
     const urls: Record<string, string> = {};
     const invites: Invite[] = [];
     const acceptList: Guest[] = [];
+    const noList: Guest[] = [];
     let guestCount = 0;
 
     for await (const invite of inviteIterator) {
@@ -17,7 +18,10 @@ export const handler: Handlers = {
       urls[String(invite.key.at(-1))] = invite.value.displayName;
       guestCount += invite.value.guests.length;
       acceptList.push(
-        ...invite.value.guests.filter((guest) => guest.willAttend),
+        ...invite.value.guests.filter((guest) => guest.willAttend === "yes"),
+      );
+      noList.push(
+        ...invite.value.guests.filter((guest) => guest.willAttend === "no"),
       );
     }
 
@@ -26,6 +30,7 @@ export const handler: Handlers = {
       count: guestCount,
       acceptCount: acceptList.length,
       acceptList,
+      noList,
     });
   },
 };
