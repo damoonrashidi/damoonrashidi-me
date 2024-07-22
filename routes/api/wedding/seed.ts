@@ -358,7 +358,7 @@ export const handler: Handlers = {
         ],
       },
       bergman: {
-        displayName: "Karin och Thomas",
+        displayName: "Karin & Thomas",
         guests: [
           {
             name: "Karin Bergman",
