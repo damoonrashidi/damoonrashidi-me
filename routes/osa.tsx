@@ -27,17 +27,22 @@ export default function Osa({
       </Head>
       <link rel="stylesheet" href="/pages/wedding/wedding.css" />{" "}
       <div className="max-w-prose m-auto p-8">
-        <h2 className="font-display">
-          Välkommen till Anna &amp; Damoons bröllopssida!
-        </h2>
-        <p className="font-display">
+        <h2 className="font-display text-center mb-0">Anna &amp; Damoon</h2>
+        <h4 className="font-display text-center mb-16">21 September, 2024</h4>
+        <p className="font-display mb-0">
           Skriv in ditt namn i rutan för att hitta din inbjudan
         </p>
         <InviteFinder invites={data} />
         <p className="font-display">
-          Mer information om tider och logistik finns på{" "}
-          <a href="/wedding">informationssidan</a>. Eller läs om de andra
-          gästerna i <a href="">Gästboken</a>.
+          Besök{" "}
+          <a href="/wedding" className="text-[#111]">
+            Informationssidan
+          </a>{" "}
+          för detaljer om bröllopet, eller läs om de andra gästerna i{" "}
+          <a href="/wedding/guestbook" className="text-[#111]">
+            Gästboken
+          </a>
+          .
         </p>
         <div className="items-center flex justify-center my-8">
           <img src="/pages/wedding/flower.png" width="350" alt="linneablomma" />

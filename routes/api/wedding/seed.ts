@@ -425,7 +425,7 @@ export const handler: Handlers = {
             willSpeak: false,
           },
           {
-            name: "Gäst",
+            name: "Jonas Bäsk",
             willAttend: "unknown",
             foodPreferences: "",
             bio: "",

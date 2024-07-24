@@ -64,7 +64,7 @@ export default function InvitePage({
       <Head>
         <title>{invite.displayName}</title>
       </Head>
-      <link rel="stylesheet" href="/pages/wedding/wedding.css" />{" "}
+      <link rel="stylesheet" href="/pages/wedding/wedding.css" />
       {isSuccessPostback && (
         <div className="fixed top-8 right-8 w-[200px] p-4 rounded-md bg-[#31f03a99] backdrop-blur-md text-[#fff]">
           Ditt svar har blivit sparat!

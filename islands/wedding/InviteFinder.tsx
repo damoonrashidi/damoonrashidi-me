@@ -10,7 +10,7 @@ export const InviteFinder = ({
 
   return (
     <>
-      <div className="max-w-prose m-auto py-8">
+      <div className="max-w-prose m-auto pt-4 pb-16">
         <input
           placeholder="Ditt namn"
           value={query}
