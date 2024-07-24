@@ -83,10 +83,14 @@ export default function InvitePage({
             Om ni vill kan ni även fylla i ett inlägg till gästboken för att de
             andra gästerna ska få veta vilka ni är.
           </p>
-          <p>
-            Mer information om tider och platser finns på{" "}
-            <a href="/wedding" target="_blank">
-              informationssidan
+          <p className="font-display">
+            Besök{" "}
+            <a href="/wedding" className="text-[#111]">
+              Informationssidan
+            </a>{" "}
+            för detaljer om bröllopet, eller läs om de andra gästerna i{" "}
+            <a href="/wedding/guestbook" className="text-[#111]">
+              Gästboken
             </a>
             .
           </p>
