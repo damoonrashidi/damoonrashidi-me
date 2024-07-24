@@ -40,6 +40,7 @@ import * as $articles_useColors from "./islands/articles/useColors.ts";
 import * as $articles_useResize from "./islands/articles/useResize.ts";
 import * as $home_art_spinner from "./islands/home/art-spinner.tsx";
 import * as $wedding_InviteFinder from "./islands/wedding/InviteFinder.tsx";
+import * as $wedding_InviteForm from "./islands/wedding/InviteForm.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -99,6 +100,7 @@ const manifest = {
     "./islands/articles/useResize.ts": $articles_useResize,
     "./islands/home/art-spinner.tsx": $home_art_spinner,
     "./islands/wedding/InviteFinder.tsx": $wedding_InviteFinder,
+    "./islands/wedding/InviteForm.tsx": $wedding_InviteForm,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
