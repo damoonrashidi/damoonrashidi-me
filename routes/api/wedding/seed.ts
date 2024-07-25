@@ -80,7 +80,7 @@ export const handler: Handlers = {
             willSpeak: false,
           },
           {
-            name: "Said Afshar",
+            name: "Saeed Afshar",
             willAttend: "unknown",
             foodPreferences: "",
             bio: "",
@@ -120,7 +120,7 @@ export const handler: Handlers = {
         ],
       },
       luni: {
-        displayName: "Nicklas & Lucille",
+        displayName: "Nicklas & Lucile",
         guests: [
           {
             name: "Nicklas Nordenmark",

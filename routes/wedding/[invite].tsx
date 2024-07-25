@@ -34,7 +34,6 @@ export const handler: Handlers<Invite> = {
     const data = await req.formData();
 
     const i = Number(data.get("index"));
-    console.log(i, data);
 
     if (Number.isNaN(i)) {
       return Response.json({ success: false });
@@ -52,23 +51,13 @@ export const handler: Handlers<Invite> = {
   },
 };
 
-export default function InvitePage({
-  data: invite,
-  ...props
-}: PageProps<Invite>) {
-  const isSuccessPostback = props.url.searchParams.get("success") !== null;
-
+export default function InvitePage({ data: invite }: PageProps<Invite>) {
   return (
     <>
       <Head>
         <title>{invite.displayName}</title>
       </Head>
       <link rel="stylesheet" href="/pages/wedding/wedding.css" />
-      {isSuccessPostback && (
-        <div className="fixed top-8 right-8 w-[200px] p-4 rounded-md bg-[#31f03a99] backdrop-blur-md text-[#fff]">
-          Ditt svar har blivit sparat!
-        </div>
-      )}
       <div className="max-w-prose px-8 m-auto py-16 font-display ">
         <div>
           <h2 className="text-center">{invite.displayName}</h2>
@@ -78,6 +67,7 @@ export default function InvitePage({
             ni har möjlighet att komma, om ni har några specifika matpreferenser
             eller om ni vill hålla ett tal.
           </p>
+          <p>OSA gärna så snart som möjligt, men senast 21 Augusti.</p>
           <p>
             Om ni vill kan ni även fylla i ett inlägg till gästboken för att de
             andra gästerna ska få veta vilka ni är.

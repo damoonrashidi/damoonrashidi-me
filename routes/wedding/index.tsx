@@ -64,36 +64,36 @@ export default function Brollop() {
           <img src="/pages/wedding/flower.png" alt="linnea flower" />
         </div>
 
-        <h4>Klädsel</h4>
-        <p>
+        <h4 className="mb-1">Klädsel</h4>
+        <p className="pb-4">
           Vi vill inte påtvinga traditionella klädkoder, men vi skulle uppskatta
           en formell klädsel.
         </p>
-        <h4>Gåvor</h4>
-        <p>
+        <h4 className="mb-1">Gåvor</h4>
+        <p className="pb-4">
           Vi önskar oss inga gåvor förutom er närvaro. Vill man ge något ändå så
           uppskattar vi bidrag till bröllopsresan eller vad än ni ger oss.
         </p>
-        <h4>Barn</h4>
-        <p>
+        <h4 className="mb-1">Barn</h4>
+        <p className="pb-4">
           Vi har valt att ha ett barnfritt bröllop, med undantag för ammande
           barn.
         </p>
-        <h4>Parkering</h4>
-        <p>
+        <h4 className="mb-1">Parkering</h4>
+        <p className="pb-4">
           I början av kvällen kommer det inte gå att parkera framför Annas
           föräldrars hus, men det finns fri parkering i området. Om ni har
           möjlighet rekommenderar vi att ni åker kommunalt, tar taxi eller
           samåker med en annan gäst.
         </p>
-        <h4>Djur</h4>
-        <p>
+        <h4 className="mb-1">Djur</h4>
+        <p className="pb-4">
           Fuffens &amp; Ruth kommer vara med under kvällen. Om man har
           pälsdjursallergi kan man vilja ta antihistaminer innan för att undvika
           besvär eftersom båda hårar och gillar att mysa.
         </p>
-        <h4>Övriga frågor</h4>
-        <p>
+        <h4 className="mb-1">Övriga frågor</h4>
+        <p className="pb-4">
           Om ni har några frågor, vill ha klädtips eller vill bara vill prata så
           kan ni nå Damoon på 0739 64 59 68 och Anna på 0706 73 01 10.
         </p>
