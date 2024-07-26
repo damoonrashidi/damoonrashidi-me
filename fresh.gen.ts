@@ -7,7 +7,6 @@ import * as $_app from "./routes/_app.tsx";
 import * as $api_articles_stats from "./routes/api/articles/stats.tsx";
 import * as $api_wedding_list from "./routes/api/wedding/list.ts";
 import * as $api_wedding_reset from "./routes/api/wedding/reset.ts";
-import * as $api_wedding_seed from "./routes/api/wedding/seed.ts";
 import * as $art from "./routes/art.tsx";
 import * as $articles_slug_ from "./routes/articles/[slug].tsx";
 import * as $articles_adding_variety_to_flow_fields from "./routes/articles/adding-variety-to-flow-fields.tsx";
@@ -18,6 +17,7 @@ import * as $ask from "./routes/ask.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $osa from "./routes/osa.tsx";
 import * as $wedding_invite_ from "./routes/wedding/[invite].tsx";
+import * as $wedding_guestbook from "./routes/wedding/guestbook.tsx";
 import * as $wedding_index from "./routes/wedding/index.tsx";
 import * as $wedding_schema from "./routes/wedding/schema.ts";
 import * as $articles_code from "./islands/articles/code.tsx";
@@ -50,7 +50,6 @@ const manifest = {
     "./routes/api/articles/stats.tsx": $api_articles_stats,
     "./routes/api/wedding/list.ts": $api_wedding_list,
     "./routes/api/wedding/reset.ts": $api_wedding_reset,
-    "./routes/api/wedding/seed.ts": $api_wedding_seed,
     "./routes/art.tsx": $art,
     "./routes/articles/[slug].tsx": $articles_slug_,
     "./routes/articles/adding-variety-to-flow-fields.tsx":
@@ -62,6 +61,7 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/osa.tsx": $osa,
     "./routes/wedding/[invite].tsx": $wedding_invite_,
+    "./routes/wedding/guestbook.tsx": $wedding_guestbook,
     "./routes/wedding/index.tsx": $wedding_index,
     "./routes/wedding/schema.ts": $wedding_schema,
   },
