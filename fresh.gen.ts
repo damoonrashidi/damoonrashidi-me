@@ -39,6 +39,7 @@ import * as $articles_illustration from "./islands/articles/illustration.tsx";
 import * as $articles_useColors from "./islands/articles/useColors.ts";
 import * as $articles_useResize from "./islands/articles/useResize.ts";
 import * as $home_art_spinner from "./islands/home/art-spinner.tsx";
+import * as $wedding_GotoOSA from "./islands/wedding/GotoOSA.tsx";
 import * as $wedding_InviteFinder from "./islands/wedding/InviteFinder.tsx";
 import * as $wedding_InviteForm from "./islands/wedding/InviteForm.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -99,6 +100,7 @@ const manifest = {
     "./islands/articles/useColors.ts": $articles_useColors,
     "./islands/articles/useResize.ts": $articles_useResize,
     "./islands/home/art-spinner.tsx": $home_art_spinner,
+    "./islands/wedding/GotoOSA.tsx": $wedding_GotoOSA,
     "./islands/wedding/InviteFinder.tsx": $wedding_InviteFinder,
     "./islands/wedding/InviteForm.tsx": $wedding_InviteForm,
   },
