@@ -32,7 +32,7 @@ export const handler: Handlers<GuestbookEntry[]> = {
 
 export default function Guestbook(props: PageProps<GuestbookEntry[]>) {
   return (
-    <div className="m-auto max-w-prose py-8 font-display">
+    <div className="m-auto max-w-prose p-8 font-display">
       <h2 className="mb-2">Gästbok</h2>
       <p>
         Om man vill lära känna de andra gästerna innan bröllopet. Mer
