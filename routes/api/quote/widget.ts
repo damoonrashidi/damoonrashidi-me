@@ -16,6 +16,10 @@ export const handler: Handlers = {
     //    [ "dealname", "Nesso 2025" ],
     //    [ "dealtype", "newbusiness" ]
 
+    console.log(
+      `routing to http://localhost:3001/i/quote?${searchParams.toString()}`,
+    );
+
     const response = {
       results: [
         {
