@@ -18,8 +18,8 @@ export const handler: Handlers = () => {
         actions: [
           {
             type: "IFRAME",
-            width: 890,
-            height: 748,
+            width: 1100,
+            height: 900,
             uri: "http://localhost:3001/i/quote",
             label: "Manage deal",
           },
@@ -40,8 +40,8 @@ export const handler: Handlers = () => {
         actions: [
           {
             type: "IFRAME",
-            width: 890,
-            height: 748,
+            width: 1100,
+            height: 900,
             uri: "http://localhost:3001/i/quote",
             label: "Manage deal",
           },
