@@ -5,6 +5,7 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_articles_stats from "./routes/api/articles/stats.tsx";
+import * as $api_quote_widget from "./routes/api/quote/widget.ts";
 import * as $api_wedding_list from "./routes/api/wedding/list.ts";
 import * as $api_wedding_reset from "./routes/api/wedding/reset.ts";
 import * as $art from "./routes/art.tsx";
@@ -14,6 +15,7 @@ import * as $articles_flow_field_methods from "./routes/articles/flow-field-meth
 import * as $articles_index from "./routes/articles/index.tsx";
 import * as $articles_stats from "./routes/articles/stats.tsx";
 import * as $ask from "./routes/ask.tsx";
+import * as $iframe from "./routes/iframe.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $osa from "./routes/osa.tsx";
 import * as $wedding_invite_ from "./routes/wedding/[invite].tsx";
@@ -49,6 +51,7 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/articles/stats.tsx": $api_articles_stats,
+    "./routes/api/quote/widget.ts": $api_quote_widget,
     "./routes/api/wedding/list.ts": $api_wedding_list,
     "./routes/api/wedding/reset.ts": $api_wedding_reset,
     "./routes/art.tsx": $art,
@@ -59,6 +62,7 @@ const manifest = {
     "./routes/articles/index.tsx": $articles_index,
     "./routes/articles/stats.tsx": $articles_stats,
     "./routes/ask.tsx": $ask,
+    "./routes/iframe.tsx": $iframe,
     "./routes/index.tsx": $index,
     "./routes/osa.tsx": $osa,
     "./routes/wedding/[invite].tsx": $wedding_invite_,
