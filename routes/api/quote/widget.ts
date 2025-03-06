@@ -7,6 +7,15 @@ export const handler: Handlers = {
 
     console.log(searchParams);
 
+    // "userId", "78155026" ],
+    //    [ "userEmail", "damoon.rashidi@plock.io" ],
+    //    [ "associatedObjectId", "148018975992" ],
+    //    [ "associatedObjectType", "DEAL" ],
+    //    [ "portalId", "145871305" ],
+    //    [ "hs_object_id", "148018975992" ],
+    //    [ "dealname", "Nesso 2025" ],
+    //    [ "dealtype", "newbusiness" ]
+
     const response = {
       results: [
         {
@@ -26,7 +35,7 @@ export const handler: Handlers = {
               type: "IFRAME",
               width: 1100,
               height: 900,
-              uri: "http://localhost:3001/i/quote",
+              uri: `http://localhost:3001/i/quote?${searchParams.toString()}`,
               label: "Manage deal",
             },
           ],
@@ -48,7 +57,7 @@ export const handler: Handlers = {
               type: "IFRAME",
               width: 1100,
               height: 900,
-              uri: "http://localhost:3001/i/quote",
+              uri: `http://localhost:3001/i/quote?${searchParams.toString()}`,
               label: "Manage deal",
             },
           ],
