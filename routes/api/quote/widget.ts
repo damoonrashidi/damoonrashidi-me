@@ -5,27 +5,17 @@ export const handler: Handlers = () => {
     results: [
       {
         objectId: 245,
-        title: "API-22: APIs working too fast",
+        title: "Nesso 2025 Upsell",
         link: "http://example.com/1",
-        created: "2016-09-15",
+        created: "2025-03-01",
         priority: "HIGH",
         project: "API",
-        description:
-          "Customer reported that the APIs are just running too fast. This is causing a problem in that they're so happy.",
+        description: "Deal created 2025-03-01",
         reporter_type: "Account Manager",
         status: "In Progress",
         ticket_type: "Bug",
         updated: "2016-09-28",
-        actions: [
-          {
-            type: "IFRAME",
-            width: 890,
-            height: 748,
-            uri: "https://damoonrashidi.me/iframe",
-            label: "Edit",
-            associatedObjectProperties: [],
-          },
-        ],
+        actions: [],
       },
     ],
     primaryAction: {
@@ -33,7 +23,7 @@ export const handler: Handlers = () => {
       width: 890,
       height: 748,
       uri: "https://damoonrashidi.me/iframe",
-      label: "Settings",
+      label: "Manage deal",
     },
   };
 
