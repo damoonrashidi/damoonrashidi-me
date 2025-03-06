@@ -5,7 +5,7 @@ export const handler: Handlers = () => {
     type: "IFRAME",
     width: 890,
     height: 748,
-    uri: "https://witty-sides-check.loca.lt/",
+    uri: "https://damoonrashidi.me/iframe",
     label: "Edit",
     associatedObjectProperties: [],
   });
