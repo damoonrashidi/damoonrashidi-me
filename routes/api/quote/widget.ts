@@ -67,6 +67,15 @@ export const handler: Handlers = {
           ],
         },
       ],
+      primaryAction: {
+        type: "IFRAME",
+        width: 1100,
+        height: 900,
+        uri: `http://localhost:3001/i/quote?${searchParams.toString()}`,
+        label: "Create Quote",
+        associatedObjectProperties: [],
+        buttonType: "PRIMARY",
+      },
     };
 
     return Response.json(response);
