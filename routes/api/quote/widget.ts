@@ -13,7 +13,7 @@ export const handler: Handlers = {
     //    [ "associatedObjectType", "DEAL" ],
     //    [ "portalId", "145871305" ],
     //    [ "hs_object_id", "148018975992" ],
-    //    [ "dealname", "Nesso 2025" ],
+    //    [ "dealname", "Adlibris 2025" ],
     //    [ "dealtype", "newbusiness" ]
 
     console.log(
@@ -24,11 +24,11 @@ export const handler: Handlers = {
       results: [
         {
           objectId: 245,
-          title: "Nesso 2025 Upsell",
+          title: "Adlibris 2025 Upsell",
           link: "http://example.com/1",
           created: "2025-03-01",
           priority: "HIGH",
-          project: "Nesso",
+          project: "Adlibris",
           description: "Deal created 2025-03-01",
           reporter_type: "Account Manager",
           status: "In Progress",
@@ -46,11 +46,11 @@ export const handler: Handlers = {
         },
         {
           objectId: 246,
-          title: "Nesso 2025 Upsell v2",
+          title: "Adlibris Tracking only",
           link: "http://example.com/1",
           created: "2025-03-01",
           priority: "HIGH",
-          project: "Nesso",
+          project: "Adlibris",
           description: "Deal created 2025-03-01",
           reporter_type: "Account Manager",
           status: "In Progress",
