@@ -24,7 +24,7 @@ export const handler: Handlers = {
       results: [
         {
           objectId: 245,
-          title: "Adlibris 2025 Upsell",
+          title: "Adlibris Quote",
           link: "http://example.com/1",
           created: "2025-03-01",
           priority: "HIGH",
@@ -46,7 +46,7 @@ export const handler: Handlers = {
         },
         {
           objectId: 246,
-          title: "Adlibris Tracking only",
+          title: "Adlibris Quote with Tracking",
           link: "http://example.com/1",
           created: "2025-03-01",
           priority: "HIGH",
