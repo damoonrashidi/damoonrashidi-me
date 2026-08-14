@@ -6,7 +6,7 @@
     "manifest": "deno task cli manifest $(pwd)",
     "start": "deno run -A --env=.env --watch=static/,routes/,blog dev.ts",
     "build": "deno task db:generate && deno run -A dev.ts build",
-    "preview": "deno run -A main.ts",
+    "preview": "deno run -A --env=.env main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "migrate": "deno run -A npm:prisma migrate deploy",
     "db:generate": "deno run -A npm:prisma generate",
@@ -47,6 +47,3 @@
   },
   "allowScripts": ["npm:@prisma/engines", "npm:prisma"]
 }
-
-
-
