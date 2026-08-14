@@ -1,19 +1,12 @@
 import type { Handlers, PageProps } from "$fresh/server.ts";
 import { Invite } from "@/routes/wedding/schema.ts";
 import { InviteFinder } from "@/islands/wedding/InviteFinder.tsx";
+import { InviteService } from "@/wedding/invite.service.ts";
 import { Head } from "$fresh/runtime.ts";
 
 export const handler: Handlers<{ url: string; invite: Invite }[]> = {
   async GET(_req, ctx) {
-    const kv = await Deno.openKv();
-    const inviteIterator = kv.list<Invite>({ prefix: ["wedding", "invites"] });
-    const invites: Array<{ url: string; invite: Invite }> = [];
-
-    for await (const invite of inviteIterator) {
-      invites.push({ url: invite.key.at(-1) as string, invite: invite.value });
-    }
-
-    return ctx.render(invites);
+    return ctx.render(await InviteService.list());
   },
 };
 

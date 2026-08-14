@@ -1,4 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
+import { AnalyticsService } from "@/analytics/analytics.service.ts";
 import { PostService } from "@/blog/post.service.ts";
 
 interface Summary {
@@ -9,29 +10,16 @@ interface Summary {
 
 export const handler: Handlers = {
   async GET() {
-    const data: Summary[] = [];
-
-    const kv = await Deno.openKv();
     const slugs = (await PostService.getPosts()).map((post) => post.slug);
+    const statistics = await AnalyticsService.getPostStatistics(slugs);
 
-    for (const slug of slugs) {
-      const readCount = await kv.get(["posts", slug, "read_count"]);
-      const summary: Summary = {
-        slug,
-        read_count: Number(readCount.value),
-        referrals: {},
-      };
-
-      const refs = kv.list({ prefix: ["posts", slug, "referrals"] });
-      for await (const ref of refs) {
-        const referral = String(ref.key[ref.key.length - 1]);
-        summary.referrals = {
-          ...summary.referrals,
-          [referral]: Number(ref.value),
-        };
-      }
-      data.push(summary);
-    }
+    const data: Summary[] = statistics.map((
+      { slug, readCount, referrals },
+    ) => ({
+      slug,
+      read_count: readCount,
+      referrals,
+    }));
 
     return Response.json(data);
   },

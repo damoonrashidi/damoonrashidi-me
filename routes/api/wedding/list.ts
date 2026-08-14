@@ -1,27 +1,24 @@
 import { Handlers } from "$fresh/server.ts";
-import { Guest, Invite } from "@/routes/wedding/schema.ts";
+import { Guest } from "@/routes/wedding/schema.ts";
+import { InviteService } from "@/wedding/invite.service.ts";
 
 export const handler: Handlers = {
   async GET() {
-    const kv = await Deno.openKv();
-
-    const inviteIterator = kv.list<Invite>({ prefix: ["wedding", "invites"] });
+    const invites = await InviteService.list();
 
     const urls: Record<string, string> = {};
-    const invites: Invite[] = [];
     const acceptList: Guest[] = [];
     const noList: Guest[] = [];
     let guestCount = 0;
 
-    for await (const invite of inviteIterator) {
-      invites.push(invite.value as Invite);
-      urls[String(invite.key.at(-1))] = invite.value.displayName;
-      guestCount += invite.value.guests.length;
+    for (const { url, invite } of invites) {
+      urls[url] = invite.displayName;
+      guestCount += invite.guests.length;
       acceptList.push(
-        ...invite.value.guests.filter((guest) => guest.willAttend === "yes"),
+        ...invite.guests.filter((guest) => guest.willAttend === "yes"),
       );
       noList.push(
-        ...invite.value.guests.filter((guest) => guest.willAttend === "no"),
+        ...invite.guests.filter((guest) => guest.willAttend === "no"),
       );
     }
 

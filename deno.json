@@ -2,12 +2,19 @@
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable-kv -A -",
+    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run -A -",
     "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run --unstable-kv -A --watch=static/,routes/,blog dev.ts",
-    "build": "deno run --unstable-kv -A dev.ts build",
-    "preview": "deno run --unstable-kv -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "start": "deno run -A --env=.env --watch=static/,routes/,blog dev.ts",
+    "build": "deno task db:generate && deno run -A dev.ts build",
+    "preview": "deno run -A main.ts",
+    "update": "deno run -A -r https://fresh.deno.dev/update .",
+    "migrate": "deno run -A npm:prisma migrate deploy",
+    "db:generate": "deno run -A npm:prisma generate",
+    "db:migrate": "deno run -A --env=.env npm:prisma migrate dev",
+    "db:deploy": "deno run -A --env=.env npm:prisma migrate deploy",
+    "db:push": "deno run -A --env=.env npm:prisma db push",
+    "db:studio": "deno run -A --env=.env npm:prisma studio",
+    "db:import-kv": "deno run -A --unstable-kv --env=.env scripts/import-kv.ts"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],
@@ -22,11 +29,24 @@
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "$gfm": "https://deno.land/x/gfm@0.3.0/mod.ts",
     "https://deno.land/x/emoji@0.3.0/mod.ts": "https://deno.land/x/emoji@0.3.1/mod.ts",
+    "https://esm.sh/marked@9.1.1/lib/marked.d.ts": "https://esm.sh/v135/marked@9.1.1/lib/marked.d.ts",
     "tailwindcss": "npm:tailwindcss@3.3.5",
     "tailwindcss/": "npm:/tailwindcss@3.3.5/",
     "tailwindcss/plugin": "npm:/tailwindcss@3.3.5/plugin.js",
-    "$std/": "https://deno.land/std@0.208.0/"
+    "$std/": "https://deno.land/std@0.208.0/",
+    "@prisma/adapter-pg": "npm:@prisma/adapter-pg@^7.0.0",
+    "@prisma/client": "npm:@prisma/client@^7.0.0",
+    "prisma": "npm:prisma@^7.0.0",
+    "prisma/config": "npm:prisma@^7.0.0/config"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
-  "nodeModulesDir": true
+  "nodeModulesDir": "auto",
+  "deploy": {
+    "org": "damoon-rashidi",
+    "app": "damoonrashidi-me"
+  },
+  "allowScripts": ["npm:@prisma/engines", "npm:prisma"]
 }
+
+
+

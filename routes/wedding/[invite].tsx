@@ -2,35 +2,20 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { Invite } from "@/routes/wedding/schema.ts";
 import { Head } from "$fresh/runtime.ts";
 import { InviteForm } from "@/islands/wedding/InviteForm.tsx";
+import { InviteService } from "@/wedding/invite.service.ts";
 
 export const handler: Handlers<Invite> = {
   async GET(_req, ctx) {
-    const kv = await Deno.openKv();
-    const invite = await kv.get<Invite>([
-      "wedding",
-      "invites",
-      ctx.params.invite,
-    ]);
+    const invite = await InviteService.get(ctx.params.invite);
 
-    if (!invite.value) {
+    if (!invite) {
       return ctx.renderNotFound();
     }
 
-    return ctx.render(invite.value);
+    return ctx.render(invite);
   },
 
   async POST(req, ctx) {
-    const kv = await Deno.openKv();
-    const invite = await kv.get<Invite>([
-      "wedding",
-      "invites",
-      ctx.params.invite,
-    ]);
-
-    if (!invite.value) {
-      return Response.json({ success: false });
-    }
-
     const data = await req.formData();
 
     const i = Number(data.get("index"));
@@ -39,15 +24,14 @@ export const handler: Handlers<Invite> = {
       return Response.json({ success: false });
     }
 
-    invite.value.guests[i].willAttend = data.get(`willAttend`) as "yes" | "no";
-    invite.value.guests[i].foodPreferences = data.get(`food`)?.toString() ?? "";
-    invite.value.guests[i].willSpeak =
-      data.get(`willSpeak`)?.toString() === "on";
-    invite.value.guests[i].bio = data.get(`bio`)?.toString() ?? "";
+    const success = await InviteService.updateGuest(ctx.params.invite, i, {
+      willAttend: data.get(`willAttend`) as "yes" | "no",
+      foodPreferences: data.get(`food`)?.toString() ?? "",
+      willSpeak: data.get(`willSpeak`)?.toString() === "on",
+      bio: data.get(`bio`)?.toString() ?? "",
+    });
 
-    await kv.set(["wedding", "invites", ctx.params.invite], invite.value);
-
-    return Response.json({ success: true });
+    return Response.json({ success });
   },
 };
 
@@ -84,9 +68,7 @@ export default function InvitePage({ data: invite }: PageProps<Invite>) {
             .
           </p>
         </div>
-        {invite.guests.map((guest, i) => (
-          <InviteForm guest={guest} i={i} />
-        ))}
+        {invite.guests.map((guest, i) => <InviteForm guest={guest} i={i} />)}
       </div>
     </>
   );

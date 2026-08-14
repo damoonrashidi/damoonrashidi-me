@@ -1,5 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { AnalyticsService } from "@/analytics/analytics.service.ts";
 import { PostService } from "@/blog/post.service.ts";
 import { Header } from "@/components/header.tsx";
 
@@ -26,35 +27,28 @@ const getHostName = (ref: string): string => {
 
 export const handler: Handlers = {
   async GET(_, ctx) {
-    const data: PostStatistic[] = [];
-
-    const kv = await Deno.openKv();
     const posts = await PostService.getPosts();
+    const statistics = await AnalyticsService.getPostStatistics(
+      posts.map((post) => post.slug),
+    );
 
-    for (const post of posts) {
-      const readCount = await kv.get(["posts", post.slug, "read_count"]);
-      const summary: PostStatistic = {
+    const data: PostStatistic[] = posts.map((post, i) => {
+      const { readCount, referrals } = statistics[i];
+
+      const byHost: Record<string, number> = {};
+      for (const [referral, count] of Object.entries(referrals)) {
+        const host = getHostName(referral);
+        byHost[host] = (byHost[host] ?? 0) + count;
+      }
+
+      return {
         slug: post.slug,
         snippet: post.snippet,
         imageUrl: post.ogImageUrl,
-        read_count: Number(readCount.value),
-        referrals: {},
+        read_count: readCount,
+        referrals: byHost,
       };
-
-      const refs = kv.list({ prefix: ["posts", post.slug, "referrals"] });
-      for await (const ref of refs) {
-        const referral = String(ref.key[ref.key.length - 1]);
-        const host = getHostName(referral);
-
-        const previousValue = summary.referrals[host] ?? 0;
-
-        summary.referrals = {
-          ...summary.referrals,
-          [host]: previousValue + Number(ref.value),
-        };
-      }
-      data.push(summary);
-    }
+    });
 
     return ctx.render(data);
   },

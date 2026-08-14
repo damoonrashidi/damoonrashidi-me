@@ -1,5 +1,5 @@
-import { PageProps, Handlers } from "$fresh/server.ts";
-import { Invite } from "@/routes/wedding/schema.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { InviteService } from "@/wedding/invite.service.ts";
 
 interface GuestbookEntry {
   name: string;
@@ -8,17 +8,10 @@ interface GuestbookEntry {
 
 export const handler: Handlers<GuestbookEntry[]> = {
   async GET(_, ctx) {
-    const kv = await Deno.openKv();
-
-    const inviteIterator = kv.list<Invite>({ prefix: ["wedding", "invites"] });
-    const invites: Invite[] = [];
-
-    for await (const invite of inviteIterator) {
-      invites.push(invite.value);
-    }
+    const invites = await InviteService.list();
 
     const guestbookEntries = invites
-      .flatMap((invite) => invite.guests)
+      .flatMap(({ invite }) => invite.guests)
       .filter((guest) => guest.willAttend === "yes" && guest.bio.length > 0)
       .toSorted((a, b) => a.name.localeCompare(b.name))
       .map((guest) => ({

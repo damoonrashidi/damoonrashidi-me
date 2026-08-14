@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  runtime  = "deno"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Read counter per blog post, replaces the ["posts", slug, "read_count"] key.
+model PostStat {
+  slug      String @id
+  readCount Int    @default(0)
+
+  @@map("post_stats")
+}
+
+/// View counter per static page, replaces the ["project", page, "view_count"] key.
+model PageStat {
+  page      String @id
+  viewCount Int    @default(0)
+
+  @@map("page_stats")
+}
+
+/// Referrer counter, replaces the ["posts", slug, "referrals", referrer] keys.
+/// Posts and pages share this table, the same way they shared the KV prefix.
+model Referral {
+  slug   String
+  source String
+  count  Int    @default(0)
+
+  @@id([slug, source])
+  @@map("referrals")
+}
+
+/// Wedding invite, replaces the ["wedding", "invites", slug] key.
+model Invite {
+  slug        String  @id
+  displayName String
+  guests      Guest[]
+
+  @@map("invites")
+}
+
+model Guest {
+  id              Int        @id @default(autoincrement())
+  inviteSlug      String
+  /// Position within the invite, the form posts back by index.
+  position        Int
+  name            String
+  willAttend      Attendance @default(unknown)
+  foodPreferences String     @default("")
+  bio             String     @default("")
+  willSpeak       Boolean    @default(false)
+
+  invite Invite @relation(fields: [inviteSlug], references: [slug], onDelete: Cascade)
+
+  @@unique([inviteSlug, position])
+  @@map("guests")
+}
+
+enum Attendance {
+  yes
+  no
+  unknown
+}
